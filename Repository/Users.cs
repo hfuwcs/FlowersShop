@@ -11,7 +11,6 @@ namespace FlowersShop.Repository
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class Users
     {
@@ -20,25 +19,12 @@ namespace FlowersShop.Repository
         {
             this.Cart = new HashSet<Cart>();
         }
-        public Users(Users u)
-        {
-            this.Cart = new HashSet<Cart>();
-            this.ID = u.ID;
-            this.Name = u.Name;
-            this.Address = u.Address;
-            this.Email = u.Email;
-            this.Phone = u.Phone;
-            this.UserName = u.UserName;
-            this.Password = u.Password;
-            this.Role_id = 2;
-        }
-
+    
         public int ID { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        [Required]
         public string UserName { get; set; }
         public string Password { get; set; }
         public Nullable<int> Role_id { get; set; }

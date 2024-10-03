@@ -22,10 +22,15 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Đăng Nhập", "DangNhap", "User", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Đăng Ký", "DangKy", "User", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Show Sản Phẩm", "ShowProduct", "Product", new { area = "" }, new { @class = "nav-link" })</li>
                 </ul>
             </div>
         </div>
     </nav>
+    <form method="post" action="/Product/SearchProduct">
+        <input type="text" name="txt_Search" placeholder="Nhập tên sản phẩm cần tìm" />
+        <input type="submit" class="btn btn-primary" value="Search" />
+    </form>
     <div class="container body-content">
         @RenderBody()
         <hr />
