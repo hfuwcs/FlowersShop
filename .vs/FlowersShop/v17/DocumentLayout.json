@@ -7,19 +7,19 @@
       "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|d:\\hk5\\backend-ltw\\flowersshop\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|D:\\HK5\\Backend-LTW\\FlowersShop\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|d:\\hk5\\backend-ltw\\flowersshop\\models\\connectproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|D:\\HK5\\Backend-LTW\\FlowersShop\\models\\connectproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:models\\connectproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|d:\\hk5\\backend-ltw\\flowersshop\\views\\product\\showproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|D:\\HK5\\Backend-LTW\\FlowersShop\\views\\product\\showproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:views\\product\\showproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|d:\\hk5\\backend-ltw\\flowersshop\\views\\product\\searchproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|D:\\HK5\\Backend-LTW\\FlowersShop\\views\\product\\searchproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:views\\product\\searchproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
@@ -46,8 +46,7 @@
               "RelativeToolTip": "Views\\Product\\ShowProduct.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-03T17:04:44.504Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-03T17:04:44.504Z"
             },
             {
               "$type": "Document",
@@ -59,8 +58,7 @@
               "RelativeToolTip": "Views\\Product\\SearchProduct.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-03T16:48:01.98Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-03T16:48:01.98Z"
             },
             {
               "$type": "Document",
@@ -72,8 +70,7 @@
               "RelativeToolTip": "Controllers\\ProductController.cs",
               "ViewState": "AQIAAAQAAAAAAAAAAAAgwA0AAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-03T16:42:48.31Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-03T16:42:48.31Z"
             },
             {
               "$type": "Document",
@@ -85,8 +82,7 @@
               "RelativeToolTip": "Models\\ConnectProduct.cs",
               "ViewState": "AQIAAAIAAAAAAAAAAAAAAA4AAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-03T16:41:01.097Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-03T16:41:01.097Z"
             },
             {
               "$type": "Document",
