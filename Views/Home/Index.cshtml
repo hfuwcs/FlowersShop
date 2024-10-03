@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<main>
+    @if (Session["Signed"] != null)
+    {
+                <h2>Chào mừng: @Session["Signed"].ToString() 😘😁😊👍🙌 ☆*: .｡. o(≧▽≦)o .｡.:*☆</h2>
+            }
+else
+            {
+        <h2>Bạn chưa đăng nhập 😊</h2>
+            }
+</main>
