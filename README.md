@@ -1,0 +1,1 @@
+-03/10/2024: Hiện tại đang có chức năng đăng nhập, đăng ký tương tác được với cơ sở dữ liệu
