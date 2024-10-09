@@ -1,0 +1,23 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    @if (Session["Signed"] != null)
+    {
+        <h2>Chào mừng: @Session["Signed"].ToString()</h2>
+    }
+    else
+    {
+        <h2>Bạn chưa đăng nhập 😊</h2>
+    }
+</body>
+</html>

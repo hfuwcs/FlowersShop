@@ -8,8 +8,8 @@
     <Property Name="Quantity" Type="Int32" />
     <Property Name="Product_id" Type="Int32" />
     <Property Name="User_ID" Type="Int32" />
-    <NavigationProperty Name="Product" Relationship="Self.FK_SCI1" FromRole="Cart" ToRole="Product" />
     <NavigationProperty Name="Users" Relationship="Self.FK_SCI2" FromRole="Cart" ToRole="Users" />
+    <NavigationProperty Name="Product" Relationship="QL_BanHoaModel.FK_SCI1" FromRole="Cart" ToRole="Product" />
   </EntityType>
   <EntityType Name="Category">
     <Key>
@@ -17,7 +17,7 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Category_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Product" Relationship="Self.FK_PRODUCT" FromRole="Category" ToRole="Product" />
+    <NavigationProperty Name="Product" Relationship="QL_BanHoaModel.FK_PRODUCT" FromRole="Category" ToRole="Product" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
@@ -30,8 +30,8 @@
     <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="Quantity" Type="Int32" />
     <Property Name="Category_id" Type="Int32" />
-    <NavigationProperty Name="Cart" Relationship="Self.FK_SCI1" FromRole="Product" ToRole="Cart" />
-    <NavigationProperty Name="Category" Relationship="Self.FK_PRODUCT" FromRole="Product" ToRole="Category" />
+    <NavigationProperty Name="Cart" Relationship="QL_BanHoaModel.FK_SCI1" FromRole="Product" ToRole="Cart" />
+    <NavigationProperty Name="Category" Relationship="QL_BanHoaModel.FK_PRODUCT" FromRole="Product" ToRole="Category" />
   </EntityType>
   <EntityType Name="User_Role">
     <Key>
@@ -39,7 +39,7 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ROLE_LEVEL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Users" Relationship="Self.FK_USER" FromRole="User_Role" ToRole="Users" />
+    <NavigationProperty Name="Users" Relationship="QL_BanHoaModel.FK_USER" FromRole="User_Role" ToRole="Users" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -54,23 +54,11 @@
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Role_id" Type="Int32" />
     <NavigationProperty Name="Cart" Relationship="Self.FK_SCI2" FromRole="Users" ToRole="Cart" />
-    <NavigationProperty Name="User_Role" Relationship="Self.FK_USER" FromRole="Users" ToRole="User_Role" />
+    <NavigationProperty Name="User_Role" Relationship="QL_BanHoaModel.FK_USER" FromRole="Users" ToRole="User_Role" />
   </EntityType>
-  <Association Name="FK_SCI1">
-    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
-    <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Product">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Cart">
-        <PropertyRef Name="Product_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_SCI2">
-    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
-    <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+    <End Type="Self.Users" Multiplicity="0..1" Role="Users" />
+    <End Type="Self.Cart" Multiplicity="*" Role="Cart" />
     <ReferentialConstraint>
       <Principal Role="Users">
         <PropertyRef Name="ID" />
@@ -80,21 +68,40 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_PRODUCT">
-    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
-    <End Role="Product" Type="Self.Product" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Category">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Product">
-        <PropertyRef Name="Category_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
+  <EntityContainer Name="QL_BanHoaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cart" EntityType="Self.Cart" />
+    <EntitySet Name="Category" EntityType="Self.Category" />
+    <EntitySet Name="Product" EntityType="Self.Product" />
+    <EntitySet Name="User_Role" EntityType="Self.User_Role" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <AssociationSet Name="FK_SCI2" Association="Self.FK_SCI2">
+      <End EntitySet="Users" Role="Users" />
+      <End EntitySet="Cart" Role="Cart" />
+    </AssociationSet>
+    <EntitySet Name="Test" EntityType="QL_BanHoaModel.Test" />
+    <AssociationSet Name="FK_USER" Association="QL_BanHoaModel.FK_USER">
+      <End Role="User_Role" EntitySet="User_Role" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SCI1" Association="QL_BanHoaModel.FK_SCI1">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Cart" EntitySet="Cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUCT" Association="QL_BanHoaModel.FK_PRODUCT">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Test">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
   <Association Name="FK_USER">
-    <End Role="User_Role" Type="Self.User_Role" Multiplicity="0..1" />
-    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <End Type="QL_BanHoaModel.User_Role" Role="User_Role" Multiplicity="0..1" />
+    <End Type="QL_BanHoaModel.Users" Role="Users" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="User_Role">
         <PropertyRef Name="ID" />
@@ -104,27 +111,28 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="QL_BanHoaEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Cart" EntityType="Self.Cart" />
-    <EntitySet Name="Category" EntityType="Self.Category" />
-    <EntitySet Name="Product" EntityType="Self.Product" />
-    <EntitySet Name="User_Role" EntityType="Self.User_Role" />
-    <EntitySet Name="Users" EntityType="Self.Users" />
-    <AssociationSet Name="FK_SCI1" Association="Self.FK_SCI1">
-      <End Role="Product" EntitySet="Product" />
-      <End Role="Cart" EntitySet="Cart" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SCI2" Association="Self.FK_SCI2">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="Cart" EntitySet="Cart" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PRODUCT" Association="Self.FK_PRODUCT">
-      <End Role="Category" EntitySet="Category" />
-      <End Role="Product" EntitySet="Product" />
-    </AssociationSet>
-    <AssociationSet Name="FK_USER" Association="Self.FK_USER">
-      <End Role="User_Role" EntitySet="User_Role" />
-      <End Role="Users" EntitySet="Users" />
-    </AssociationSet>
-  </EntityContainer>
+  <Association Name="FK_SCI1">
+    <End Type="QL_BanHoaModel.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="QL_BanHoaModel.Cart" Role="Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="Product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUCT">
+    <End Type="QL_BanHoaModel.Category" Role="Category" Multiplicity="0..1" />
+    <End Type="QL_BanHoaModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="Category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -30,5 +30,6 @@ namespace FlowersShop.Repository
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<User_Role> User_Role { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<Test> Test { get; set; }
     }
 }

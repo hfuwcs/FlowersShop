@@ -11,6 +11,8 @@ namespace FlowersShop.Repository
 {
     using System;
     using System.Collections.Generic;
+    using System.Runtime.Serialization;
+    using System.Xml.Serialization;
     
     public partial class Category
     {
@@ -22,6 +24,8 @@ namespace FlowersShop.Repository
     
         public int ID { get; set; }
         public string Category_name { get; set; }
+        [XmlIgnore]
+        [IgnoreDataMember]
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Product { get; set; }

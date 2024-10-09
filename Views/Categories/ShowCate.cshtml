@@ -1,0 +1,41 @@
+﻿@model IEnumerable<FlowersShop.Repository.Category>
+
+@{
+    ViewBag.Title = "ShowCate";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<h2>ShowCate</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category_name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+        </td>
+    </tr>
+}
+    <tr>
+        <td>
+            @Html.ValidationSummary(true, "", new {@class="text-danger"})
+        </td>
+    </tr>
+
+</table>

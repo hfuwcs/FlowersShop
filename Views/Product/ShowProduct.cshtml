@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<FlowersShop.Repository.Product>
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
 }
 
 <!DOCTYPE html>
@@ -50,7 +50,7 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Image)
+                <img class="image" src="~/Media/ProductsImages/@item.Image" width="200"/>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Quantity)

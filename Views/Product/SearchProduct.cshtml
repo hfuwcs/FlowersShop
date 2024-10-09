@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<FlowersShop.Repository.Product>
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
 }
 
 <!DOCTYPE html>
@@ -12,9 +12,6 @@
     <title>SearchProduct</title>
 </head>
 <body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
     <table class="table">
         <tr>
             <th>

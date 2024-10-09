@@ -19,7 +19,7 @@ namespace FlowersShop.Repository
         public Nullable<int> Product_id { get; set; }
         public Nullable<int> User_ID { get; set; }
     
-        public virtual Product Product { get; set; }
         public virtual Users Users { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

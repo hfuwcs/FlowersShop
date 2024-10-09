@@ -72,5 +72,11 @@ namespace FlowersShop.Controllers
                 //return RedirectToAction("Index", "Home");
             }
         }
+
+        public ActionResult DangXuat()
+        {
+            Session["Signed"] = null;
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
