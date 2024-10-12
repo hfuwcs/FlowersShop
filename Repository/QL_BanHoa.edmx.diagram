@@ -4,17 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="19d2e5f36e2d492e961c815734f9173a" Name="Diagram1">
+      <Diagram DiagramId="3e2ead66b0f249b693d89fb9ec7361a2" Name="Diagram1">
         <EntityTypeShape EntityType="QL_BanHoaModel.Cart" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_BanHoaModel.Category" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_BanHoaModel.Product" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_BanHoaModel.Test" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_BanHoaModel.User_Role" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_BanHoaModel.Users" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector ManuallyRouted="false" Association="QL_BanHoaModel.FK_SCI2" />
-        <EntityTypeShape EntityType="QL_BanHoaModel.Test" Width="1.5" PointX="6.875" PointY="4.625" />
-        <AssociationConnector Association="QL_BanHoaModel.FK_USER" />
-        <AssociationConnector Association="QL_BanHoaModel.FK_SCI1" />
-        <AssociationConnector Association="QL_BanHoaModel.FK_PRODUCT" />
+        <AssociationConnector Association="QL_BanHoaModel.FK_SCI1" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_BanHoaModel.FK_SCI2" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_BanHoaModel.FK_PRODUCT" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_BanHoaModel.FK_USER" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

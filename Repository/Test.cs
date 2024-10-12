@@ -15,6 +15,6 @@ namespace FlowersShop.Repository
     public partial class Test
     {
         public int ID { get; set; }
-        public string Name { get; set; }
+        public string NAME { get; set; }
     }
 }

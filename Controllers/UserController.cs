@@ -12,7 +12,7 @@ namespace FlowersShop.Controllers
     public class UserController : Controller
     {
         // GET: User
-        UserProc obj = new UserProc();
+        UserBusiness obj = new UserBusiness();
         QL_BanHoaEntities db = new QL_BanHoaEntities();
         public ActionResult DangNhap()
         {
@@ -23,18 +23,23 @@ namespace FlowersShop.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult DangNhap(Users user)
         {
-                if (obj.XacThucUser(user))
+                if (obj.IsUser(user))
                 {
-                    //Sử dụng TempData để chuyển sang Action của Controller khác
                     Session["Signed"] = user.UserName;//Tạo session để biết người dùng đã log in chưa
                     TempData["user"] = user;
                     return RedirectToAction("Index", "Home");
                 }
+                else if (obj.IsAdmin(user))
+            {
+                Session["Admin"] = user.UserName;
+                return RedirectToAction("Index", "Dashboard", new { Area = "Admin" });
+            }
                 else
                 {
-                ViewBag.error = "Sai tên đăng nhập hoặc mật khẩu";
+                    ViewBag.error = "Sai tên đăng nhập hoặc mật khẩu";
                     //ModelState.AddModelError("UserName", "Sai tên đăng nhập hoặc mật khẩu");
                     return View();
                 }
@@ -52,7 +57,7 @@ namespace FlowersShop.Controllers
         [HttpPost]
         public ActionResult DangKy(Users user)
         {
-            user.Role_id = 2;
+            user.Role_ID = 2;
             if (obj.CheckUserName(user.UserName))
             {
                 ModelState.AddModelError("UserName", "Tên đăng nhập đã tồn tại");//Thêm "Error" vào Model để

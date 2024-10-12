@@ -2,89 +2,91 @@
 <Schema Namespace="QL_BanHoaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Cart">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="Cart_ID" />
+      <PropertyRef Name="Product_ID" />
+      <PropertyRef Name="User_ID" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cart_ID" Type="int" Nullable="false" />
     <Property Name="Quantity" Type="int" />
-    <Property Name="Product_id" Type="int" />
-    <Property Name="User_ID" Type="int" />
+    <Property Name="Product_ID" Type="int" Nullable="false" />
+    <Property Name="User_ID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Category">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="Category_ID" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Category_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Category_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Category_Name" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="Product_ID" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Product_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Image" Type="varchar" MaxLength="255" />
     <Property Name="Name" Type="nvarchar" MaxLength="100" />
     <Property Name="Price" Type="float" />
-    <Property Name="Description" Type="text" />
-    <Property Name="Image" Type="varchar" MaxLength="255" />
     <Property Name="Quantity" Type="int" />
-    <Property Name="Category_id" Type="int" />
+    <Property Name="Category_ID" Type="int" />
   </EntityType>
   <EntityType Name="Test">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="User_Role">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="Role_ID" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Role_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ROLE_LEVEL" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="User_ID" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="100" />
     <Property Name="Address" Type="nvarchar" MaxLength="255" />
     <Property Name="Email" Type="varchar" MaxLength="100" />
     <Property Name="Phone" Type="varchar" MaxLength="20" />
     <Property Name="UserName" Type="varchar" MaxLength="50" />
-    <Property Name="Password" Type="varchar" MaxLength="50" />
-    <Property Name="Role_id" Type="int" />
+    <Property Name="Password" Type="varchar" MaxLength="256" />
+    <Property Name="Role_ID" Type="int" />
   </EntityType>
   <Association Name="FK_PRODUCT">
     <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
     <End Role="Product" Type="Self.Product" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Category">
-        <PropertyRef Name="ID" />
+        <PropertyRef Name="Category_ID" />
       </Principal>
       <Dependent Role="Product">
-        <PropertyRef Name="Category_id" />
+        <PropertyRef Name="Category_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_SCI1">
-    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
     <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Product">
-        <PropertyRef Name="ID" />
+        <PropertyRef Name="Product_ID" />
       </Principal>
       <Dependent Role="Cart">
-        <PropertyRef Name="Product_id" />
+        <PropertyRef Name="Product_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_SCI2">
-    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
     <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Users">
-        <PropertyRef Name="ID" />
+        <PropertyRef Name="User_ID" />
       </Principal>
       <Dependent Role="Cart">
         <PropertyRef Name="User_ID" />
@@ -96,10 +98,10 @@
     <End Role="Users" Type="Self.Users" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="User_Role">
-        <PropertyRef Name="ID" />
+        <PropertyRef Name="Role_ID" />
       </Principal>
       <Dependent Role="Users">
-        <PropertyRef Name="Role_id" />
+        <PropertyRef Name="Role_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

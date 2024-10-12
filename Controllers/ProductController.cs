@@ -6,12 +6,15 @@ using System.Web;
 using System.Web.Mvc;
 using FlowersShop.Models;
 using FlowersShop.Repository;
+using System.Data.Entity;
 
 namespace FlowersShop.Controllers
 {
     public class ProductController : Controller
     {
-        ConnectProduct obj = new ConnectProduct();
+        ProductBusiness objproduct = new ProductBusiness();
+        CategoryBusiness objCategory = new CategoryBusiness();
+        QL_BanHoaEntities db = new QL_BanHoaEntities();
         [HttpGet]
         public ActionResult ShowProduct()
         {
@@ -38,8 +41,6 @@ namespace FlowersShop.Controllers
                 }
                 return View(products);
             }
-            //List<Product> products = obj.GetData();
-            //return View(products); 
         }
         public ActionResult SearchProduct(String txt_Search)
         {
@@ -62,12 +63,16 @@ namespace FlowersShop.Controllers
                 }
                 return View(products);
             }
-            //List<Product> products = obj.SearchProduct(txt_Search);
-            //return View(products);
         }
-
-        public ActionResult ShowProductAPITest()
+        [HttpGet]
+        public ActionResult CreateProduct() {
+            ViewBag.Category_ID = new SelectList(db.Category, "Category_ID", "Category_Name");
+            return View(); 
+        }
+        [HttpPost]
+        public ActionResult CreateProduct(Product product)
         {
+            //List<Category> SelectListItem = objCategory.GetCategory();    
             return View();
         }
     }

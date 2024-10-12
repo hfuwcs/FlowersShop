@@ -26,7 +26,7 @@ namespace FlowersShop.ApiControllers
         [ResponseType(typeof(Test))]
         public IHttpActionResult GetTest(string search)
         {
-            IList<Test> LstTest = db.Test.Where(t => t.Name.Contains(search)).ToList();
+            IList<Test> LstTest = db.Test.Where(t => t.NAME.Contains(search)).ToList();
             //Product product = db.Product.Find(id);
             if (LstTest == null)
             {
@@ -73,32 +73,33 @@ namespace FlowersShop.ApiControllers
 
         // POST: api/Tests
         [ResponseType(typeof(Test))]
-        public IHttpActionResult PostTest(Test test)
+        public IHttpActionResult PostTest(string name)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            Test temp = new Test { NAME = name };
+            db.Test.Add(temp);
+            db.SaveChanges();
+            return Ok();
+            //try
+            //{
+            //    db.SaveChanges();
+            //}
+            //catch (DbUpdateException)
+            //{
+            //    if (TestExists(test.ID))
+            //    {
+            //        return Conflict();
+            //    }
+            //    else
+            //    {
+            //        throw;
+            //    }
+            //}
 
-            db.Test.Add(test);
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (TestExists(test.ID))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtRoute("DefaultApi", new { id = test.ID }, test);
+            //return CreatedAtRoute("DefaultApi", new { id = test.ID }, test);
         }
 
         // DELETE: api/Tests/5

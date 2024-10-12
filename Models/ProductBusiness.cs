@@ -7,7 +7,7 @@ using FlowersShop.Repository;
 
 namespace FlowersShop.Models
 {
-    public class ConnectProduct
+    public class ProductBusiness
     {
         QL_BanHoaEntities db = new QL_BanHoaEntities();
         public List<Product> GetData()

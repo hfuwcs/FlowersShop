@@ -20,7 +20,7 @@ namespace FlowersShop.Repository
             this.Users = new HashSet<Users>();
         }
     
-        public int ID { get; set; }
+        public int Role_ID { get; set; }
         public string ROLE_LEVEL { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

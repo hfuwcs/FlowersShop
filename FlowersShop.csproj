@@ -154,6 +154,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiControllers\CartsController.cs" />
     <Compile Include="ApiControllers\CategoriesController.cs" />
     <Compile Include="ApiControllers\ProductsController.cs" />
     <Compile Include="ApiControllers\TestsController.cs" />
@@ -161,6 +162,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -168,8 +172,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ConnectProduct.cs" />
-    <Compile Include="Models\UserProc.cs" />
+    <Compile Include="Models\Cipher.cs" />
+    <Compile Include="Models\CategoryBusiness.cs" />
+    <Compile Include="Models\ProductBusiness.cs" />
+    <Compile Include="Models\UserBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Cart.cs">
       <DependentUpon>QL_BanHoa.tt</DependentUpon>
@@ -230,8 +236,8 @@
     <Content Include="Media\ProductsImages\3.jpg" />
     <Content Include="Repository\QL_BanHoa.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>QL_BanHoa.Context.cs</LastGenOutput>
       <DependentUpon>QL_BanHoa.edmx</DependentUpon>
+      <LastGenOutput>QL_BanHoa.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Repository\QL_BanHoa.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -244,6 +250,12 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_Admin-LayoutPage.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_HeaderBar.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_SearchView.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
     <EntityDeploy Include="Repository\QL_BanHoa.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>QL_BanHoa.Designer.cs</LastGenOutput>
@@ -286,9 +298,12 @@
     <Content Include="Views\Shared\_SearchView.cshtml" />
     <Content Include="Views\Product\ShowProductAPITest.cshtml" />
     <Content Include="Views\Categories\ShowCate.cshtml" />
+    <Content Include="Views\Cart\ShowCartByID.cshtml" />
+    <Content Include="Views\Product\CreateProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

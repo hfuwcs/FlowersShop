@@ -44,6 +44,18 @@ namespace FlowersShop.ApiControllers
 
             return Ok(products);
         }
+        //POST: api/Products/
+        public IHttpActionResult PostProduct(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Product.Add(product);
+                db.SaveChanges();
+                return Ok();
+            }
+            return BadRequest("Invalid data.");
+        }
+
 
         // PUT: api/Products/5
         [ResponseType(typeof(void))]
@@ -54,7 +66,7 @@ namespace FlowersShop.ApiControllers
                 return BadRequest(ModelState);
             }
 
-            if (id != product.ID)
+            if (id != product.Product_ID)
             {
                 return BadRequest();
             }
@@ -82,18 +94,18 @@ namespace FlowersShop.ApiControllers
 
         // POST: api/Products
         [ResponseType(typeof(Product))]
-        public IHttpActionResult PostProduct(Product product)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //public IHttpActionResult PostProduct(Product product)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            db.Product.Add(product);
-            db.SaveChanges();
+        //    db.Product.Add(product);
+        //    db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = product.ID }, product);
-        }
+        //    return CreatedAtRoute("DefaultApi", new { id = product.ID }, product);
+        //}
 
         // DELETE: api/Products/5
         [ResponseType(typeof(Product))]
@@ -122,7 +134,7 @@ namespace FlowersShop.ApiControllers
 
         private bool ProductExists(int id)
         {
-            return db.Product.Count(e => e.ID == id) > 0;
+            return db.Product.Count(e => e.Product_ID == id) > 0;
         }
     }
 }

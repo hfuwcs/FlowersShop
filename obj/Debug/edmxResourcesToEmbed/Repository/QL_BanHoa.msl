@@ -4,9 +4,9 @@
     <EntitySetMapping Name="Cart">
       <EntityTypeMapping TypeName="QL_BanHoaModel.Cart">
         <MappingFragment StoreEntitySet="Cart">
-          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Cart_ID" ColumnName="Cart_ID" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-          <ScalarProperty Name="Product_id" ColumnName="Product_id" />
+          <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
           <ScalarProperty Name="User_ID" ColumnName="User_ID" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -14,28 +14,36 @@
     <EntitySetMapping Name="Category">
       <EntityTypeMapping TypeName="QL_BanHoaModel.Category">
         <MappingFragment StoreEntitySet="Category">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Category_name" ColumnName="Category_name" />
+          <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+          <ScalarProperty Name="Category_Name" ColumnName="Category_Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Product">
       <EntityTypeMapping TypeName="QL_BanHoaModel.Product">
         <MappingFragment StoreEntitySet="Product">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-          <ScalarProperty Name="Category_id" ColumnName="Category_id" />
+          <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Test">
+      <EntityTypeMapping TypeName="QL_BanHoaModel.Test">
+        <MappingFragment StoreEntitySet="Test">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="User_Role">
       <EntityTypeMapping TypeName="QL_BanHoaModel.User_Role">
         <MappingFragment StoreEntitySet="User_Role">
-          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
           <ScalarProperty Name="ROLE_LEVEL" ColumnName="ROLE_LEVEL" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -43,22 +51,14 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="QL_BanHoaModel.Users">
         <MappingFragment StoreEntitySet="Users">
-          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Role_id" ColumnName="Role_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Test">
-      <EntityTypeMapping TypeName="QL_BanHoaModel.Test">
-        <MappingFragment StoreEntitySet="Test">
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

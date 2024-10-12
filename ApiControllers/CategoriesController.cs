@@ -20,7 +20,8 @@ namespace FlowersShop.ApiControllers
     {
         QL_BanHoaEntities db = new QL_BanHoaEntities();
         [HttpGet]
-        public IHttpActionResult Get()
+        //GET: api/Categories
+        public IHttpActionResult GetCategories()
         {
             IList<Category> categories = db.Category.ToList();
 
