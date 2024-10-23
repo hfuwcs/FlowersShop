@@ -18,7 +18,7 @@ namespace FlowersShop.Areas.Admin
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional },
-                new[] { "FlowersShop.Areas.Admin.Controllers" }
+                namespaces: new[] { "FlowersShop.Areas.Admin.Controllers" }
             );
         }
     }

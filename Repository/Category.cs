@@ -11,7 +11,9 @@ namespace FlowersShop.Repository
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Category
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +21,6 @@ namespace FlowersShop.Repository
         {
             this.Product = new HashSet<Product>();
         }
-    
         public int Category_ID { get; set; }
         public string Category_Name { get; set; }
     

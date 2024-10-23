@@ -7,73 +7,77 @@ using System.Web.Mvc;
 using FlowersShop.Models;
 using FlowersShop.Repository;
 using System.Data.Entity;
+using System.Threading.Tasks;
+using System.Web.Http.Results;
+using System.Data.Entity.Migrations;
+
 
 namespace FlowersShop.Controllers
 {
     public class ProductController : Controller
     {
-        ProductBusiness objproduct = new ProductBusiness();
-        CategoryBusiness objCategory = new CategoryBusiness();
         QL_BanHoaEntities db = new QL_BanHoaEntities();
+        ProductBusiness bn = new ProductBusiness();
         [HttpGet]
         public ActionResult ShowProduct()
         {
-            IEnumerable<Product> products = new List<Product>();
-            using(var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("https://localhost:44353/api/");
-
-                var responseTask = client.GetAsync("Products");
-                responseTask.Wait();
-
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    var readTask=result.Content.ReadAsAsync<IList<Product>>();
-                    readTask.Wait();
-
-                    products = readTask.Result;
-                }
-                else//Web api send error (Không đúng thì sẽ trả lỗi)
-                {
-                    products = Enumerable.Empty<Product>();
-                    ModelState.AddModelError(string.Empty, "Sevver lỗi, hãy liên hệ quản trị viên");
-                }
-                return View(products);
-            }
+            IList<Product> products = bn.GetData();
+            return View(products);
         }
-        public ActionResult SearchProduct(String txt_Search)
+
+        [HttpGet]
+        public ActionResult SearchProduct(String ProductName)
         {
-            IEnumerable<Product> products = new List<Product>();
-            using (var client = new HttpClient()) {
-                client.BaseAddress = new Uri("https://localhost:44353/api/");
-
-                var responseTask = client.GetAsync("Products/?ProductName=" + txt_Search);
-                responseTask.Wait();
-
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode) { 
-                    var readTask = result.Content.ReadAsAsync<IList<Product>>();
-                    products = readTask.Result;
-                }
-                else//Web api send error (Không đúng thì sẽ trả lỗi)
-                {
-                    products = Enumerable.Empty<Product>();
-                    ModelState.AddModelError(string.Empty, "Sevver lỗi, hãy liên hệ quản trị viên");
-                }
-                return View(products);
-            }
+            IList<Product> products = bn.SearchProduct(ProductName);
+            return View(products);           
         }
         [HttpGet]
         public ActionResult CreateProduct() {
+            //Truyền Categories xuống View thôi ;)
             ViewBag.Category_ID = new SelectList(db.Category, "Category_ID", "Category_Name");
-            return View(); 
+            if (ViewBag.Category_ID == null) {
+                return HttpNotFound();
+            }
+            return View();
         }
         [HttpPost]
         public ActionResult CreateProduct(Product product)
         {
-            //List<Category> SelectListItem = objCategory.GetCategory();    
+            if (!bn.AddProduct(product))
+            {
+                ModelState.AddModelError(string.Empty, "Thiếu thông tin sản phẩm");
+            }
+            ViewBag.Category_ID = new SelectList(db.Category, "Category_ID", "Category_Name");
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult DeleteProduct() {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult DeleteProduct(int id) {
+            Product product = db.Product.Find(id);
+            db.Product.Remove(product);
+            db.SaveChanges();
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+        public ActionResult EditProduct(int id)
+        {
+            Product product = db.Product.Find(id);
+            ViewBag.Category_ID = new SelectList(db.Category, "Category_ID", "Category_Name");
+            return View(product);
+        }
+        [HttpPost]
+        public ActionResult EditProduct(Product product)
+        {
+            if(product == null) { return HttpNotFound();}
+            ViewBag.Category_ID = new SelectList(db.Category, "Category_ID", "Category_Name");
+            db.Product.AddOrUpdate(product);
+            db.SaveChanges();
+            return RedirectToAction("ShowProduct");
         }
     }
 }

@@ -40,5 +40,11 @@ namespace FlowersShop.Controllers
                 return View(categories);
             }
         }
+
+        public ActionResult CreateCategory()
+        {
+            return View(); 
+        }
+
     }
 }

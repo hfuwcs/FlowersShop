@@ -6,8 +6,10 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.Mvc;
 using FlowersShop.Repository;
 
 namespace FlowersShop.ApiControllers
@@ -22,13 +24,15 @@ namespace FlowersShop.ApiControllers
         {
             IList<Product> products = db.Product.ToList();
 
-            if(products==null)
+            if (products == null)
             {
                 return NotFound();
             }
 
             return Ok(products);
         }
+
+
 
         // GET: api/Products/ProductName
         // GET Method: Tìm Sản phẩm bằng tên
@@ -44,7 +48,9 @@ namespace FlowersShop.ApiControllers
 
             return Ok(products);
         }
-        //POST: api/Products/
+        //POST: api/Products/product
+        //POST Method: Thêm mới sản phẩm
+        [ResponseType(typeof(Product))]
         public IHttpActionResult PostProduct(Product product)
         {
             if (ModelState.IsValid)
@@ -92,22 +98,8 @@ namespace FlowersShop.ApiControllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Products
-        [ResponseType(typeof(Product))]
-        //public IHttpActionResult PostProduct(Product product)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    db.Product.Add(product);
-        //    db.SaveChanges();
-
-        //    return CreatedAtRoute("DefaultApi", new { id = product.ID }, product);
-        //}
-
         // DELETE: api/Products/5
+        // DELETE Method: Xóa sản phẩm
         [ResponseType(typeof(Product))]
         public IHttpActionResult DeleteProduct(int id)
         {
@@ -116,7 +108,6 @@ namespace FlowersShop.ApiControllers
             {
                 return NotFound();
             }
-
             db.Product.Remove(product);
             db.SaveChanges();
 

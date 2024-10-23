@@ -168,6 +168,7 @@
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -300,6 +301,10 @@
     <Content Include="Views\Categories\ShowCate.cshtml" />
     <Content Include="Views\Cart\ShowCartByID.cshtml" />
     <Content Include="Views\Product\CreateProduct.cshtml" />
+    <Content Include="Views\Test\AddTest.cshtml" />
+    <Content Include="Views\Categories\CreateCategory.cshtml" />
+    <Content Include="Views\Product\DeleteProduct.cshtml" />
+    <Content Include="Views\Product\EditProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
