@@ -12,15 +12,13 @@ namespace FlowersShop.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class Cart
+    public partial class Category_Occasion
     {
-        public int Cart_ID { get; set; }
-        public Nullable<int> User_ID { get; set; }
-        public Nullable<int> Product_ID { get; set; }
-        public Nullable<int> Quantity { get; set; }
-        public Nullable<System.DateTime> Created_Date { get; set; }
+        public int Category_Occasion_ID { get; set; }
+        public Nullable<int> Category_ID { get; set; }
+        public Nullable<int> Occasion_ID { get; set; }
     
-        public virtual Product Product { get; set; }
-        public virtual Users Users { get; set; }
+        public virtual Category Category { get; set; }
+        public virtual Occasion Occasion { get; set; }
     }
 }

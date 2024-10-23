@@ -12,9 +12,13 @@ namespace FlowersShop.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class Test
+    public partial class Category_Color
     {
-        public int ID { get; set; }
-        public string NAME { get; set; }
+        public int Category_Color_ID { get; set; }
+        public Nullable<int> Category_ID { get; set; }
+        public Nullable<int> Color_ID { get; set; }
+    
+        public virtual Category Category { get; set; }
+        public virtual Color Color { get; set; }
     }
 }

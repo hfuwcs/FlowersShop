@@ -5,9 +5,10 @@
       <EntityTypeMapping TypeName="QL_BanHoaModel.Cart">
         <MappingFragment StoreEntitySet="Cart">
           <ScalarProperty Name="Cart_ID" ColumnName="Cart_ID" />
-          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-          <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
           <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -16,6 +17,151 @@
         <MappingFragment StoreEntitySet="Category">
           <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
           <ScalarProperty Name="Category_Name" ColumnName="Category_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category_Color">
+      <EntityTypeMapping TypeName="QL_BanHoaModel.Category_Color">
+        <MappingFragment StoreEntitySet="Category_Color">
+          <ScalarProperty Name="Category_Color_ID" ColumnName="Category_Color_ID" />
+          <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+          <ScalarProperty Name="Color_ID" ColumnName="Color_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category_Object">
+      <EntityTypeMapping TypeName="QL_BanHoaModel.Category_Object">
+        <MappingFragment StoreEntitySet="Category_Object">
+          <ScalarProperty Name="Category_Object_ID" ColumnName="Category_Object_ID" />
+          <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+          <ScalarProperty Name="Object_ID" ColumnName="Object_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category_Occasion">
+      <EntityTypeMapping TypeName="QL_BanHoaModel.Category_Occasion">
+        <MappingFragment StoreEntitySet="Category_Occasion">
+          <ScalarProperty Name="Category_Occasion_ID" ColumnName="Category_Occasion_ID" />
+          <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+          <ScalarProperty Name="Occasion_ID" ColumnName="Occasion_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category_Presentation">
+      <EntityTypeMapping TypeName="QL_BanHoaModel.Category_Presentation">
+        <MappingFragment StoreEntitySet="Category_Presentation">
+          <ScalarProperty Name="Category_Presentation_ID" ColumnName="Category_Presentation_ID" />
+          <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+          <ScalarProperty Name="Presentation_ID" ColumnName="Presentation_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Color">
+      <EntityTypeMapping TypeName="QL_BanHoaModel.Color">
+        <MappingFragment StoreEntitySet="Color">
+          <ScalarProperty Name="Color_ID" ColumnName="Color_ID" />
+          <ScalarProperty Name="Color_Name" ColumnName="Color_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customer">
+      <EntityTypeMapping TypeName="QL_BanHoaModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Discount">
+      <EntityTypeMapping TypeName="QL_BanHoaModel.Discount">
+        <MappingFragment StoreEntitySet="Discount">
+          <ScalarProperty Name="Discount_ID" ColumnName="Discount_ID" />
+          <ScalarProperty Name="Discount_Code" ColumnName="Discount_Code" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Discount_Percentage" ColumnName="Discount_Percentage" />
+          <ScalarProperty Name="Start_Date" ColumnName="Start_Date" />
+          <ScalarProperty Name="End_Date" ColumnName="End_Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Flower_Type">
+      <EntityTypeMapping TypeName="QL_BanHoaModel.Flower_Type">
+        <MappingFragment StoreEntitySet="Flower_Type">
+          <ScalarProperty Name="Flower_Type_ID" ColumnName="Flower_Type_ID" />
+          <ScalarProperty Name="Flower_Type_Name" ColumnName="Flower_Type_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Object">
+      <EntityTypeMapping TypeName="QL_BanHoaModel.Object">
+        <MappingFragment StoreEntitySet="Object">
+          <ScalarProperty Name="Object_ID" ColumnName="Object_ID" />
+          <ScalarProperty Name="Object_Name" ColumnName="Object_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Occasion">
+      <EntityTypeMapping TypeName="QL_BanHoaModel.Occasion">
+        <MappingFragment StoreEntitySet="Occasion">
+          <ScalarProperty Name="Occasion_ID" ColumnName="Occasion_ID" />
+          <ScalarProperty Name="Occasion_Name" ColumnName="Occasion_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Order">
+      <EntityTypeMapping TypeName="QL_BanHoaModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
+          <ScalarProperty Name="Order_Date" ColumnName="Order_Date" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Total_Amount" ColumnName="Total_Amount" />
+          <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+          <ScalarProperty Name="Shipping_Address" ColumnName="Shipping_Address" />
+          <ScalarProperty Name="Payment_Method" ColumnName="Payment_Method" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Order_Details">
+      <EntityTypeMapping TypeName="QL_BanHoaModel.Order_Details">
+        <MappingFragment StoreEntitySet="Order_Details">
+          <ScalarProperty Name="Order_Detail_ID" ColumnName="Order_Detail_ID" />
+          <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
+          <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Order_Discount">
+      <EntityTypeMapping TypeName="QL_BanHoaModel.Order_Discount">
+        <MappingFragment StoreEntitySet="Order_Discount">
+          <ScalarProperty Name="Order_Discount_ID" ColumnName="Order_Discount_ID" />
+          <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
+          <ScalarProperty Name="Discount_ID" ColumnName="Discount_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payment">
+      <EntityTypeMapping TypeName="QL_BanHoaModel.Payment">
+        <MappingFragment StoreEntitySet="Payment">
+          <ScalarProperty Name="Payment_ID" ColumnName="Payment_ID" />
+          <ScalarProperty Name="Payment_Date" ColumnName="Payment_Date" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Payment_Method" ColumnName="Payment_Method" />
+          <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Presentation">
+      <EntityTypeMapping TypeName="QL_BanHoaModel.Presentation">
+        <MappingFragment StoreEntitySet="Presentation">
+          <ScalarProperty Name="Presentation_ID" ColumnName="Presentation_ID" />
+          <ScalarProperty Name="Presentation_Name" ColumnName="Presentation_Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -32,11 +178,26 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Test">
-      <EntityTypeMapping TypeName="QL_BanHoaModel.Test">
-        <MappingFragment StoreEntitySet="Test">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="NAME" ColumnName="NAME" />
+    <EntitySetMapping Name="Review">
+      <EntityTypeMapping TypeName="QL_BanHoaModel.Review">
+        <MappingFragment StoreEntitySet="Review">
+          <ScalarProperty Name="Review_ID" ColumnName="Review_ID" />
+          <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+          <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Review_Date" ColumnName="Review_Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Shipping">
+      <EntityTypeMapping TypeName="QL_BanHoaModel.Shipping">
+        <MappingFragment StoreEntitySet="Shipping">
+          <ScalarProperty Name="Shipping_ID" ColumnName="Shipping_ID" />
+          <ScalarProperty Name="Shipping_Method" ColumnName="Shipping_Method" />
+          <ScalarProperty Name="Shipping_Cost" ColumnName="Shipping_Cost" />
+          <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
+          <ScalarProperty Name="Shipping_Status" ColumnName="Shipping_Status" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -64,14 +64,13 @@ namespace FlowersShop.Controllers
                 //kiểm xuất ra màn hình người dùng
             }
             if (ModelState.IsValid)//Nếu dòng if ở trên đúng là ModelState.AddModelError được thực thi
-                // thì dòng if này sẽ sai
             {
                 db.Users.Add(user);
                 db.SaveChanges();
                 TempData["user"] = user;
                 return RedirectToAction("ThanhCong", "User");
             }
-            else//Dòng if trên sai thì dòng dưới này sẽ thực hiện
+            else
             {
                 return View();
                 //return RedirectToAction("Index", "Home");
