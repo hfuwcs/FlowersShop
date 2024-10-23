@@ -12,30 +12,35 @@ namespace FlowersShop.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class Category
+    public partial class Order
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Category()
+        public Order()
         {
-            this.Category_Object = new HashSet<Category_Object>();
-            this.Category_Occasion = new HashSet<Category_Occasion>();
-            this.Category_Presentation = new HashSet<Category_Presentation>();
-            this.Category_Color = new HashSet<Category_Color>();
-            this.Product = new HashSet<Product>();
+            this.Order_Details = new HashSet<Order_Details>();
+            this.Order_Discount = new HashSet<Order_Discount>();
+            this.Payment = new HashSet<Payment>();
+            this.Shipping = new HashSet<Shipping>();
         }
     
-        public int Category_ID { get; set; }
-        public string Category_Name { get; set; }
+        public int Order_ID { get; set; }
+        public Nullable<System.DateTime> Order_Date { get; set; }
+        public string Status { get; set; }
+        public Nullable<double> Total_Amount { get; set; }
+        public Nullable<int> Customer_ID { get; set; }
+        public string Shipping_Address { get; set; }
+        public string Payment_Method { get; set; }
+        public Nullable<int> User_ID { get; set; }
     
+        public virtual Customer Customer { get; set; }
+        public virtual Users Users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Category_Object> Category_Object { get; set; }
+        public virtual ICollection<Order_Details> Order_Details { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Category_Occasion> Category_Occasion { get; set; }
+        public virtual ICollection<Order_Discount> Order_Discount { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Category_Presentation> Category_Presentation { get; set; }
+        public virtual ICollection<Payment> Payment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Category_Color> Category_Color { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product> Product { get; set; }
+        public virtual ICollection<Shipping> Shipping { get; set; }
     }
 }

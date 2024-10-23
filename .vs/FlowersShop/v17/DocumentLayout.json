@@ -1,18 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\HK5\\Backend-LTW\\FlowersShop\\",
+  "WorkspaceRootPath": "D:\\HK5\\FlowersShop\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|d:\\hk5\\backend-ltw\\flowersshop\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|d:\\hk5\\flowersshop\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|D:\\HK5\\Backend-LTW\\FlowersShop\\views\\product\\editproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:views\\product\\editproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|D:\\HK5\\FlowersShop\\models\\userbusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:models\\userbusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|D:\\HK5\\Backend-LTW\\FlowersShop\\models\\productbusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|D:\\HK5\\FlowersShop\\models\\productbusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:models\\productbusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|D:\\HK5\\FlowersShop\\models\\cipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:models\\cipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,40 +34,52 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Cipher.cs",
+              "DocumentMoniker": "D:\\HK5\\FlowersShop\\Models\\Cipher.cs",
+              "RelativeDocumentMoniker": "Models\\Cipher.cs",
+              "ToolTip": "D:\\HK5\\FlowersShop\\Models\\Cipher.cs",
+              "RelativeToolTip": "Models\\Cipher.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T13:13:00.976Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "EditProduct.cshtml",
-              "DocumentMoniker": "D:\\HK5\\Backend-LTW\\FlowersShop\\Views\\Product\\EditProduct.cshtml",
-              "RelativeDocumentMoniker": "Views\\Product\\EditProduct.cshtml",
-              "ToolTip": "D:\\HK5\\Backend-LTW\\FlowersShop\\Views\\Product\\EditProduct.cshtml",
-              "RelativeToolTip": "Views\\Product\\EditProduct.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-23T06:42:04.745Z"
+              "Title": "UserBusiness.cs",
+              "DocumentMoniker": "D:\\HK5\\FlowersShop\\Models\\UserBusiness.cs",
+              "RelativeDocumentMoniker": "Models\\UserBusiness.cs",
+              "ToolTip": "D:\\HK5\\FlowersShop\\Models\\UserBusiness.cs",
+              "RelativeToolTip": "Models\\UserBusiness.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAAwBYAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T13:12:05.643Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\HK5\\FlowersShop\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "D:\\HK5\\FlowersShop\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AQIAACcAAAAAAAAAAAAYwC4AAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T13:11:55.797Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "ProductBusiness.cs",
-              "DocumentMoniker": "D:\\HK5\\Backend-LTW\\FlowersShop\\Models\\ProductBusiness.cs",
+              "DocumentMoniker": "D:\\HK5\\FlowersShop\\Models\\ProductBusiness.cs",
               "RelativeDocumentMoniker": "Models\\ProductBusiness.cs",
-              "ToolTip": "D:\\HK5\\Backend-LTW\\FlowersShop\\Models\\ProductBusiness.cs",
+              "ToolTip": "D:\\HK5\\FlowersShop\\Models\\ProductBusiness.cs",
               "RelativeToolTip": "Models\\ProductBusiness.cs",
               "ViewState": "AQIAABMAAAAAAAAAAAAgwCQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-23T05:01:28.789Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ProductController.cs",
-              "DocumentMoniker": "D:\\HK5\\Backend-LTW\\FlowersShop\\Controllers\\ProductController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ProductController.cs",
-              "ToolTip": "D:\\HK5\\Backend-LTW\\FlowersShop\\Controllers\\ProductController.cs",
-              "RelativeToolTip": "Controllers\\ProductController.cs",
-              "ViewState": "AQIAAEAAAAAAAAAAAAAgwE0AAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-13T12:56:18.73Z",
-              "EditorCaption": ""
             }
           ]
         }

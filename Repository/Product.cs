@@ -18,6 +18,8 @@ namespace FlowersShop.Repository
         public Product()
         {
             this.Cart = new HashSet<Cart>();
+            this.Order_Details = new HashSet<Order_Details>();
+            this.Review = new HashSet<Review>();
         }
     
         public int Product_ID { get; set; }
@@ -31,5 +33,9 @@ namespace FlowersShop.Repository
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cart> Cart { get; set; }
         public virtual Category Category { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order_Details> Order_Details { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Review> Review { get; set; }
     }
 }

@@ -157,7 +157,6 @@
     <Compile Include="ApiControllers\CartsController.cs" />
     <Compile Include="ApiControllers\CategoriesController.cs" />
     <Compile Include="ApiControllers\ProductsController.cs" />
-    <Compile Include="ApiControllers\TestsController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -168,7 +167,6 @@
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -182,6 +180,51 @@
       <DependentUpon>QL_BanHoa.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\Category.cs">
+      <DependentUpon>QL_BanHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Category_Color.cs">
+      <DependentUpon>QL_BanHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Category_Object.cs">
+      <DependentUpon>QL_BanHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Category_Occasion.cs">
+      <DependentUpon>QL_BanHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Category_Presentation.cs">
+      <DependentUpon>QL_BanHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Color.cs">
+      <DependentUpon>QL_BanHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Customer.cs">
+      <DependentUpon>QL_BanHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Discount.cs">
+      <DependentUpon>QL_BanHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Flower_Type.cs">
+      <DependentUpon>QL_BanHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Object.cs">
+      <DependentUpon>QL_BanHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Occasion.cs">
+      <DependentUpon>QL_BanHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Order.cs">
+      <DependentUpon>QL_BanHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Order_Details.cs">
+      <DependentUpon>QL_BanHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Order_Discount.cs">
+      <DependentUpon>QL_BanHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Payment.cs">
+      <DependentUpon>QL_BanHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Presentation.cs">
       <DependentUpon>QL_BanHoa.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\Product.cs">
@@ -202,7 +245,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QL_BanHoa.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Repository\Test.cs">
+    <Compile Include="Repository\Review.cs">
+      <DependentUpon>QL_BanHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Shipping.cs">
       <DependentUpon>QL_BanHoa.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\Users.cs">
