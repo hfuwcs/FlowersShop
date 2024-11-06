@@ -155,33 +155,61 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiControllers\CartsController.cs" />
-    <Compile Include="ApiControllers\CategoriesController.cs" />
     <Compile Include="ApiControllers\ProductsController.cs" />
-    <Compile Include="ApiControllers\TestsController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Controllers\CartController.cs" />
-    <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Cipher.cs" />
-    <Compile Include="Models\CategoryBusiness.cs" />
     <Compile Include="Models\ProductBusiness.cs" />
     <Compile Include="Models\UserBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Cart.cs">
       <DependentUpon>QL_BanHoa.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repository\Category.cs">
+    <Compile Include="Repository\Color.cs">
+      <DependentUpon>QL_BanHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Customer.cs">
+      <DependentUpon>QL_BanHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Discount.cs">
+      <DependentUpon>QL_BanHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Flower_Type.cs">
+      <DependentUpon>QL_BanHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Object.cs">
+      <DependentUpon>QL_BanHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Occasion.cs">
+      <DependentUpon>QL_BanHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Order.cs">
+      <DependentUpon>QL_BanHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Order_Details.cs">
+      <DependentUpon>QL_BanHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Order_Discount.cs">
+      <DependentUpon>QL_BanHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Payment.cs">
+      <DependentUpon>QL_BanHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Presentation.cs">
       <DependentUpon>QL_BanHoa.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\Product.cs">
@@ -202,7 +230,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QL_BanHoa.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Repository\Test.cs">
+    <Compile Include="Repository\Review.cs">
+      <DependentUpon>QL_BanHoa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Shipping.cs">
       <DependentUpon>QL_BanHoa.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\Users.cs">
@@ -213,6 +244,82 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Admin\assets\css\demo.css" />
+    <Content Include="Assets\Admin\assets\customjs\modify-product.js" />
+    <Content Include="Assets\Admin\assets\img\avatars\1.png" />
+    <Content Include="Assets\Admin\assets\img\avatars\5.png" />
+    <Content Include="Assets\Admin\assets\img\avatars\6.png" />
+    <Content Include="Assets\Admin\assets\img\avatars\7.png" />
+    <Content Include="Assets\Admin\assets\img\backgrounds\18.jpg" />
+    <Content Include="Assets\Admin\assets\img\elements\1.jpg" />
+    <Content Include="Assets\Admin\assets\img\elements\11.jpg" />
+    <Content Include="Assets\Admin\assets\img\elements\12.jpg" />
+    <Content Include="Assets\Admin\assets\img\elements\13.jpg" />
+    <Content Include="Assets\Admin\assets\img\elements\17.jpg" />
+    <Content Include="Assets\Admin\assets\img\elements\18.jpg" />
+    <Content Include="Assets\Admin\assets\img\elements\19.jpg" />
+    <Content Include="Assets\Admin\assets\img\elements\2.jpg" />
+    <Content Include="Assets\Admin\assets\img\elements\20.jpg" />
+    <Content Include="Assets\Admin\assets\img\elements\3.jpg" />
+    <Content Include="Assets\Admin\assets\img\elements\4.jpg" />
+    <Content Include="Assets\Admin\assets\img\elements\5.jpg" />
+    <Content Include="Assets\Admin\assets\img\elements\7.jpg" />
+    <Content Include="Assets\Admin\assets\img\favicon\favicon.ico" />
+    <Content Include="Assets\Admin\assets\img\icons\brands\asana.png" />
+    <Content Include="Assets\Admin\assets\img\icons\brands\behance.png" />
+    <Content Include="Assets\Admin\assets\img\icons\brands\dribbble.png" />
+    <Content Include="Assets\Admin\assets\img\icons\brands\facebook.png" />
+    <Content Include="Assets\Admin\assets\img\icons\brands\github.png" />
+    <Content Include="Assets\Admin\assets\img\icons\brands\google.png" />
+    <Content Include="Assets\Admin\assets\img\icons\brands\instagram.png" />
+    <Content Include="Assets\Admin\assets\img\icons\brands\mailchimp.png" />
+    <Content Include="Assets\Admin\assets\img\icons\brands\slack.png" />
+    <Content Include="Assets\Admin\assets\img\icons\brands\twitter.png" />
+    <Content Include="Assets\Admin\assets\img\icons\unicons\cc-primary.png" />
+    <Content Include="Assets\Admin\assets\img\icons\unicons\cc-success.png" />
+    <Content Include="Assets\Admin\assets\img\icons\unicons\cc-warning.png" />
+    <Content Include="Assets\Admin\assets\img\icons\unicons\chart-success.png" />
+    <Content Include="Assets\Admin\assets\img\icons\unicons\chart.png" />
+    <Content Include="Assets\Admin\assets\img\icons\unicons\paypal.png" />
+    <Content Include="Assets\Admin\assets\img\icons\unicons\wallet-info.png" />
+    <Content Include="Assets\Admin\assets\img\icons\unicons\wallet.png" />
+    <Content Include="Assets\Admin\assets\img\illustrations\girl-doing-yoga-light.png" />
+    <Content Include="Assets\Admin\assets\img\illustrations\man-with-laptop-light.png" />
+    <Content Include="Assets\Admin\assets\img\illustrations\page-misc-error-light.png" />
+    <Content Include="Assets\Admin\assets\img\layouts\layout-container-light.png" />
+    <Content Include="Assets\Admin\assets\img\layouts\layout-fluid-light.png" />
+    <Content Include="Assets\Admin\assets\img\layouts\layout-without-menu-light.png" />
+    <Content Include="Assets\Admin\assets\img\layouts\layout-without-navbar-light.png" />
+    <Content Include="Assets\Admin\assets\js\config.js" />
+    <Content Include="Assets\Admin\assets\js\dashboards-analytics.js" />
+    <Content Include="Assets\Admin\assets\js\extended-ui-perfect-scrollbar.js" />
+    <Content Include="Assets\Admin\assets\js\form-basic-inputs.js" />
+    <Content Include="Assets\Admin\assets\js\main.js" />
+    <Content Include="Assets\Admin\assets\js\pages-account-settings-account.js" />
+    <Content Include="Assets\Admin\assets\js\ui-modals.js" />
+    <Content Include="Assets\Admin\assets\js\ui-popover.js" />
+    <Content Include="Assets\Admin\assets\js\ui-toasts.js" />
+    <Content Include="Assets\Admin\assets\vendor\css\core.css" />
+    <Content Include="Assets\Admin\assets\vendor\css\pages\page-account-settings.css" />
+    <Content Include="Assets\Admin\assets\vendor\css\pages\page-auth.css" />
+    <Content Include="Assets\Admin\assets\vendor\css\pages\page-icons.css" />
+    <Content Include="Assets\Admin\assets\vendor\css\pages\page-misc.css" />
+    <Content Include="Assets\Admin\assets\vendor\css\theme-default.css" />
+    <Content Include="Assets\Admin\assets\vendor\fonts\boxicons.css" />
+    <Content Include="Assets\Admin\assets\vendor\fonts\boxicons\boxicons.svg" />
+    <Content Include="Assets\Admin\assets\vendor\js\bootstrap.js" />
+    <Content Include="Assets\Admin\assets\vendor\js\helpers.js" />
+    <Content Include="Assets\Admin\assets\vendor\js\menu.js" />
+    <Content Include="Assets\Admin\assets\vendor\libs\apex-charts\apex-charts.css" />
+    <Content Include="Assets\Admin\assets\vendor\libs\apex-charts\apexcharts.js" />
+    <Content Include="Assets\Admin\assets\vendor\libs\highlight\highlight-github.css" />
+    <Content Include="Assets\Admin\assets\vendor\libs\highlight\highlight.css" />
+    <Content Include="Assets\Admin\assets\vendor\libs\highlight\highlight.js" />
+    <Content Include="Assets\Admin\assets\vendor\libs\jquery\jquery.js" />
+    <Content Include="Assets\Admin\assets\vendor\libs\masonry\masonry.js" />
+    <Content Include="Assets\Admin\assets\vendor\libs\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="Assets\Admin\assets\vendor\libs\perfect-scrollbar\perfect-scrollbar.js" />
+    <Content Include="Assets\Admin\assets\vendor\libs\popper\popper.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -232,8 +339,8 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Media\ProductsImages\1.jpg" />
-    <Content Include="Media\ProductsImages\2.jpg" />
+    <Content Include="Media\ProductsImages\rose.jpg" />
+    <Content Include="Media\ProductsImages\sunflowers.jpg" />
     <Content Include="Media\ProductsImages\3.jpg" />
     <Content Include="Repository\QL_BanHoa.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -253,10 +360,17 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Shared\_Admin-LayoutPage.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_HeaderBar.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_SearchView.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Error.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
+    <Content Include="Assets\Admin\assets\vendor\fonts\boxicons\boxicons.eot" />
+    <Content Include="Assets\Admin\assets\vendor\fonts\boxicons\boxicons.ttf" />
+    <Content Include="Assets\Admin\assets\vendor\fonts\boxicons\boxicons.woff" />
+    <Content Include="Assets\Admin\assets\vendor\fonts\boxicons\boxicons.woff2" />
+    <Content Include="Areas\Admin\Views\User\DangNhap.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Navbar.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Menu.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Footer.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\ShowProduct.cshtml" />
     <EntityDeploy Include="Repository\QL_BanHoa.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>QL_BanHoa.Designer.cs</LastGenOutput>
@@ -264,6 +378,10 @@
     <Content Include="Repository\QL_BanHoa.edmx.diagram">
       <DependentUpon>QL_BanHoa.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\Dashboard\Modal.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\CreateProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_DeleteModal.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_EditModal.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -300,15 +418,16 @@
     <Content Include="Views\Product\ShowProductAPITest.cshtml" />
     <Content Include="Views\Categories\ShowCate.cshtml" />
     <Content Include="Views\Cart\ShowCartByID.cshtml" />
-    <Content Include="Views\Product\CreateProduct.cshtml" />
     <Content Include="Views\Test\AddTest.cshtml" />
     <Content Include="Views\Categories\CreateCategory.cshtml" />
-    <Content Include="Views\Product\DeleteProduct.cshtml" />
-    <Content Include="Views\Product\EditProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\EditProduct.cshtml" />
+    <Content Include="Views\Default\InputTest.cshtml" />
+    <Content Include="Views\Default\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Assets\Client\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

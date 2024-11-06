@@ -18,6 +18,8 @@ namespace FlowersShop.Repository
         public Users()
         {
             this.Cart = new HashSet<Cart>();
+            this.Customer = new HashSet<Customer>();
+            this.Order = new HashSet<Order>();
         }
     
         public int User_ID { get; set; }
@@ -31,6 +33,10 @@ namespace FlowersShop.Repository
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cart> Cart { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Customer> Customer { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Order { get; set; }
         public virtual User_Role User_Role { get; set; }
     }
 }

@@ -13,5 +13,15 @@ namespace FlowersShop.Areas.Admin.Controllers
         {
             return View();
         }
+
+        public ActionResult DangNhap()
+        {
+
+            return View(); 
+        }
+        public ActionResult Modal()
+        {
+            return View();
+        }
     }
 }

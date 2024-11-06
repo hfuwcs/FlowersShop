@@ -15,9 +15,10 @@ namespace FlowersShop.Repository
     public partial class Cart
     {
         public int Cart_ID { get; set; }
+        public Nullable<int> User_ID { get; set; }
+        public Nullable<int> Product_ID { get; set; }
         public Nullable<int> Quantity { get; set; }
-        public int Product_ID { get; set; }
-        public int User_ID { get; set; }
+        public Nullable<System.DateTime> Created_Date { get; set; }
     
         public virtual Product Product { get; set; }
         public virtual Users Users { get; set; }
