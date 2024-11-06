@@ -26,11 +26,6 @@ namespace FlowersShop.Repository
         }
     
         public virtual DbSet<Cart> Cart { get; set; }
-        public virtual DbSet<Category> Category { get; set; }
-        public virtual DbSet<Category_Color> Category_Color { get; set; }
-        public virtual DbSet<Category_Object> Category_Object { get; set; }
-        public virtual DbSet<Category_Occasion> Category_Occasion { get; set; }
-        public virtual DbSet<Category_Presentation> Category_Presentation { get; set; }
         public virtual DbSet<Color> Color { get; set; }
         public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<Discount> Discount { get; set; }

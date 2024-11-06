@@ -17,13 +17,13 @@ namespace FlowersShop.Repository
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Color()
         {
-            this.Category_Color = new HashSet<Category_Color>();
+            this.Product = new HashSet<Product>();
         }
     
         public int Color_ID { get; set; }
         public string Color_Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Category_Color> Category_Color { get; set; }
+        public virtual ICollection<Product> Product { get; set; }
     }
 }

@@ -40,7 +40,6 @@ namespace FlowersShop.Controllers
                 else
                 {
                     ViewBag.error = "Sai tên đăng nhập hoặc mật khẩu";
-                    //ModelState.AddModelError("UserName", "Sai tên đăng nhập hoặc mật khẩu");
                     return View();
                 }
         }
@@ -57,14 +56,15 @@ namespace FlowersShop.Controllers
         [HttpPost]
         public ActionResult DangKy(Users user)
         {
-            user.Role_ID = 2;
+            user.Role_ID = 3;
             if (obj.CheckUserName(user.UserName))
             {
                 ModelState.AddModelError("UserName", "Tên đăng nhập đã tồn tại");//Thêm "Error" vào Model để
                 //kiểm xuất ra màn hình người dùng
             }
-            if (ModelState.IsValid)//Nếu dòng if ở trên đúng là ModelState.AddModelError được thực thi
+            if (ModelState.IsValid)
             {
+                user.Password = Cipher.EncryptSHA256(user.Password);
                 db.Users.Add(user);
                 db.SaveChanges();
                 TempData["user"] = user;

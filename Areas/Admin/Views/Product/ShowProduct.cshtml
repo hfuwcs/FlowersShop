@@ -1,0 +1,59 @@
+﻿@model IEnumerable<FlowersShop.Repository.Product>
+
+@{
+    ViewBag.Title = "Xóa sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin-LayoutPage.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Name)</th>
+        <th>@Html.DisplayNameFor(model => model.Price)</th>
+        <th>@Html.DisplayNameFor(model => model.Description)</th>
+        <th>@Html.DisplayNameFor(model => model.Image)</th>
+        <th>@Html.DisplayNameFor(model => model.Quantity)</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr id="product-@item.Product_ID">
+            <!-- Thêm id cho mỗi hàng -->
+            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+            <td>@Html.DisplayFor(modelItem => item.Price)</td>
+            <td>@Html.DisplayFor(modelItem => item.Description)</td>
+            <td><img class="image" src="~/Media/ProductsImages/@item.Image" width="200" /></td>
+            <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
+            <td>
+                <button type="button"
+                        class="btn btn-danger delete-btn"
+                        data-product_id="@item.Product_ID">
+                    Xóa
+                </button>
+            </td>
+            <td>
+                <button type="button"
+                        class="btn btn-primary edit-btn"
+                        data-product_id="@item.Product_ID">
+                    Chỉnh sửa
+                </button>
+                @Html.ActionLink("Chỉnh sửa", "EditProduct", new { id = item.Product_ID })
+            </td>
+        </tr>
+    }
+</table>
+
+<!-- Render the edit modal partial view -->
+@*@Html.Partial("_EditModal")*@
+<div id="EditModalContainer">
+    @Html.Partial("_EditModal", Model.FirstOrDefault())
+</div>
+
+<!-- Render the delete modal partial view -->
+@Html.Partial("_DeleteModal")
+
+
+@*<div class="alert alert-success alert-dismissible" id="successAlert" role="alert">
+    This is a success dismissible alert — check it out!
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>*@

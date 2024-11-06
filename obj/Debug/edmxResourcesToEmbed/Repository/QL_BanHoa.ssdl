@@ -10,45 +10,6 @@
     <Property Name="Quantity" Type="int" />
     <Property Name="Created_Date" Type="datetime" />
   </EntityType>
-  <EntityType Name="Category">
-    <Key>
-      <PropertyRef Name="Category_ID" />
-    </Key>
-    <Property Name="Category_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Category_Name" Type="nvarchar" MaxLength="100" />
-  </EntityType>
-  <EntityType Name="Category_Color">
-    <Key>
-      <PropertyRef Name="Category_Color_ID" />
-    </Key>
-    <Property Name="Category_Color_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Category_ID" Type="int" />
-    <Property Name="Color_ID" Type="int" />
-  </EntityType>
-  <EntityType Name="Category_Object">
-    <Key>
-      <PropertyRef Name="Category_Object_ID" />
-    </Key>
-    <Property Name="Category_Object_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Category_ID" Type="int" />
-    <Property Name="Object_ID" Type="int" />
-  </EntityType>
-  <EntityType Name="Category_Occasion">
-    <Key>
-      <PropertyRef Name="Category_Occasion_ID" />
-    </Key>
-    <Property Name="Category_Occasion_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Category_ID" Type="int" />
-    <Property Name="Occasion_ID" Type="int" />
-  </EntityType>
-  <EntityType Name="Category_Presentation">
-    <Key>
-      <PropertyRef Name="Category_Presentation_ID" />
-    </Key>
-    <Property Name="Category_Presentation_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Category_ID" Type="int" />
-    <Property Name="Presentation_ID" Type="int" />
-  </EntityType>
   <EntityType Name="Color">
     <Key>
       <PropertyRef Name="Color_ID" />
@@ -157,7 +118,38 @@
     <Property Name="Name" Type="nvarchar" MaxLength="100" />
     <Property Name="Price" Type="float" />
     <Property Name="Quantity" Type="int" />
-    <Property Name="Category_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Product_Color">
+    <Key>
+      <PropertyRef Name="Product_ID" />
+      <PropertyRef Name="Color_ID" />
+    </Key>
+    <Property Name="Product_ID" Type="int" Nullable="false" />
+    <Property Name="Color_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product_Object">
+    <Key>
+      <PropertyRef Name="Product_ID" />
+      <PropertyRef Name="Object_ID" />
+    </Key>
+    <Property Name="Product_ID" Type="int" Nullable="false" />
+    <Property Name="Object_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product_Occasion">
+    <Key>
+      <PropertyRef Name="Product_ID" />
+      <PropertyRef Name="Occasion_ID" />
+    </Key>
+    <Property Name="Product_ID" Type="int" Nullable="false" />
+    <Property Name="Occasion_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product_Presentation">
+    <Key>
+      <PropertyRef Name="Product_ID" />
+      <PropertyRef Name="Presentation_ID" />
+    </Key>
+    <Property Name="Product_ID" Type="int" Nullable="false" />
+    <Property Name="Presentation_ID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Review">
     <Key>
@@ -197,7 +189,7 @@
     <Property Name="Email" Type="varchar" MaxLength="100" />
     <Property Name="Phone" Type="varchar" MaxLength="20" />
     <Property Name="UserName" Type="varchar" MaxLength="50" />
-    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="2048" />
     <Property Name="Role_ID" Type="int" />
   </EntityType>
   <Association Name="FK__Cart__Product_ID__66603565">
@@ -221,102 +213,6 @@
       </Principal>
       <Dependent Role="Cart">
         <PropertyRef Name="User_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Category___Categ__5070F446">
-    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
-    <End Role="Category_Object" Type="Self.Category_Object" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Category">
-        <PropertyRef Name="Category_ID" />
-      </Principal>
-      <Dependent Role="Category_Object">
-        <PropertyRef Name="Category_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Category___Categ__5441852A">
-    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
-    <End Role="Category_Occasion" Type="Self.Category_Occasion" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Category">
-        <PropertyRef Name="Category_ID" />
-      </Principal>
-      <Dependent Role="Category_Occasion">
-        <PropertyRef Name="Category_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Category___Categ__5812160E">
-    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
-    <End Role="Category_Presentation" Type="Self.Category_Presentation" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Category">
-        <PropertyRef Name="Category_ID" />
-      </Principal>
-      <Dependent Role="Category_Presentation">
-        <PropertyRef Name="Category_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Category___Categ__5BE2A6F2">
-    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
-    <End Role="Category_Color" Type="Self.Category_Color" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Category">
-        <PropertyRef Name="Category_ID" />
-      </Principal>
-      <Dependent Role="Category_Color">
-        <PropertyRef Name="Category_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Category___Color__5CD6CB2B">
-    <End Role="Color" Type="Self.Color" Multiplicity="0..1" />
-    <End Role="Category_Color" Type="Self.Category_Color" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Color">
-        <PropertyRef Name="Color_ID" />
-      </Principal>
-      <Dependent Role="Category_Color">
-        <PropertyRef Name="Color_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Category___Objec__5165187F">
-    <End Role="Object" Type="Self.Object" Multiplicity="0..1" />
-    <End Role="Category_Object" Type="Self.Category_Object" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Object">
-        <PropertyRef Name="Object_ID" />
-      </Principal>
-      <Dependent Role="Category_Object">
-        <PropertyRef Name="Object_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Category___Occas__5535A963">
-    <End Role="Occasion" Type="Self.Occasion" Multiplicity="0..1" />
-    <End Role="Category_Occasion" Type="Self.Category_Occasion" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Occasion">
-        <PropertyRef Name="Occasion_ID" />
-      </Principal>
-      <Dependent Role="Category_Occasion">
-        <PropertyRef Name="Occasion_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Category___Prese__59063A47">
-    <End Role="Presentation" Type="Self.Presentation" Multiplicity="0..1" />
-    <End Role="Category_Presentation" Type="Self.Category_Presentation" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Presentation">
-        <PropertyRef Name="Presentation_ID" />
-      </Principal>
-      <Dependent Role="Category_Presentation">
-        <PropertyRef Name="Presentation_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -416,15 +312,99 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Product__Categor__5FB337D6">
-    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
-    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+  <Association Name="FK__Product_C__Color__2645B050">
+    <End Role="Color" Type="Self.Color" Multiplicity="1" />
+    <End Role="Product_Color" Type="Self.Product_Color" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Category">
-        <PropertyRef Name="Category_ID" />
+      <Principal Role="Color">
+        <PropertyRef Name="Color_ID" />
       </Principal>
-      <Dependent Role="Product">
-        <PropertyRef Name="Category_ID" />
+      <Dependent Role="Product_Color">
+        <PropertyRef Name="Color_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product_C__Produ__25518C17">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Product_Color" Type="Self.Product_Color" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Product_ID" />
+      </Principal>
+      <Dependent Role="Product_Color">
+        <PropertyRef Name="Product_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product_O__Objec__1EA48E88">
+    <End Role="Object" Type="Self.Object" Multiplicity="1" />
+    <End Role="Product_Object" Type="Self.Product_Object" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Object">
+        <PropertyRef Name="Object_ID" />
+      </Principal>
+      <Dependent Role="Product_Object">
+        <PropertyRef Name="Object_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product_O__Occas__22751F6C">
+    <End Role="Occasion" Type="Self.Occasion" Multiplicity="1" />
+    <End Role="Product_Occasion" Type="Self.Product_Occasion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Occasion">
+        <PropertyRef Name="Occasion_ID" />
+      </Principal>
+      <Dependent Role="Product_Occasion">
+        <PropertyRef Name="Occasion_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product_O__Produ__1DB06A4F">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Product_Object" Type="Self.Product_Object" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Product_ID" />
+      </Principal>
+      <Dependent Role="Product_Object">
+        <PropertyRef Name="Product_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product_O__Produ__2180FB33">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Product_Occasion" Type="Self.Product_Occasion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Product_ID" />
+      </Principal>
+      <Dependent Role="Product_Occasion">
+        <PropertyRef Name="Product_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product_P__Prese__2A164134">
+    <End Role="Presentation" Type="Self.Presentation" Multiplicity="1" />
+    <End Role="Product_Presentation" Type="Self.Product_Presentation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Presentation">
+        <PropertyRef Name="Presentation_ID" />
+      </Principal>
+      <Dependent Role="Product_Presentation">
+        <PropertyRef Name="Presentation_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product_P__Produ__29221CFB">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Product_Presentation" Type="Self.Product_Presentation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Product_ID" />
+      </Principal>
+      <Dependent Role="Product_Presentation">
+        <PropertyRef Name="Product_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -478,11 +458,6 @@
   </Association>
   <EntityContainer Name="QL_BanHoaModelStoreContainer">
     <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Category_Color" EntityType="Self.Category_Color" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Category_Object" EntityType="Self.Category_Object" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Category_Occasion" EntityType="Self.Category_Occasion" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Category_Presentation" EntityType="Self.Category_Presentation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Color" EntityType="Self.Color" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Discount" EntityType="Self.Discount" Schema="dbo" store:Type="Tables" />
@@ -495,6 +470,10 @@
     <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Presentation" EntityType="Self.Presentation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product_Color" EntityType="Self.Product_Color" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product_Object" EntityType="Self.Product_Object" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product_Occasion" EntityType="Self.Product_Occasion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product_Presentation" EntityType="Self.Product_Presentation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Review" EntityType="Self.Review" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Shipping" EntityType="Self.Shipping" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User_Role" EntityType="Self.User_Role" Schema="dbo" store:Type="Tables" />
@@ -506,38 +485,6 @@
     <AssociationSet Name="FK__Cart__User_ID__656C112C" Association="Self.FK__Cart__User_ID__656C112C">
       <End Role="Users" EntitySet="Users" />
       <End Role="Cart" EntitySet="Cart" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Category___Categ__5070F446" Association="Self.FK__Category___Categ__5070F446">
-      <End Role="Category" EntitySet="Category" />
-      <End Role="Category_Object" EntitySet="Category_Object" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Category___Categ__5441852A" Association="Self.FK__Category___Categ__5441852A">
-      <End Role="Category" EntitySet="Category" />
-      <End Role="Category_Occasion" EntitySet="Category_Occasion" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Category___Categ__5812160E" Association="Self.FK__Category___Categ__5812160E">
-      <End Role="Category" EntitySet="Category" />
-      <End Role="Category_Presentation" EntitySet="Category_Presentation" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Category___Categ__5BE2A6F2" Association="Self.FK__Category___Categ__5BE2A6F2">
-      <End Role="Category" EntitySet="Category" />
-      <End Role="Category_Color" EntitySet="Category_Color" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Category___Color__5CD6CB2B" Association="Self.FK__Category___Color__5CD6CB2B">
-      <End Role="Color" EntitySet="Color" />
-      <End Role="Category_Color" EntitySet="Category_Color" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Category___Objec__5165187F" Association="Self.FK__Category___Objec__5165187F">
-      <End Role="Object" EntitySet="Object" />
-      <End Role="Category_Object" EntitySet="Category_Object" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Category___Occas__5535A963" Association="Self.FK__Category___Occas__5535A963">
-      <End Role="Occasion" EntitySet="Occasion" />
-      <End Role="Category_Occasion" EntitySet="Category_Occasion" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Category___Prese__59063A47" Association="Self.FK__Category___Prese__59063A47">
-      <End Role="Presentation" EntitySet="Presentation" />
-      <End Role="Category_Presentation" EntitySet="Category_Presentation" />
     </AssociationSet>
     <AssociationSet Name="FK__Customer__User_I__628FA481" Association="Self.FK__Customer__User_I__628FA481">
       <End Role="Users" EntitySet="Users" />
@@ -571,9 +518,37 @@
       <End Role="Order" EntitySet="Order" />
       <End Role="Payment" EntitySet="Payment" />
     </AssociationSet>
-    <AssociationSet Name="FK__Product__Categor__5FB337D6" Association="Self.FK__Product__Categor__5FB337D6">
-      <End Role="Category" EntitySet="Category" />
+    <AssociationSet Name="FK__Product_C__Color__2645B050" Association="Self.FK__Product_C__Color__2645B050">
+      <End Role="Color" EntitySet="Color" />
+      <End Role="Product_Color" EntitySet="Product_Color" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product_C__Produ__25518C17" Association="Self.FK__Product_C__Produ__25518C17">
       <End Role="Product" EntitySet="Product" />
+      <End Role="Product_Color" EntitySet="Product_Color" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product_O__Objec__1EA48E88" Association="Self.FK__Product_O__Objec__1EA48E88">
+      <End Role="Object" EntitySet="Object" />
+      <End Role="Product_Object" EntitySet="Product_Object" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product_O__Occas__22751F6C" Association="Self.FK__Product_O__Occas__22751F6C">
+      <End Role="Occasion" EntitySet="Occasion" />
+      <End Role="Product_Occasion" EntitySet="Product_Occasion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product_O__Produ__1DB06A4F" Association="Self.FK__Product_O__Produ__1DB06A4F">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Product_Object" EntitySet="Product_Object" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product_O__Produ__2180FB33" Association="Self.FK__Product_O__Produ__2180FB33">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Product_Occasion" EntitySet="Product_Occasion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product_P__Prese__2A164134" Association="Self.FK__Product_P__Prese__2A164134">
+      <End Role="Presentation" EntitySet="Presentation" />
+      <End Role="Product_Presentation" EntitySet="Product_Presentation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product_P__Produ__29221CFB" Association="Self.FK__Product_P__Produ__29221CFB">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Product_Presentation" EntitySet="Product_Presentation" />
     </AssociationSet>
     <AssociationSet Name="FK__Review__Customer__7A672E12" Association="Self.FK__Review__Customer__7A672E12">
       <End Role="Customer" EntitySet="Customer" />

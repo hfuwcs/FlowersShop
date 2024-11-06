@@ -3,20 +3,16 @@
   "WorkspaceRootPath": "D:\\HK5\\FlowersShop\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|d:\\hk5\\flowersshop\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|d:\\hk5\\flowersshop\\assets\\admin\\assets\\customjs\\modify-product.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:assets\\admin\\assets\\customjs\\modify-product.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|D:\\HK5\\FlowersShop\\models\\userbusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:models\\userbusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|D:\\HK5\\FlowersShop\\areas\\admin\\views\\product\\showproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:areas\\admin\\views\\product\\showproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|D:\\HK5\\FlowersShop\\models\\productbusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:models\\productbusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|D:\\HK5\\FlowersShop\\models\\cipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:models\\cipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|D:\\HK5\\FlowersShop\\areas\\admin\\views\\shared\\_editmodal.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:areas\\admin\\views\\shared\\_editmodal.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,60 +22,52 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Cipher.cs",
-              "DocumentMoniker": "D:\\HK5\\FlowersShop\\Models\\Cipher.cs",
-              "RelativeDocumentMoniker": "Models\\Cipher.cs",
-              "ToolTip": "D:\\HK5\\FlowersShop\\Models\\Cipher.cs",
-              "RelativeToolTip": "Models\\Cipher.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-23T13:13:00.976Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UserBusiness.cs",
-              "DocumentMoniker": "D:\\HK5\\FlowersShop\\Models\\UserBusiness.cs",
-              "RelativeDocumentMoniker": "Models\\UserBusiness.cs",
-              "ToolTip": "D:\\HK5\\FlowersShop\\Models\\UserBusiness.cs",
-              "RelativeToolTip": "Models\\UserBusiness.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAAwBYAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-23T13:12:05.643Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "D:\\HK5\\FlowersShop\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
-              "ToolTip": "D:\\HK5\\FlowersShop\\Controllers\\UserController.cs",
-              "RelativeToolTip": "Controllers\\UserController.cs",
-              "ViewState": "AQIAACcAAAAAAAAAAAAYwC4AAAAnAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-23T13:11:55.797Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ProductBusiness.cs",
-              "DocumentMoniker": "D:\\HK5\\FlowersShop\\Models\\ProductBusiness.cs",
-              "RelativeDocumentMoniker": "Models\\ProductBusiness.cs",
-              "ToolTip": "D:\\HK5\\FlowersShop\\Models\\ProductBusiness.cs",
-              "RelativeToolTip": "Models\\ProductBusiness.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAgwCQAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-23T05:01:28.789Z"
+              "Title": "_EditModal.cshtml",
+              "DocumentMoniker": "D:\\HK5\\FlowersShop\\Areas\\Admin\\Views\\Shared\\_EditModal.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\Shared\\_EditModal.cshtml",
+              "ToolTip": "D:\\HK5\\FlowersShop\\Areas\\Admin\\Views\\Shared\\_EditModal.cshtml",
+              "RelativeToolTip": "Areas\\Admin\\Views\\Shared\\_EditModal.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-06T11:38:09.235Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ShowProduct.cshtml",
+              "DocumentMoniker": "D:\\HK5\\FlowersShop\\Areas\\Admin\\Views\\Product\\ShowProduct.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\Product\\ShowProduct.cshtml",
+              "ToolTip": "D:\\HK5\\FlowersShop\\Areas\\Admin\\Views\\Product\\ShowProduct.cshtml",
+              "RelativeToolTip": "Areas\\Admin\\Views\\Product\\ShowProduct.cshtml",
+              "ViewState": "AQIAACcAAAAAAAAAAAAAAAAAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-06T13:06:44.941Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "modify-product.js",
+              "DocumentMoniker": "D:\\HK5\\FlowersShop\\Assets\\Admin\\assets\\customjs\\modify-product.js",
+              "RelativeDocumentMoniker": "Assets\\Admin\\assets\\customjs\\modify-product.js",
+              "ToolTip": "D:\\HK5\\FlowersShop\\Assets\\Admin\\assets\\customjs\\modify-product.js",
+              "RelativeToolTip": "Assets\\Admin\\assets\\customjs\\modify-product.js",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAYwBcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-11-06T12:04:05.616Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -12,50 +12,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Category">
-      <EntityTypeMapping TypeName="QL_BanHoaModel.Category">
-        <MappingFragment StoreEntitySet="Category">
-          <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
-          <ScalarProperty Name="Category_Name" ColumnName="Category_Name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Category_Color">
-      <EntityTypeMapping TypeName="QL_BanHoaModel.Category_Color">
-        <MappingFragment StoreEntitySet="Category_Color">
-          <ScalarProperty Name="Category_Color_ID" ColumnName="Category_Color_ID" />
-          <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
-          <ScalarProperty Name="Color_ID" ColumnName="Color_ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Category_Object">
-      <EntityTypeMapping TypeName="QL_BanHoaModel.Category_Object">
-        <MappingFragment StoreEntitySet="Category_Object">
-          <ScalarProperty Name="Category_Object_ID" ColumnName="Category_Object_ID" />
-          <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
-          <ScalarProperty Name="Object_ID" ColumnName="Object_ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Category_Occasion">
-      <EntityTypeMapping TypeName="QL_BanHoaModel.Category_Occasion">
-        <MappingFragment StoreEntitySet="Category_Occasion">
-          <ScalarProperty Name="Category_Occasion_ID" ColumnName="Category_Occasion_ID" />
-          <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
-          <ScalarProperty Name="Occasion_ID" ColumnName="Occasion_ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Category_Presentation">
-      <EntityTypeMapping TypeName="QL_BanHoaModel.Category_Presentation">
-        <MappingFragment StoreEntitySet="Category_Presentation">
-          <ScalarProperty Name="Category_Presentation_ID" ColumnName="Category_Presentation_ID" />
-          <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
-          <ScalarProperty Name="Presentation_ID" ColumnName="Presentation_ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Color">
       <EntityTypeMapping TypeName="QL_BanHoaModel.Color">
         <MappingFragment StoreEntitySet="Color">
@@ -174,7 +130,6 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-          <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -223,5 +178,37 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <AssociationSetMapping Name="Product_Color" TypeName="QL_BanHoaModel.Product_Color" StoreEntitySet="Product_Color">
+      <EndProperty Name="Color">
+        <ScalarProperty Name="Color_ID" ColumnName="Color_ID" />
+      </EndProperty>
+      <EndProperty Name="Product">
+        <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Product_Object" TypeName="QL_BanHoaModel.Product_Object" StoreEntitySet="Product_Object">
+      <EndProperty Name="Object">
+        <ScalarProperty Name="Object_ID" ColumnName="Object_ID" />
+      </EndProperty>
+      <EndProperty Name="Product">
+        <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Product_Occasion" TypeName="QL_BanHoaModel.Product_Occasion" StoreEntitySet="Product_Occasion">
+      <EndProperty Name="Occasion">
+        <ScalarProperty Name="Occasion_ID" ColumnName="Occasion_ID" />
+      </EndProperty>
+      <EndProperty Name="Product">
+        <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Product_Presentation" TypeName="QL_BanHoaModel.Product_Presentation" StoreEntitySet="Product_Presentation">
+      <EndProperty Name="Presentation">
+        <ScalarProperty Name="Presentation_ID" ColumnName="Presentation_ID" />
+      </EndProperty>
+      <EndProperty Name="Product">
+        <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

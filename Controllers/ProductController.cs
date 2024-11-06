@@ -34,7 +34,7 @@ namespace FlowersShop.Controllers
         [HttpGet]
         public ActionResult CreateProduct() {
             //Truyền Categories xuống View thôi ;)
-            ViewBag.Category_ID = new SelectList(db.Category, "Category_ID", "Category_Name");
+            ViewBag.Category_ID = new SelectList(db.Color, "Category_ID", "Category_Name");
             if (ViewBag.Category_ID == null) {
                 return HttpNotFound();
             }
@@ -47,7 +47,7 @@ namespace FlowersShop.Controllers
             {
                 ModelState.AddModelError(string.Empty, "Thiếu thông tin sản phẩm");
             }
-            ViewBag.Category_ID = new SelectList(db.Category, "Category_ID", "Category_Name");
+            ViewBag.Category_ID = new SelectList(db.Color, "Category_ID", "Category_Name");
             return View();
         }
 
@@ -67,14 +67,14 @@ namespace FlowersShop.Controllers
         public ActionResult EditProduct(int id)
         {
             Product product = db.Product.Find(id);
-            ViewBag.Category_ID = new SelectList(db.Category, "Category_ID", "Category_Name");
+            ViewBag.Category_ID = new SelectList(db.Color, "Category_ID", "Category_Name");
             return View(product);
         }
         [HttpPost]
         public ActionResult EditProduct(Product product)
         {
             if(product == null) { return HttpNotFound();}
-            ViewBag.Category_ID = new SelectList(db.Category, "Category_ID", "Category_Name");
+            ViewBag.Category_ID = new SelectList(db.Color, "Category_ID", "Category_Name");
             db.Product.AddOrUpdate(product);
             db.SaveChanges();
             return RedirectToAction("ShowProduct");
