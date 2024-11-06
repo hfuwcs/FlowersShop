@@ -90,8 +90,12 @@ namespace FlowersShop.Areas.Admin.Controllers
             ViewBag.Occasion = new SelectList(db.Occasion, "Occasion_ID", "Occasion_Name");
             ViewBag.Presentation = new SelectList(db.Presentation, "Presentation_ID", "Presentation_Name");
             db.Product.AddOrUpdate(product);
-            db.SaveChanges();
-            return RedirectToAction("ShowProduct");
+            int rowAffected = db.SaveChanges();
+            if (rowAffected > 0)
+            {
+                return Json(new { success = true, product = product });
+            }
+            return Json(new { success = false });
         }
 
 

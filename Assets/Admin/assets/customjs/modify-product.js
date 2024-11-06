@@ -47,4 +47,28 @@
             }
         });
     }
+
+    $("#EditModalContainer").on("submit", "form", function (e) {
+        e.preventDefault();
+
+        $.ajax({
+            url: "/Admin/Product/EditProduct",
+            type: "POST",
+            data: $(this).serialize(),
+            success: function (response) {
+                if (response.success) {
+                    //Load lại dữ liệu mà không cần reload cả trang
+                    $("#product-" + productId + " td").eq(0).text(response.product.Name);
+                    $("#product-" + productId + " td").eq(1).text(response.product.Price);
+                    $("#product-" + productId + " td").eq(2).text(response.product.Description);
+                    $("#product-" + productId + " td").eq(4).text(response.product.Quantity);
+                    $("#EditModal").modal("hide");
+                }
+            },
+            error: function (xhr, status, error) {
+                console.log(error);
+                alert("Đã xảy ra lỗi khi cập nhật sản phẩm!");
+            }
+        });
+    });
 });
