@@ -1,0 +1,85 @@
+﻿@model FlowersShop.Repository.Product
+
+@{
+    ViewBag.Title = "DetailProduct";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin-LayoutPage.cshtml";
+}
+
+<h2>DetailProduct</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Color.FirstOrDefault().Color_Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Object)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Object.FirstOrDefault().Object_Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Occasion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Occasion.FirstOrDefault().Occasion_Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Presentation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Presentation.FirstOrDefault().Presentation_Name)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Product_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

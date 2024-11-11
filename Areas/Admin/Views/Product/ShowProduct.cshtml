@@ -44,16 +44,9 @@
 </table>
 
 <!-- Render the edit modal partial view -->
-@*@Html.Partial("_EditModal")*@
 <div id="EditModalContainer">
     @Html.Partial("_EditModal", Model.FirstOrDefault())
 </div>
 
 <!-- Render the delete modal partial view -->
 @Html.Partial("_DeleteModal")
-
-
-@*<div class="alert alert-success alert-dismissible" id="successAlert" role="alert">
-    This is a success dismissible alert — check it out!
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>*@

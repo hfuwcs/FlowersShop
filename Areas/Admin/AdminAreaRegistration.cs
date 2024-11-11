@@ -17,7 +17,7 @@ namespace FlowersShop.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional },
+                new { action = "DangNhap", id = UrlParameter.Optional },
                 namespaces: new[] { "FlowersShop.Areas.Admin.Controllers" }
             );
         }

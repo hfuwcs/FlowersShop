@@ -26,17 +26,11 @@ namespace FlowersShop.Areas.Admin.Controllers
         //[ValidateAntiForgeryToken]
         public ActionResult DangNhap(Users user)
         {
-                if (obj.IsUser(user))
+                 if (obj.IsAdmin(user))
                 {
-                    Session["isLogin"] = user.UserName;
-                    TempData["user"] = user;
-                    return RedirectToAction("Index", "Dashboard");
+                    Session["Admin"] = user.UserName;
+                    return RedirectToAction("Index", "Dashboard", new { Area = "Admin" });
                 }
-                else if (obj.IsAdmin(user))
-            {
-                Session["Admin"] = user.UserName;
-                return RedirectToAction("Index", "Dashboard", new { Area = "Admin" });
-            }
                 else
                 {
                     ViewBag.error = "Sai tên đăng nhập hoặc mật khẩu";

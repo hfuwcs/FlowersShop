@@ -47,7 +47,6 @@
             }
         });
     }
-
     $("#EditModalContainer").on("submit", "form", function (e) {
         e.preventDefault();
 
@@ -57,7 +56,7 @@
             data: $(this).serialize(),
             success: function (response) {
                 if (response.success) {
-                    //Load lại dữ liệu mà không cần reload cả trang
+                    //Load lại dữ liệu các thông tin sản phẩm
                     $("#product-" + productId + " td").eq(0).text(response.product.Name);
                     $("#product-" + productId + " td").eq(1).text(response.product.Price);
                     $("#product-" + productId + " td").eq(2).text(response.product.Description);

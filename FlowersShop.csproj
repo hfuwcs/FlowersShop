@@ -215,6 +215,7 @@
     <Compile Include="Repository\Product.cs">
       <DependentUpon>QL_BanHoa.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repository\Product_Color.cs" />
     <Compile Include="Repository\QL_BanHoa.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -336,6 +337,9 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\chosen-sprite%402x.png" />
+    <Content Include="Content\chosen-sprite.png" />
+    <Content Include="Content\chosen.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -371,6 +375,11 @@
     <Content Include="Areas\Admin\Views\Shared\_Menu.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Footer.cshtml" />
     <Content Include="Areas\Admin\Views\Product\ShowProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\Modal.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\CreateProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_DeleteModal.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_EditModal.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\DetailProduct.cshtml" />
     <EntityDeploy Include="Repository\QL_BanHoa.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>QL_BanHoa.Designer.cs</LastGenOutput>
@@ -378,10 +387,7 @@
     <Content Include="Repository\QL_BanHoa.edmx.diagram">
       <DependentUpon>QL_BanHoa.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Views\Dashboard\Modal.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\CreateProduct.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_DeleteModal.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_EditModal.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\TestingProduct.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />

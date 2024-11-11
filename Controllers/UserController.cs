@@ -32,11 +32,11 @@ namespace FlowersShop.Controllers
                     TempData["user"] = user;
                     return RedirectToAction("Index", "Home");
                 }
-                else if (obj.IsAdmin(user))
-            {
-                Session["Admin"] = user.UserName;
-                return RedirectToAction("Index", "Dashboard", new { Area = "Admin" });
-            }
+                //else if (obj.IsAdmin(user))
+                //{
+                //Session["Admin"] = user.UserName;
+                //return RedirectToAction("Index", "Dashboard", new { Area = "Admin" });
+                //}
                 else
                 {
                     ViewBag.error = "Sai tên đăng nhập hoặc mật khẩu";

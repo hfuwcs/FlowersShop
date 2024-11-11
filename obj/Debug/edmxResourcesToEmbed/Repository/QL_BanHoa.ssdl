@@ -127,6 +127,12 @@
     <Property Name="Product_ID" Type="int" Nullable="false" />
     <Property Name="Color_ID" Type="int" Nullable="false" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'QL_BanHoa.dbo.Product_FlowerType' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Product_FlowerType">
+          <Property Name="Product_ID" Type="int" />
+          <Property Name="Flower_Type_ID" Type="int" />
+        </EntityType>-->
   <EntityType Name="Product_Object">
     <Key>
       <PropertyRef Name="Product_ID" />
@@ -336,6 +342,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'QL_BanHoa.dbo.Product_FlowerType' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Product_F__Flowe__2CF2ADDF" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'QL_BanHoa.dbo.Product_FlowerType' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Product_F__Produ__2BFE89A6" />-->
   <Association Name="FK__Product_O__Objec__1EA48E88">
     <End Role="Object" Type="Self.Object" Multiplicity="1" />
     <End Role="Product_Object" Type="Self.Product_Object" Multiplicity="*" />

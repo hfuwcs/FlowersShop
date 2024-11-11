@@ -5,99 +5,13 @@
     Layout = "~/Areas/Admin/Views/Shared/_Admin-LayoutPage.cshtml";
 }
 
-<!-- Button to Open the Modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createProductModal">
-    Thêm sản phẩm
-</button>
-
-<!-- The Modal -->
-<div class="modal fade" id="createProductModal" tabindex="-1" role="dialog" aria-labelledby="createProductModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h5 class="modal-title" id="createProductModalLabel">Thêm sản phẩm</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <!-- Modal Body -->
-            <div class="modal-body">
-                @using (Html.BeginForm())
-                {
-                    @Html.AntiForgeryToken()
-
-                    <div class="form-horizontal">
-                        <h4>Product</h4>
-                        <hr />
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Chọn Category</label>
-                            <div>
-                                @Html.DropDownListFor(model => model.Color, null, "Chọn đối tượng", new { @class = "btn btn-outline-primary dropdown-toggle"})
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Create" class="btn btn-default" />
-                            </div>
-                        </div>
-                    </div>
-                }
-            </div>
-            <!-- Modal Footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- The Modal -->
 <!-- Form controls -->
-<div class="col-md-8" max-width: fit-content;
+<div class="col-md-0" max-width: fit-content;
   margin-left: auto;
   margin-right: auto>
     <div class="card mb-4">
-        <h5 class="card-header">Form Controls</h5>
+        <h5 class="card-header">Thêm sản phẩm</h5>
         <div class="card-body">
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Email address</label>
@@ -165,8 +79,3 @@
     </div>
 </div>
 
-
-<!-- Bootstrap JS and dependencies -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

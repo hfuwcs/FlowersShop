@@ -11,11 +11,17 @@ namespace FlowersShop.Models
     public class ProductBusiness
     {
         QL_BanHoaEntities db = new QL_BanHoaEntities();
+        static ProductBusiness instance;
 
-        //private int ProductState(Product product)
-        //{
-        //    if(product.Name.IsNullOrWhiteSpace())
-        //}
+        public static ProductBusiness Instance { get { 
+                if (instance == null)
+                    {
+                    instance = new ProductBusiness();
+                }
+                return instance;
+            }
+            private set => instance = value; }
+
         public List<Product> GetData()
         {
             return db.Product.ToList();
@@ -23,6 +29,16 @@ namespace FlowersShop.Models
         public List<Product> SearchProduct(string txt_Search)
         {
             return db.Product.Where(d=>d.Name.Contains(txt_Search)).ToList();
+        }
+        public Product GetProduct(int id)
+        {
+            var product = db.Product
+                .Include(p => p.Color) // Tải trước dữ liệu từ bảng liên quan
+                .Include(p => p.Object)
+                .Include(p => p.Occasion)
+                .Include(p => p.Presentation)
+                .FirstOrDefault(p => p.Product_ID == id);
+            return product;
         }
         public bool AddProduct(Product product)
         {
