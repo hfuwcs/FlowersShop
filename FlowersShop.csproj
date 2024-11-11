@@ -376,7 +376,6 @@
     <Content Include="Areas\Admin\Views\Shared\_Footer.cshtml" />
     <Content Include="Areas\Admin\Views\Product\ShowProduct.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\Modal.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\CreateProduct.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_DeleteModal.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_EditModal.cshtml" />
     <Content Include="Areas\Admin\Views\Product\DetailProduct.cshtml" />
@@ -388,6 +387,7 @@
       <DependentUpon>QL_BanHoa.edmx</DependentUpon>
     </Content>
     <Content Include="Areas\Admin\Views\Product\TestingProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\CreateProduct.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />

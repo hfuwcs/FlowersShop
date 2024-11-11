@@ -33,28 +33,33 @@ namespace FlowersShop.Areas.Admin.Controllers
         public ActionResult SearchProduct(String ProductName)
         {
             IList<Product> products = bn.SearchProduct(ProductName);
-            return View(products);           
+            return View(products);
         }
         [HttpGet]
         public ActionResult CreateProduct() {
-            //Truyền Categories xuống View thôi ;)
-            
-            ViewBag.Color = new SelectList(db.Color, "Color_ID", "Color_Name");
-
-            if (ViewBag.Color == null) {
-                return HttpNotFound();
-            }
+            ViewBag.Color = new MultiSelectList(db.Color, "Color_ID", "Color_Name");
+            ViewBag.Object = new MultiSelectList(db.Object, "Object_ID", "Object_Name");
+            ViewBag.Occasion = new MultiSelectList(db.Occasion, "Occasion_ID", "Occasion_Name");
+            ViewBag.Presentation = new MultiSelectList(db.Presentation, "Presentation_ID", "Presentation_Name");
             return View();
         }
         [HttpPost]
         public ActionResult CreateProduct(Product product)
         {
-            if (!bn.AddProduct(product))
-            {
-                ModelState.AddModelError(string.Empty, "Thiếu thông tin sản phẩm");
-            }
-            
-            ViewBag.Color = new SelectList(db.Color, "Color_ID", "Color_Name");
+            var multiColorID = Request.Form["SelectedColorIds"]?.Split(',');
+            var multiObjectID = Request.Form["SelectedObjectIds"]?.Split(',');
+            var multiOccasionID = Request.Form["SelectedOccasionIds"]?.Split(',');
+            var multiPresentationID = Request.Form["SelectedPresentationIds"]?.Split(',');
+
+            var selectedColors = db.Color.Where(c => multiColorID.Contains(c.Color_ID.ToString())).ToList();
+            var selectedObjects = db.Object.Where(o => multiObjectID.Contains(o.Object_ID.ToString())).ToList();
+            var selectedOccasions = db.Occasion.Where(o => multiOccasionID.Contains(o.Occasion_ID.ToString())).ToList();
+            var selectedPresentations = db.Presentation.Where(p => multiPresentationID.Contains(p.Presentation_ID.ToString())).ToList();
+            db.Product.AddOrUpdate(product);
+
+            AddIntermediateTable(product, selectedColors, selectedObjects, selectedOccasions, selectedPresentations);
+            db.SaveChanges();
+           
             return View();
         }
 
@@ -87,6 +92,7 @@ namespace FlowersShop.Areas.Admin.Controllers
                                 .Include(p => p.Presentation)
                                 .SingleOrDefault(p => p.Product_ID == id);
 
+            //Load cho MultiSeleeList
             product.SelectedColorIds = product.Color.Select(c => c.Color_ID).ToList();
             product.SelectedObjectIds = product.Object.Select(o => o.Object_ID).ToList();
             product.SelectedOccasionIds = product.Occasion.Select(o => o.Occasion_ID).ToList();
@@ -94,8 +100,8 @@ namespace FlowersShop.Areas.Admin.Controllers
             ViewBag.Color = new MultiSelectList(db.Color, "Color_ID", "Color_Name", product.SelectedColorIds);
             ViewBag.Object = new MultiSelectList(db.Object, "Object_ID", "Object_Name", product.SelectedObjectIds);
             ViewBag.Occasion = new MultiSelectList(db.Occasion, "Occasion_ID", "Occasion_Name", product.SelectedOccasionIds);
-
             ViewBag.Presentation = new MultiSelectList(db.Presentation, "Presentation_ID", "Presentation_Name", product.SelectedPresentationIds);
+            
             return PartialView("_EditModal",product);
         }
         [HttpPost]
@@ -117,8 +123,22 @@ namespace FlowersShop.Areas.Admin.Controllers
                                 .Include(p => p.Occasion)
                                 .Include(p => p.Presentation)
                                 .SingleOrDefault(p => p.Product_ID == product.Product_ID);
+
+            producttemp.Name = product.Name;
+            producttemp.Description = product.Description;
+            producttemp.Price = product.Price;
+            producttemp.Quantity = product.Quantity;
+            if (producttemp.Image!=null)
+            {
+                producttemp.Image = product.Image;
+            }
+
+
+
             DeleteIntermediateTable(producttemp);
             AddIntermediateTable(producttemp, selectedColors, selectedObjects, selectedOccasions, selectedPresentations);
+            
+            db.Product.AddOrUpdate(producttemp);
 
             int rowAffected = db.SaveChanges();
 

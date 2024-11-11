@@ -50,33 +50,47 @@
             @Html.DisplayFor(model => model.Quantity)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Color)
+            Màu sắc
         </dt>
+        @foreach (var item in Model.Color)
+        {
+            <dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Color.FirstOrDefault().Color_Name)
-        </dd>
+                @Html.DisplayFor(model => item.Color_Name)
+
+            </dd>
+        }
         <dt>
             @Html.DisplayNameFor(model => model.Object)
         </dt>
+        @foreach (var item in Model.Object)
+        {
+            <dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Object.FirstOrDefault().Object_Name)
-        </dd>
+                @Html.DisplayFor(model => item.Object_Name)
+
+            </dd>
+        }
         <dt>
             @Html.DisplayNameFor(model => model.Occasion)
         </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Occasion.FirstOrDefault().Occasion_Name)
-        </dd>
+        @foreach (var item in Model.Occasion)
+        {
+            <dd>
+                @Html.DisplayFor(model => item.Occasion_Name)
+            </dd>
+        }
         <dt>
             @Html.DisplayNameFor(model => model.Presentation)
         </dt>
+        @foreach (var item in Model.Presentation)
+        {
+            <dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Presentation.FirstOrDefault().Presentation_Name)
-        </dd>
+                @Html.DisplayFor(model => item.Presentation_Name)
+
+            </dd>
+        }
     </dl>
 </div>
 <p>

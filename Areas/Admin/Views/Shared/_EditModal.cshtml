@@ -50,36 +50,24 @@
                         <div class="col mb-0">
                             <label class="form-label">Màu sắc</label>
                             @Html.ListBoxFor(model => model.SelectedColorIds, (MultiSelectList)ViewBag.Color, new { @class = "form-control clorrrasdasd"})
-                            <button type="button" class="btn btn-icon btn-add">
-                                <span class="tf-icons bx bx-plus"></span>
-                            </button>
                         </div>
                     </div>
                     <div class="row g-2">
                         <div class="col mb-0">
                             <label class="form-label">Đối tượng</label>
                             @Html.ListBoxFor(model => model.SelectedObjectIds, (MultiSelectList)ViewBag.Object, new { @class = "form-control" })
-                            <button type="button" class="btn btn-icon btn-add">
-                                <span class="tf-icons bx bx-plus"></span>
-                            </button>
                         </div>
                     </div>
                     <div class="row g-2">
                         <div class="col mb-0">
                             <label class="form-label">Dịp</label>
                             @Html.ListBoxFor(model => model.SelectedOccasionIds, (MultiSelectList)ViewBag.Occasion, new { @class = "form-control" })
-                            <button type="button" class="btn btn-icon btn-add">
-                                <span class="tf-icons bx bx-plus"></span>
-                            </button>
                         </div>
                     </div>
                     <div class="row g-2">
                         <div class="col mb-0">
                             <label class="form-label">Hình thức trình bày</label>
                             @Html.ListBoxFor(model => model.SelectedPresentationIds, (MultiSelectList)ViewBag.Presentation, new { @class = "form-control" })
-                            <button type="button" class="btn btn-icon btn-add">
-                                <span class="tf-icons bx bx-plus"></span>
-                            </button>
                         </div>
                     </div>
 

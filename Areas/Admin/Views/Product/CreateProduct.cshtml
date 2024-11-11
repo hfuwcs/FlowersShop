@@ -1,81 +1,99 @@
 ﻿@model FlowersShop.Repository.Product
 
 @{
-    ViewBag.Title = "CreateProduct";
     Layout = "~/Areas/Admin/Views/Shared/_Admin-LayoutPage.cshtml";
 }
 
-<!-- The Modal -->
-<!-- Form controls -->
-<div class="col-md-0" max-width: fit-content;
-  margin-left: auto;
-  margin-right: auto>
-    <div class="card mb-4">
-        <h5 class="card-header">Thêm sản phẩm</h5>
-        <div class="card-body">
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                <input type="email"
-                       class="form-control"
-                       id="exampleFormControlInput1"
-                       placeholder="name@example.com" />
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CreateProduct</title>
+</head>
+<body>
+    @using (Html.BeginForm()) 
+    {
+        @Html.AntiForgeryToken()
+        
+    <div class="form-horizontal">
+        <h4>Product</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
-            <div class="mb-3">
-                <label for="exampleFormControlReadOnlyInput1" class="form-label">Read only</label>
-                <input class="form-control"
-                       type="text"
-                       id="exampleFormControlReadOnlyInput1"
-                       placeholder="Readonly input here..."
-                       readonly />
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
             </div>
-            <div class="mb-3">
-                <label for="exampleFormControlReadOnlyInputPlain1" class="form-label">Read plain</label>
-                <input type="text"
-                       readonly
-                       class="form-control-plaintext"
-                       id="exampleFormControlReadOnlyInputPlain1"
-                       value="email@example.com" />
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
             </div>
-            <div class="mb-3">
-                <label for="exampleFormControlSelect1" class="form-label">Example select</label>
-                <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
             </div>
-            <div class="mb-3">
-                <label for="exampleDataList" class="form-label">Datalist example</label>
-                <input class="form-control"
-                       list="datalistOptions"
-                       id="exampleDataList"
-                       placeholder="Type to search..." />
-                <datalist id="datalistOptions">
-                    <option value="San Francisco"></option>
-                    <option value="New York"></option>
-                    <option value="Seattle"></option>
-                    <option value="Los Angeles"></option>
-                    <option value="Chicago"></option>
-                </datalist>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
             </div>
-            <div class="mb-3">
-                <label for="exampleFormControlSelect2" class="form-label">Example multiple select</label>
-                <select multiple
-                        class="form-select"
-                        id="exampleFormControlSelect2"
-                        aria-label="Multiple select example">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
+        </div>
+        <div class="form-group">
+            <div class="col mb-0">
+                <label class="form-label">Màu sắc</label>
+                @Html.ListBoxFor(model => model.SelectedColorIds, (MultiSelectList)ViewBag.Color, new { @class = "form-control clorrrasdasd" })
             </div>
-            <div>
-                <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <div class="col mb-0">
+                <label class="form-label">Đối tượng</label>
+                @Html.ListBoxFor(model => model.SelectedObjectIds, (MultiSelectList)ViewBag.Object, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col mb-0">
+                <label class="form-label">Dịp</label>
+                @Html.ListBoxFor(model => model.SelectedOccasionIds, (MultiSelectList)ViewBag.Occasion, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col mb-0">
+                <label class="form-label">Hình thức trình bày</label>
+                @Html.ListBoxFor(model => model.SelectedPresentationIds, (MultiSelectList)ViewBag.Presentation, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>
-</div>
-
+    }
+    
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>
