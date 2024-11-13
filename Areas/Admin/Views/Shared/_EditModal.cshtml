@@ -2,12 +2,14 @@
 
 <!-- Large Modal -->
 @using (Ajax.BeginForm("EditProduct", "Product", FormMethod.Post,
-                    new AjaxOptions
+                    new AjaxOptions()
                     {
                         InsertionMode = InsertionMode.Replace,
                         HttpMethod = "POST",
                         UpdateTargetId = "EditModalContainer"
-                    }))
+                    },
+                    new { enctype = "multipart/form-data" }
+                    ))
 {
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="modal fade" id="EditModal" tabindex="-1" aria-hidden="true">
@@ -49,7 +51,7 @@
                     <div class="row g-2">
                         <div class="col mb-0">
                             <label class="form-label">Màu sắc</label>
-                            @Html.ListBoxFor(model => model.SelectedColorIds, (MultiSelectList)ViewBag.Color, new { @class = "form-control clorrrasdasd"})
+                            @Html.ListBoxFor(model => model.SelectedColorIds, (MultiSelectList)ViewBag.Color, new { @class = "form-control clorrrasdasd" })
                         </div>
                     </div>
                     <div class="row g-2">
@@ -70,11 +72,10 @@
                             @Html.ListBoxFor(model => model.SelectedPresentationIds, (MultiSelectList)ViewBag.Presentation, new { @class = "form-control" })
                         </div>
                     </div>
-
                     <div class="row">
-                        <div class="col mb-0">
-                            @Html.LabelFor(model => model.Image, "Hình ảnh", htmlAttributes: new { @class = "form-label" })
-                            <input type="file" class="form-control" name="Image" id="Image" accept="image/*">
+                        Hình ảnh
+                        <div class="col-md-10">
+                            <input type="file" class="form-control" name="ImageFile" id="ImageFile" accept="image/*">
                         </div>
                     </div>
                 </div>

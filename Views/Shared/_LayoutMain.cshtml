@@ -15,6 +15,8 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+
 </head>
 <body>
     @RenderPage("_HeaderBar.cshtml")
@@ -27,8 +29,12 @@
         </footer>
     </div>
 
-    
+
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+
+    <!--Custom JS-->
+    
 </body>
 </html>

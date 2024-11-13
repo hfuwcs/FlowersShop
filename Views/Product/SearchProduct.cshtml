@@ -12,46 +12,124 @@
     <title>SearchProduct</title>
 </head>
 <body>
+    <input type="text" id="search-input" placeholder="Enter product name" />
+    <button id="btn-search">Search</button>
+    <form id="filterForm">
+        <div>
+            <h3>Select Colors</h3>
+            @foreach (var color in ViewBag.Colors)
+            {
+                <label>
+                    <input type="checkbox" name="SelectedColorIds" value="@color.Color_ID" />
+                    @color.Color_Name
+                </label>
+            }
+        </div>
+
+        <div>
+            <h3>Select Occasions</h3>
+            @foreach (var occasion in ViewBag.Occasions)
+            {
+                <label>
+                    <input type="checkbox" name="SelectedOccasionIds" value="@occasion.Occasion_ID" />
+                    @occasion.Occasion_Name
+                </label>
+            }
+        </div>
+
+        <div>
+            @foreach(var objectt in ViewBag.Objects)
+            {
+                <label>
+                    <input type="checkbox" name="SelectedObjectIds" value="@objectt.Object_ID" />
+                    @objectt.Object_Name
+                </label>
+            }
+        </div>
+        <div>
+            @foreach (var presentation in ViewBag.Presentations)
+            {
+                <label>
+                    <input type="checkbox" name="SelectedPresentationIds" value="@presentation.Presentation_ID" />
+                    @presentation.Presentation_Name
+                </label>
+            }
+        </div>
+
+        <!-- Chờ, thêm các checkbox Category khác ở đây -->
+    </form>
     <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantity)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                <img src="~/Media/ProductsImages/@item.Image" class="image" width="300"/>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-        </tr>
-    }
-    
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Quantity)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="product-table-body">
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @if (item.Image != null)
+                            {
+                                <img class="image" src="@Url.Content(item.Image)" width="200" />
+                            }
+                            else
+                            {
+                                <span>No image available</span>
+                            }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Quantity)
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
     </table>
+    <div id="productResults">
+        <!-- Thẻ div này chứa các giá trị được chọn từ checkbox -->
+    </div>
 </body>
 </html>
+<script>
+    $(document).on('change', '#filterForm input[type="checkbox"]', function () {
+        var selectedCategories = $('#filterForm').serialize(); // Lấy tất cả các giá trị checkbox đã chọn
+        $.ajax({
+            url: '/Product/SearchProductByCategory', // URL này trỏ đến Action SearchProductByCategory
+            type: 'GET',
+            data: selectedCategories,
+            success: function (result) {
+                $('#productResults').html(result); // Inject kết quả vào div kết quả
+            },
+            error: function () {
+                alert("An error occurred while fetching products.");
+            }
+        });
+    });
+</script>

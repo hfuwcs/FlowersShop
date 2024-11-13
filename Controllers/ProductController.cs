@@ -24,60 +24,70 @@ namespace FlowersShop.Controllers
             IList<Product> products = bn.GetData();
             return View(products);
         }
-
         [HttpGet]
-        public ActionResult SearchProduct(String ProductName)
+        public ActionResult SearchProduct()
+        {
+            ViewBag.Colors = db.Color.ToList();
+            ViewBag.Occasions = db.Occasion.ToList();
+            ViewBag.Objects = db.Object.ToList();
+            ViewBag.Presentations = db.Presentation.ToList();
+            return View(); 
+        }
+
+        [HttpPost]
+        public ActionResult SearchProduct(string ProductName)
         {
             IList<Product> products = bn.SearchProduct(ProductName);
-            return View(products);           
-        }
-        [HttpGet]
-        public ActionResult CreateProduct() {
-            //Truyền Categories xuống View thôi ;)
-            ViewBag.Category_ID = new SelectList(db.Color, "Category_ID", "Category_Name");
-            if (ViewBag.Category_ID == null) {
-                return HttpNotFound();
+            IList<ProductDTO> productDTOList = new List<ProductDTO>();
+            foreach (Product product in products) {
+                ProductDTO productDTO = new ProductDTO();
+                productDTO.Product_ID = product.Product_ID;
+                productDTO.Name = product.Name;
+                productDTO.Price = product.Price;
+                productDTO.Image = product.Image;
+                productDTO.Description = product.Description;
+                productDTO.Quantity = product.Quantity;
+                productDTOList.Add(productDTO);
             }
-            return View();
+            return Json(productDTOList, JsonRequestBehavior.AllowGet);
         }
-        [HttpPost]
-        public ActionResult CreateProduct(Product product)
+        public ActionResult SearchProductByCategory(int[] SelectedColorIds = null, int[] SelectedOccasionIds = null, int[] SelectedObjectIds = null, int[] SelectedPresentationIds = null)
         {
-            if (!bn.AddProduct(product))
+            // Truy xuất tất cả sản phẩm trước khi lọc
+            var products = db.Product.AsQueryable();
+
+            // Lọc theo màu sắc (sản phẩm cần chứa bất kỳ màu nào được chọn)
+            if (SelectedColorIds != null && SelectedColorIds.Any())
             {
-                ModelState.AddModelError(string.Empty, "Thiếu thông tin sản phẩm");
+                products = products.Where(p => p.Color.Any(c => SelectedColorIds.Contains(c.Color_ID)));
             }
-            ViewBag.Category_ID = new SelectList(db.Color, "Category_ID", "Category_Name");
-            return View();
+
+            // Lọc theo dịp sử dụng (sản phẩm cần chứa bất kỳ dịp nào được chọn)
+            if (SelectedOccasionIds != null && SelectedOccasionIds.Any())
+            {
+                products = products.Where(p => p.Occasion.Any(o => SelectedOccasionIds.Contains(o.Occasion_ID)));
+            }
+
+            // Lọc theo đối tượng (sản phẩm cần chứa bất kỳ đối tượng nào được chọn)
+            if (SelectedObjectIds != null && SelectedObjectIds.Any())
+            {
+                products = products.Where(p => p.Object.Any(o => SelectedObjectIds.Contains(o.Object_ID)));
+            }
+
+            // Lọc theo cách trình bày (sản phẩm cần chứa bất kỳ kiểu trình bày nào được chọn)
+            if (SelectedPresentationIds != null && SelectedPresentationIds.Any())
+            {
+                products = products.Where(p => p.Presentation.Any(pr => SelectedPresentationIds.Contains(pr.Presentation_ID)));
+            }
+
+            // Trả về kết quả dưới dạng PartialView cho AJAX
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_ProductListPartial", products.ToList());
+            }
+
+            return View(products.ToList());
         }
 
-        [HttpGet]
-        public ActionResult DeleteProduct() {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult DeleteProduct(int id) {
-            Product product = db.Product.Find(id);
-            db.Product.Remove(product);
-            db.SaveChanges();
-            return RedirectToAction("Index", "Home");
-        }
-
-        [HttpGet]
-        public ActionResult EditProduct(int id)
-        {
-            Product product = db.Product.Find(id);
-            ViewBag.Category_ID = new SelectList(db.Color, "Category_ID", "Category_Name");
-            return View(product);
-        }
-        [HttpPost]
-        public ActionResult EditProduct(Product product)
-        {
-            if(product == null) { return HttpNotFound();}
-            ViewBag.Category_ID = new SelectList(db.Color, "Category_ID", "Category_Name");
-            db.Product.AddOrUpdate(product);
-            db.SaveChanges();
-            return RedirectToAction("ShowProduct");
-        }
     }
 }

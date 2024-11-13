@@ -53,12 +53,11 @@
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="/Assets/Admin/assets/js/config.js"></script>
-
     <!--Custome CSS-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
 
     <!--Custome JS-->
+    <script src="/Assets/Admin/assets/js/config.js"></script>
 </head>
 
 <body>
@@ -68,12 +67,19 @@
             @RenderPage("_Menu.cshtml")
             <!-- Layout container -->
             <div class="layout-page">
-
+                
                 <!-- Content wrapper -->
                 <div class="content-wrapper">
 
 
                     <!-- Content -->
+                    <!--Alert-->
+                    <div id="SuccessToast">
+                        @Html.Partial("SuccessAlert")
+                    </div>
+                    <div id="failToast">
+                        @Html.Partial("FailAlert")
+                    </div>
                     @RenderBody()
                     <!-- / Content -->
 

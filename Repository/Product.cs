@@ -32,7 +32,6 @@ namespace FlowersShop.Repository
         public string Name { get; set; }
         public Nullable<double> Price { get; set; }
         public Nullable<int> Quantity { get; set; }
-        public int SelectedColorId { get; set; }
         public List<int> SelectedColorIds { get; set; }
         public List<int> SelectedObjectIds { get; set; }
         public List<int> SelectedOccasionIds { get; set; }

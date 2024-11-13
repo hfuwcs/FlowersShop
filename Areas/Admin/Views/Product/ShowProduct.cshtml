@@ -22,7 +22,16 @@
             <td>@Html.DisplayFor(modelItem => item.Name)</td>
             <td>@Html.DisplayFor(modelItem => item.Price)</td>
             <td>@Html.DisplayFor(modelItem => item.Description)</td>
-            <td><img class="image" src="~/Media/ProductsImages/@item.Image" width="200" /></td>
+            <td>
+                @if (item.Image != null)
+                {
+                    <img class="image" src="@Url.Content(item.Image)" width="200" />
+                }
+                else
+                {
+                    <span>No image available</span>
+                }
+                    </td>
             <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
             <td>
                 <button type="button"

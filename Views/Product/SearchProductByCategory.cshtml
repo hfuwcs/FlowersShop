@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Search Product By Category";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<h2>Search Products by Category</h2>
+
+<form id="filterForm">
+    <div>
+        <h3>Select Colors</h3>
+        @foreach (var color in ViewBag.Colors)
+        {
+            <label>
+                <input type="checkbox" name="SelectedColorIds" value="@color.Color_ID" />
+                @color.Color_Name
+            </label>
+        }
+    </div>
+
+    <div>
+        <h3>Select Occasions</h3>
+        @foreach (var occasion in ViewBag.Occasions)
+        {
+            <label>
+                <input type="checkbox" name="SelectedOccasionIds" value="@occasion.Occasion_ID" />
+                @occasion.Occasion_Name
+            </label>
+        }
+    </div>
+
+    <!-- Chờ, thêm các checkbox Category khác ở đây -->
+</form>
+
+<div id="productResults">
+    <!-- Results will be injected here by AJAX -->
+</div>
+
+<script src="~/Assets/Client/customjs/sorting-product-client.js"></script>
+@*<script>
+    // Attach event listener to form's checkboxes
+    $('#filterForm input[type="checkbox"]').change(function() {
+        var selectedCategories = $('#filterForm').serialize(); // Get all selected checkbox values
+        $.ajax({
+            url: '@Url.Action("SearchProductByCategory", "Product")',
+            type: 'GET',
+            data: selectedCategories,
+            success: function (result) {
+                $('#productResults').html(result); // Inject filtered products into the results div
+            },
+            error: function () {
+                alert("An error occurred while fetching products.");
+            }
+        });
+    });
+</script>*@

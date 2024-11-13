@@ -12,9 +12,6 @@
     <title>ShowProduct</title>
 </head>
 <body>
-    <p>
-        @Html.ActionLink("Thêm mới", "CreateProduct")
-    </p>
     <table class="table">
         <tr>
             <th>
@@ -32,9 +29,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Quantity)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category_ID)
-            </th>
             <th></th>
         </tr>
 
@@ -51,16 +45,18 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                    <img class="image" src="~/Media/ProductsImages/@item.Image" width="200" />
+                    @if (item.Image != null)
+                    {
+                        <img class="image" src="@Url.Content(item.Image)" width="200" />
+                    }
+                    else
+                    {
+                        <span>No image available</span>
+                    }
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Quantity)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category_ID)
-                </td>
-                <td>@Html.ActionLink("Xóa", "DeleteProduct", new { id = item.Product_ID })</td>
-                <td>@Html.ActionLink("Chỉnh sửa", "EditProduct", new { id = item.Product_ID })</td>
             </tr>
         }
 

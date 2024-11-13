@@ -10,6 +10,7 @@ using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Web.Http.Results;
 using System.Data.Entity.Migrations;
+using System.IO;
 
 
 namespace FlowersShop.Areas.Admin.Controllers
@@ -44,13 +45,27 @@ namespace FlowersShop.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult CreateProduct(Product product)
+        public ActionResult CreateProduct(Product product, HttpPostedFileBase ImageFile)
         {
+            if (ImageFile != null && ImageFile.ContentLength > 0)
+            {
+                // Đường dẫn lưu trữ hình ảnh
+                var fileName = Path.GetFileName(ImageFile.FileName);
+                var path = Path.Combine(Server.MapPath("~/Media/ProductsImages/"), fileName);
+
+                // Lưu hình ảnh vào thư mục
+                ImageFile.SaveAs(path);
+
+                // Lưu đường dẫn hình ảnh vào cơ sở dữ liệu
+                product.Image = "/Media/ProductsImages/" + fileName;
+            }
+
             var multiColorID = Request.Form["SelectedColorIds"]?.Split(',');
             var multiObjectID = Request.Form["SelectedObjectIds"]?.Split(',');
             var multiOccasionID = Request.Form["SelectedOccasionIds"]?.Split(',');
             var multiPresentationID = Request.Form["SelectedPresentationIds"]?.Split(',');
 
+            
             var selectedColors = db.Color.Where(c => multiColorID.Contains(c.Color_ID.ToString())).ToList();
             var selectedObjects = db.Object.Where(o => multiObjectID.Contains(o.Object_ID.ToString())).ToList();
             var selectedOccasions = db.Occasion.Where(o => multiOccasionID.Contains(o.Occasion_ID.ToString())).ToList();
@@ -58,9 +73,13 @@ namespace FlowersShop.Areas.Admin.Controllers
             db.Product.AddOrUpdate(product);
 
             AddIntermediateTable(product, selectedColors, selectedObjects, selectedOccasions, selectedPresentations);
-            db.SaveChanges();
-           
-            return View();
+            int rowAffected = db.SaveChanges();
+
+            if (rowAffected > 0)
+            {
+                return Json(new { success = true });
+            }
+            return Json(new { success = false });
         }
 
         [HttpPost]
@@ -105,7 +124,7 @@ namespace FlowersShop.Areas.Admin.Controllers
             return PartialView("_EditModal",product);
         }
         [HttpPost]
-        public ActionResult EditProduct(Product product, FormCollection f)
+        public ActionResult EditProduct(Product product, FormCollection f, HttpPostedFileBase ImageFile)
         {   
             var multiColorID = f["SelectedColorIds"]?.Split(',');
             var multiObjectID = f["SelectedObjectIds"]?.Split(',');
@@ -128,12 +147,18 @@ namespace FlowersShop.Areas.Admin.Controllers
             producttemp.Description = product.Description;
             producttemp.Price = product.Price;
             producttemp.Quantity = product.Quantity;
-            if (producttemp.Image!=null)
+            if (ImageFile != null && ImageFile.ContentLength > 0)
             {
-                producttemp.Image = product.Image;
+                // Đường dẫn lưu trữ hình ảnh
+                var fileName = Path.GetFileName(ImageFile.FileName);
+                var path = Path.Combine(Server.MapPath("~/Media/ProductsImages/"), fileName);
+
+                // Lưu hình ảnh vào thư mục
+                ImageFile.SaveAs(path);
+
+                // Lưu đường dẫn hình ảnh vào cơ sở dữ liệu
+                producttemp.Image = "/Media/ProductsImages/" + fileName;
             }
-
-
 
             DeleteIntermediateTable(producttemp);
             AddIntermediateTable(producttemp, selectedColors, selectedObjects, selectedOccasions, selectedPresentations);
@@ -144,7 +169,19 @@ namespace FlowersShop.Areas.Admin.Controllers
 
             if (rowAffected > 0)
             {
-                return Json(new { success = true, product = product });
+                return Json(new
+                {
+                    success = true,
+                    product = new
+                    {
+                        Product_ID = producttemp.Product_ID,
+                        Name = producttemp.Name,
+                        Price = producttemp.Price,
+                        Description = producttemp.Description,
+                        Image = producttemp.Image,
+                        Quantity = producttemp.Quantity
+                    }
+                });
             }
             return Json(new { success = false });
         }

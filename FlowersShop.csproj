@@ -215,7 +215,7 @@
     <Compile Include="Repository\Product.cs">
       <DependentUpon>QL_BanHoa.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repository\Product_Color.cs" />
+    <Compile Include="Repository\ProductDTO.cs" />
     <Compile Include="Repository\QL_BanHoa.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -247,6 +247,7 @@
   <ItemGroup>
     <Content Include="Assets\Admin\assets\css\demo.css" />
     <Content Include="Assets\Admin\assets\customjs\modify-product.js" />
+    <Content Include="Assets\Client\customjs\sorting-product-client.js" />
     <Content Include="Assets\Admin\assets\img\avatars\1.png" />
     <Content Include="Assets\Admin\assets\img\avatars\5.png" />
     <Content Include="Assets\Admin\assets\img\avatars\6.png" />
@@ -388,6 +389,8 @@
     </Content>
     <Content Include="Areas\Admin\Views\Product\TestingProduct.cshtml" />
     <Content Include="Areas\Admin\Views\Product\CreateProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\SuccessAlert.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\FailAlert.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -422,18 +425,16 @@
     <Content Include="Views\Shared\_HeaderBar.cshtml" />
     <Content Include="Views\Shared\_SearchView.cshtml" />
     <Content Include="Views\Product\ShowProductAPITest.cshtml" />
-    <Content Include="Views\Categories\ShowCate.cshtml" />
-    <Content Include="Views\Cart\ShowCartByID.cshtml" />
     <Content Include="Views\Test\AddTest.cshtml" />
-    <Content Include="Views\Categories\CreateCategory.cshtml" />
     <Content Include="Areas\Admin\Views\Product\EditProduct.cshtml" />
     <Content Include="Views\Default\InputTest.cshtml" />
     <Content Include="Views\Default\Index.cshtml" />
+    <Content Include="Views\Product\SearchProductByCategory.cshtml" />
+    <Content Include="Views\Product\_ProductListPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Assets\Client\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
