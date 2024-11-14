@@ -167,6 +167,7 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -247,6 +248,8 @@
   <ItemGroup>
     <Content Include="Assets\Admin\assets\css\demo.css" />
     <Content Include="Assets\Admin\assets\customjs\modify-product.js" />
+    <Content Include="Assets\Client\customjs\modify_cart.js" />
+    <Content Include="Assets\Client\customjs\order.js" />
     <Content Include="Assets\Client\customjs\sorting-product-client.js" />
     <Content Include="Assets\Admin\assets\img\avatars\1.png" />
     <Content Include="Assets\Admin\assets\img\avatars\5.png" />
@@ -425,12 +428,15 @@
     <Content Include="Views\Shared\_HeaderBar.cshtml" />
     <Content Include="Views\Shared\_SearchView.cshtml" />
     <Content Include="Views\Product\ShowProductAPITest.cshtml" />
-    <Content Include="Views\Test\AddTest.cshtml" />
     <Content Include="Areas\Admin\Views\Product\EditProduct.cshtml" />
     <Content Include="Views\Default\InputTest.cshtml" />
     <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\Product\SearchProductByCategory.cshtml" />
     <Content Include="Views\Product\_ProductListPartial.cshtml" />
+    <Content Include="Views\Cart\ShowCart.cshtml" />
+    <Content Include="Views\Order\ShowOrder.cshtml" />
+    <Content Include="Views\Order\_Buy_CustomerInfo.cshtml" />
+    <Content Include="Views\Order\_consumeProdcut_CustomerInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

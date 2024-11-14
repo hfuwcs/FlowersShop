@@ -1,6 +1,7 @@
 ﻿using FlowersShop.Repository;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net.Http;
 using System.Web;
@@ -11,6 +12,8 @@ namespace FlowersShop.Controllers
     public class CartController : Controller
     {
         // GET: Cart
+        QL_BanHoaEntities db = new QL_BanHoaEntities();
+
         public ActionResult ShowCartByID(int Cid)
         {
             IEnumerable<Cart> carts = new List<Cart>();
@@ -33,6 +36,123 @@ namespace FlowersShop.Controllers
                 }
                 return View(carts);
             }
+        }
+
+        public IList<Cart> GetCart()
+        {
+            if (Session["Cart"] == null)
+            {
+                IList<Cart> cart = new List<Cart>();
+                Session["Cart"] = cart;
+                return Session["Cart"] as IList<Cart>;
+            }
+
+            IList<Cart> carts = Session["Cart"] as IList<Cart>;
+            foreach(var item in carts)
+            {
+                item.Product = db.Product.Find(item.Product_ID);
+            }
+
+            return Session["Cart"] as IList<Cart>;
+        }
+        public ActionResult ShowCart()
+        {
+            IList<Cart> carts = GetCart();
+
+            Users user = Session["Signed"] as Users;
+
+            if (user != null)
+            {
+                carts = db.Cart.Where(c => c.User_ID == 9).ToList();
+            }
+            ViewBag.ItemCount = carts.Count;
+
+
+            return View(carts);
+        }
+
+        [HttpPost]
+        public ActionResult AddToCart(int id, int quantity)
+        {
+            IList<Cart> carts = GetCart();
+            DateTime Now = DateTime.Now;
+            Users user =  Session["Signed"] as Users;
+
+            if (user != null)
+            {
+                Cart cart = new Cart()
+                {
+                    User_ID = user.User_ID,
+                    Product_ID = id,
+                    Quantity = quantity,
+                    Created_Date = Now
+                };
+                carts.Add(cart);
+                Session["Cart"] = carts;
+                db.Cart.AddOrUpdate(cart);
+                int rowAffected = db.SaveChanges();
+                if (rowAffected > 0)
+                {
+                    return Json(true);
+                }
+                return Json(false);
+            }
+            else
+            {
+                Cart cart = new Cart()
+                {
+                    User_ID = -1,
+                    Product_ID = id,
+                    Quantity = quantity,
+                    Created_Date = Now
+                };
+                carts.Add(cart);
+                Session["Cart"] = carts;
+                return Json(true);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult UpdateCart(int id, int quantity)
+        {
+            IList<Cart> carts = GetCart();
+            Users user = Session["Signed"] as Users;
+            Cart cart = new Cart();
+            if (user != null)
+            {
+                cart = db.Cart.FirstOrDefault(c => c.Product_ID == id);
+                cart.Quantity = quantity;
+                Session["Cart"] = carts;
+                db.Cart.AddOrUpdate(cart);
+                int rowAffected = db.SaveChanges();
+                if (rowAffected > 0)
+                {
+                    return Json(true);
+                }
+                return Json(false);
+            }
+            else
+            {
+                carts.FirstOrDefault(c => c.Product_ID == id).Quantity=quantity;
+                Session["Cart"] = carts;
+                return Json(true);
+            }
+
+            //Cart cart = db.Cart.FirstOrDefault(c=>c.Product_ID==id);
+            //cart.Quantity = quantity;
+            //db.Cart.AddOrUpdate(cart);
+            //int rowAffected = db.SaveChanges();
+            //if (rowAffected > 0)
+            //    { return Json(true); }
+            //return Json(false);
+        }
+
+        public ActionResult RemoveFromCart(int id)
+        {
+            Cart cart = db.Cart.Find(id);
+            db.Cart.Remove(cart);
+            db.SaveChanges();
+            return Json(true);
         }
     }
 }

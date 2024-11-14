@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -28,15 +30,32 @@ namespace FlowersShop.Controllers
         {
                 if (obj.IsUser(user))
                 {
-                    Session["Signed"] = user.UserName;//Tạo session để biết người dùng đã log in chưa
-                    TempData["user"] = user;
-                    return RedirectToAction("Index", "Home");
+                    user = db.Users.FirstOrDefault(u => u.UserName.Equals(user.UserName));
+                    Session["Signed"] = user;
+                    if (Session["Cart"] != null)
+                    {
+                        IList<Cart> carts = Session["Cart"] as IList<Cart>;
+                        foreach(var item in carts)
+                        {
+                            var existingProductInCart = db.Cart.SingleOrDefault(c => c.Product_ID == item.Product_ID 
+                            && c.User_ID == user.User_ID);
+                            if (existingProductInCart != null)
+                            {
+                                existingProductInCart.Quantity += item.Quantity;
+                                db.Cart.AddOrUpdate(existingProductInCart);
+                            }
+                            else
+                            {
+                                Cart newItem = item;
+                                newItem.User_ID = user.User_ID;
+                                db.Cart.AddOrUpdate(newItem);
+                            }
+                        }
+                        db.SaveChanges();
+                    }
+                    return RedirectToAction("ShowProduct", "Product");
                 }
-                //else if (obj.IsAdmin(user))
-                //{
-                //Session["Admin"] = user.UserName;
-                //return RedirectToAction("Index", "Dashboard", new { Area = "Admin" });
-                //}
+
                 else
                 {
                     ViewBag.error = "Sai tên đăng nhập hoặc mật khẩu";

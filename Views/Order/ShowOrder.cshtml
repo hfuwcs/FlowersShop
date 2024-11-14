@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Order Flower";
+}
+
+<h2>Order Flower</h2>
+
+@Html.BeginForm("ConfirmOrder", "Order", FormMethod.Post)
+{
+    <div>
+        <table>
+            @foreach (var item in ViewBag.Product)
+            {
+                <tr>
+                    <td>
+                        Tên
+                        @item.Product.Name
+                    </td>"
+                    <td> <img src="@Url.Content(item.Product.Image)" style="width: 50px; height: 50px; object-fit: contain;" /></td>
+                    <td>
+                        Giá:
+                        @item.Product.Price
+                    </td>
+                    <td> Số lượng: <input class="txtQty" type="number" value="@item.Quantity" id="#quanity" /></td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div id="Buy-CustomerInfo">
+        <h3>Thông tin người mua</h3>
+        @Html.Partial("_Buy_CustomerInfo")
+        <!--Tìm xem sự kiện fadeOut và fadeIn trong file order.js ở mục Assets/Client/customjs-->
+        <button id="btn-continueToOrder" type="button" style="display: block">Tiếp tục</button>
+    </div>
+    <div id="consumeProdcut_CustomerInfo" style="display: none">
+        <h3>Thông tin người nhận</h3>
+        <input type="checkbox" id="samePerson" value="1" />
+        <label for="samePerson">Thông tin người nhận giống người mua</label>
+        @Html.Partial("_consumeProdcut_CustomerInfo")
+        <button id="btn-confirmOrder" type="submit" style="display: block">Đặt hàng</button>
+    </div>
+}
+<script src="~/Assets/Client/customjs/order.js"></script>

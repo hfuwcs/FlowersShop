@@ -1,0 +1,69 @@
+﻿<div class="hide">
+    <div>
+        <label for="customerName">Họ và tên</label>
+        <input id="customerName" name="customerName" class="" />
+        <span id="customerNameError" class="error-message" style="display:none; color:red;">Họ và tên là bắt buộc.</span>
+    </div>
+    <div>
+        <label for="customerPhone">Số điện thoại</label>
+        <input id="customerPhone" name="customerPhone" />
+        <span id="customerPhoneError" class="error-message" style="display:none; color:red;">Số điện thoại là bắt buộc.</span>
+    </div>
+    <div>
+        <label for="customerEmail">Email</label>
+        <input id="customerEmail" name="customerEmail" />
+    </div>
+    <div>
+        <label for="customerAddress">Địa chỉ chi tiết</label>
+        <input id="customerAddress" name="customerAddress" />
+        <span id="customerAddressError" class="error-message" style="display:none; color:red;">Địa chỉ chi tiết là bắt buộc.</span>
+    </div>
+    <div>
+        <label for="customerProvince">Tỉnh/Thành phố</label>
+        <select id="customerProvince" name="customerProvince">
+            <option value="">Chọn tỉnh/thành phố</option>
+        </select>
+        <span id="customerProvinceError" class="error-message" style="display:none; color:red;">Tỉnh/Thành phố là bắt buộc.</span>
+    </div>
+
+    <div>
+        <label for="createTime">Thời gian</label>
+        <input type="datetime-local" id="createTime" />
+    </div>
+    <div>
+        Gửi tặng cho ai?
+        <select id="customerProvince" name="customerProvince">
+            <option value="">Chọn người nhận</option>
+            @foreach (var item in ViewBag.Object)
+            {
+                <option value="@item.Value">@item.Text</option>
+            }
+        </select>
+    </div>
+    <div>
+        Nhân dịp gì?
+        <select id="customerProvince" name="customerProvince">
+            <option value="">Chọn dịp</option>
+            @foreach (var item in ViewBag.Occasion)
+            {
+                <option value="@item.Value">@item.Text</option>
+            }
+        </select>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        const pcVN = require('/pc-vn');
+        const provinces = pcVN.getProvinces();
+
+        // Duyệt qua danh sách các tỉnh và thêm vào <select>
+        const provinceSelect = document.getElementById('customerProvince');
+        provinces.forEach(province => {
+            const option = document.createElement('option');
+            option.value = province.name;
+            option.textContent = province.name;
+            provinceSelect.appendChild(option);
+        });
+    });
+</script>

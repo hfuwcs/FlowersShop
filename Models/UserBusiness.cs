@@ -38,7 +38,7 @@ namespace FlowersShop.Models
             Users User = db.Users
                 .Where(u => u.UserName.Equals(users.UserName) && u.Password.Equals(users_Password))
                 .FirstOrDefault<Users>();
-            bool IsUsers = User!=null && CheckUserName(User.UserName) && db.Users.Any(u => u.Password.Equals(User.Password)) && User.Role_ID == 2;
+            bool IsUsers = User!=null && CheckUserName(User.UserName) && db.Users.Any(u => u.Password.Equals(User.Password)) && User.Role_ID == 3;
             if (IsUsers)
             {
                 //Dùng Linq Any để check xem có đúng UserName với Password hay không

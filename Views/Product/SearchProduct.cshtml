@@ -38,7 +38,8 @@
         </div>
 
         <div>
-            @foreach(var objectt in ViewBag.Objects)
+            <h3>Select Object</h3>
+            @foreach (var objectt in ViewBag.Objects)
             {
                 <label>
                     <input type="checkbox" name="SelectedObjectIds" value="@objectt.Object_ID" />
@@ -47,6 +48,7 @@
             }
         </div>
         <div>
+            <h3>Select Presentations</h3>
             @foreach (var presentation in ViewBag.Presentations)
             {
                 <label>
@@ -56,7 +58,28 @@
             }
         </div>
 
-        <!-- Chờ, thêm các checkbox Category khác ở đây -->
+        <div>
+            <h3>Sắp xếp theo A-Z</h3>
+            <label>
+                <input type="radio" name="SortByAlphabet" value="0" />
+                A-Z
+            </label>
+            <label>
+                <input type="radio" name="SortByAlphabet" value="1" />
+                Z-A
+            </label>
+        </div>
+        <div>
+            <h3>Sắp xếp Giá từ thấp đến cao</h3>
+            <label>
+                <input type="radio" name="SortByPrice" value="0" />
+                Giá từ thấp đến cao
+            </label>
+            <label>
+                <input type="radio" name="SortByPrice" value="1" />
+                Giá từ cao đến thấp
+            </label>
+        </div>
     </form>
     <table class="table">
         <thead>
@@ -118,7 +141,7 @@
 </body>
 </html>
 <script>
-    $(document).on('change', '#filterForm input[type="checkbox"]', function () {
+    $(document).on('change', '#filterForm input', function () {
         var selectedCategories = $('#filterForm').serialize(); // Lấy tất cả các giá trị checkbox đã chọn
         $.ajax({
             url: '/Product/SearchProductByCategory', // URL này trỏ đến Action SearchProductByCategory

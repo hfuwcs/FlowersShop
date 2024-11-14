@@ -186,11 +186,6 @@ namespace FlowersShop.Areas.Admin.Controllers
             return Json(new { success = false });
         }
 
-        [HttpGet]
-        public ActionResult TestingProduct()
-        {
-            return Json(new { success = true, color = db.Color.FirstOrDefault() },JsonRequestBehavior.AllowGet);
-        }
         public ActionResult DetailProduct(int id)
         {
             Product product = db.Product.Find(id);

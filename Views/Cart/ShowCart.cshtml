@@ -1,0 +1,75 @@
+﻿@model IEnumerable<FlowersShop.Repository.Cart>
+
+@{
+    ViewBag.Title = "ShowCart";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+    // Kiểm tra xem giỏ hàng có trống hay không
+    if (ViewBag.ItemCount == null || ViewBag.ItemCount == 0)
+    {
+        <div class="alert alert-info">
+            Giỏ hàng của bạn hiện đang trống.
+        </div>
+        return;
+    }
+}
+
+<h2>Giỏ hàng</h2>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Sản phẩm</th>
+                <th>Số lượng</th>
+                <th>Giá</th>
+                <th>Thành tiền</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr id="product-@item.Product_ID">
+                    <td>
+                        <img src="@item.Product.Image" alt="@item.Product.Name" style="width: 50px; height: 50px; object-fit: contain;">  @item.Product.Name
+                        <br> (@item.Product.Description.Substring(0, 10))
+                    </td>
+                    <td>
+                        <button onclick="decrementQuantity(@item.Product_ID)"
+                                data-product_id="@item.Product_ID">
+                            -
+                        </button>
+                        <input class="txtQty" type="number" value="@item.Quantity" id="quantity-@item.Product_ID" />
+                        <button onclick="incrementQuantity(@item.Product_ID)"
+                                data-product_id="@item.Product_ID">
+                            +
+                        </button>
+                    </td>
+                    <td>@String.Format("{0:C0}", item.Product.Price)</td>
+                    <td>@String.Format("{0:C0}", item.Product.Price * item.Quantity)</td>
+                    <td>
+                        <a href="@Url.Action("RemoveFromCart", new { id = item.Cart_ID })" class="btn btn-danger btn-sm">Xoá</a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3"><b>Tổng tiền:</b></td>
+                @*<td>@String.Format("{0:C0}", )</td>*@
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+<p>
+<p>
+    @Html.ActionLink("Đặt hàng", "ShowOrder", "Order", null, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-secondary" })
+</p>
+
+</p>
+
+<script src="~/Assets/Client/customjs/modify_cart.js"></script>

@@ -51,10 +51,16 @@ namespace FlowersShop.Controllers
             }
             return Json(productDTOList, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult SearchProductByCategory(int[] SelectedColorIds = null, int[] SelectedOccasionIds = null, int[] SelectedObjectIds = null, int[] SelectedPresentationIds = null)
+        public ActionResult SearchProductByCategory(int[] SelectedColorIds = null, 
+            int[] SelectedOccasionIds = null, 
+            int[] SelectedObjectIds = null, 
+            int[] SelectedPresentationIds = null,
+            int SortByAlphabet = 0,
+            int SortByPrice = 0)
         {
             // Truy xuất tất cả sản phẩm trước khi lọc
             var products = db.Product.AsQueryable();
+
 
             // Lọc theo màu sắc (sản phẩm cần chứa bất kỳ màu nào được chọn)
             if (SelectedColorIds != null && SelectedColorIds.Any())
@@ -80,6 +86,32 @@ namespace FlowersShop.Controllers
                 products = products.Where(p => p.Presentation.Any(pr => SelectedPresentationIds.Contains(pr.Presentation_ID)));
             }
 
+            // Lọc theo giá
+            switch (SortByPrice)
+            {
+                case 0:
+                    products = products.OrderBy(p => p.Price);
+                    break;
+                case 1:
+                    products = products.OrderByDescending(p => p.Price);
+                    break;
+                default:
+                    break;
+            }
+
+            // Lọc theo tên theo bảng chữ cái
+            switch (SortByAlphabet)
+            {
+                case 0:
+                    products = products.OrderBy(p => p.Name);
+                    break;
+                case 1:
+                    products = products.OrderByDescending(p => p.Name);
+                    break;
+                default:
+                    break;
+            }
+
             // Trả về kết quả dưới dạng PartialView cho AJAX
             if (Request.IsAjaxRequest())
             {
@@ -88,6 +120,6 @@ namespace FlowersShop.Controllers
 
             return View(products.ToList());
         }
-
+        
     }
 }

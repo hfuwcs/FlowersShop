@@ -29,12 +29,18 @@
             <th>
                 @Html.DisplayNameFor(model => model.Quantity)
             </th>
+            <th>
+                Thêm vào giỏ hàng
+            </th>
+            <th>
+                Số lượng
+            </th>
             <th></th>
         </tr>
 
         @foreach (var item in Model)
         {
-            <tr>
+            <tr id="product-@item.Product_ID">
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
@@ -57,9 +63,21 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Quantity)
                 </td>
+                <td>
+                    <button class="add-to-cart"
+                            type="button"
+                            data-product_id="@item.Product_ID">
+                        Thêm
+                    </button>
+                </td>
+                <td>
+                    <input type="number" id="quantity" value="1" />
+                </td>
             </tr>
         }
 
     </table>
 </body>
 </html>
+<!--Custom JS-->
+<script src="~/Assets/Client/customjs/modify_cart.js"></script>
