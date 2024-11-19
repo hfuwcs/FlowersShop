@@ -87,6 +87,7 @@
     <NavigationProperty Name="Order_Discount" Relationship="Self.FK__Order_Dis__Order__02084FDA" FromRole="Order" ToRole="Order_Discount" />
     <NavigationProperty Name="Payment" Relationship="Self.FK__Payment__Order_I__73BA3083" FromRole="Order" ToRole="Payment" />
     <NavigationProperty Name="Shipping" Relationship="Self.FK__Shipping__Order___76969D2E" FromRole="Order" ToRole="Shipping" />
+    <Property Name="ThoiGianNhanHang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Order_Details">
     <Key>
@@ -170,6 +171,8 @@
     <Property Name="Order_ID" Type="Int32" />
     <Property Name="Shipping_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Order" Relationship="Self.FK__Shipping__Order___76969D2E" FromRole="Shipping" ToRole="Order" />
+    <Property Name="SDTNguoiNhan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TenNguoiNhan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="User_Role">
     <Key>

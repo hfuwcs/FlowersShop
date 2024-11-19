@@ -3,24 +3,20 @@
   "WorkspaceRootPath": "D:\\HK5\\FlowersShop\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|D:\\HK5\\FlowersShop\\views\\cart\\showcart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:views\\cart\\showcart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|d:\\hk5\\flowersshop\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|D:\\HK5\\FlowersShop\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|d:\\hk5\\flowersshop\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|D:\\HK5\\FlowersShop\\assets\\client\\customjs\\modify_cart.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:assets\\client\\customjs\\modify_cart.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|D:\\HK5\\FlowersShop\\views\\product\\showproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:views\\product\\showproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|d:\\hk5\\flowersshop\\views\\cart\\showcart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:views\\cart\\showcart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|D:\\HK5\\FlowersShop\\views\\order\\showorder.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:views\\order\\showorder.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|d:\\hk5\\flowersshop\\areas\\admin\\views\\product\\showproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:areas\\admin\\views\\product\\showproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,67 +38,55 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "D:\\HK5\\FlowersShop\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
-              "ToolTip": "D:\\HK5\\FlowersShop\\Controllers\\UserController.cs",
-              "RelativeToolTip": "Controllers\\UserController.cs",
-              "ViewState": "AQIAADQAAAAAAAAAAAAgwD8AAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T17:10:09.047Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ShowCart.cshtml",
-              "DocumentMoniker": "D:\\HK5\\FlowersShop\\Views\\Cart\\ShowCart.cshtml",
-              "RelativeDocumentMoniker": "Views\\Cart\\ShowCart.cshtml",
-              "ToolTip": "D:\\HK5\\FlowersShop\\Views\\Cart\\ShowCart.cshtml",
-              "RelativeToolTip": "Views\\Cart\\ShowCart.cshtml",
-              "ViewState": "AQIAADgAAAAAAAAAAIAwwEUAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-14T15:43:06.801Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
               "Title": "ShowProduct.cshtml",
-              "DocumentMoniker": "D:\\HK5\\FlowersShop\\Views\\Product\\ShowProduct.cshtml",
-              "RelativeDocumentMoniker": "Views\\Product\\ShowProduct.cshtml",
-              "ToolTip": "D:\\HK5\\FlowersShop\\Views\\Product\\ShowProduct.cshtml",
-              "RelativeToolTip": "Views\\Product\\ShowProduct.cshtml",
-              "ViewState": "AQIAAEIAAAAAAAAAAAAAAFIAAAA1AAAA",
+              "DocumentMoniker": "D:\\HK5\\FlowersShop\\Areas\\Admin\\Views\\Product\\ShowProduct.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\Product\\ShowProduct.cshtml",
+              "ToolTip": "D:\\HK5\\FlowersShop\\Areas\\Admin\\Views\\Product\\ShowProduct.cshtml",
+              "RelativeToolTip": "Areas\\Admin\\Views\\Product\\ShowProduct.cshtml",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAACYAAAA6AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-14T15:31:02.53Z",
+              "WhenOpened": "2024-11-19T19:01:49.134Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "modify_cart.js",
+              "DocumentMoniker": "D:\\HK5\\FlowersShop\\Assets\\Client\\customjs\\modify_cart.js",
+              "RelativeDocumentMoniker": "Assets\\Client\\customjs\\modify_cart.js",
+              "ToolTip": "D:\\HK5\\FlowersShop\\Assets\\Client\\customjs\\modify_cart.js",
+              "RelativeToolTip": "Assets\\Client\\customjs\\modify_cart.js",
+              "ViewState": "AQIAACYAAAAAAAAAAAA9wDEAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-11-15T16:14:27.175Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ShowCart.cshtml",
+              "DocumentMoniker": "D:\\HK5\\FlowersShop\\Views\\Cart\\ShowCart.cshtml",
+              "RelativeDocumentMoniker": "Views\\Cart\\ShowCart.cshtml",
+              "ToolTip": "D:\\HK5\\FlowersShop\\Views\\Cart\\ShowCart.cshtml",
+              "RelativeToolTip": "Views\\Cart\\ShowCart.cshtml",
+              "ViewState": "AQIAADEAAAAAAAAAAAAwwEEAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-19T10:40:56.476Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "CartController.cs",
               "DocumentMoniker": "D:\\HK5\\FlowersShop\\Controllers\\CartController.cs",
               "RelativeDocumentMoniker": "Controllers\\CartController.cs",
               "ToolTip": "D:\\HK5\\FlowersShop\\Controllers\\CartController.cs",
               "RelativeToolTip": "Controllers\\CartController.cs",
-              "ViewState": "AQIAADYAAAAAAAAAAAAYwEcAAAAIAAAA",
+              "ViewState": "AQIAAJcAAAAAAAAAAAAYwKsAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T15:02:42.787Z",
+              "WhenOpened": "2024-11-19T10:33:31.033Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ShowOrder.cshtml",
-              "DocumentMoniker": "D:\\HK5\\FlowersShop\\Views\\Order\\ShowOrder.cshtml",
-              "RelativeDocumentMoniker": "Views\\Order\\ShowOrder.cshtml",
-              "ToolTip": "D:\\HK5\\FlowersShop\\Views\\Order\\ShowOrder.cshtml",
-              "RelativeToolTip": "Views\\Order\\ShowOrder.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACgAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-14T12:19:13.317Z"
             }
           ]
         }

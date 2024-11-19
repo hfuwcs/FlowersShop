@@ -31,6 +31,7 @@ namespace FlowersShop.Repository
         public string Shipping_Address { get; set; }
         public string Payment_Method { get; set; }
         public Nullable<int> User_ID { get; set; }
+        public string ThoiGianNhanHang { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual Users Users { get; set; }

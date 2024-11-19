@@ -31,7 +31,7 @@
                 {
                     <span>No image available</span>
                 }
-                    </td>
+            </td>
             <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
             <td>
                 <button type="button"
@@ -46,6 +46,13 @@
                         data-product_id="@item.Product_ID">
                     Chỉnh sửa
                 </button>
+            </td>
+            <td>
+                <a      href="@Url.Action("DetailProduct","Product", new {id= item.Product_ID})"    
+                        type="button"
+                        class="btn btn-primary primary-btn"
+                        >
+                   Xem chi tiết</a>
             </td>
         </tr>
     }

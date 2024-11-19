@@ -19,6 +19,8 @@ namespace FlowersShop.Repository
         public Nullable<double> Shipping_Cost { get; set; }
         public Nullable<int> Order_ID { get; set; }
         public string Shipping_Status { get; set; }
+        public string SDTNguoiNhan { get; set; }
+        public string TenNguoiNhan { get; set; }
     
         public virtual Order Order { get; set; }
     }

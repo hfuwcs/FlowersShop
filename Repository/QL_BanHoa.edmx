@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QL_BanHoaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QL_BanHoaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cart">
           <Key>
             <PropertyRef Name="Cart_ID" />
@@ -77,6 +77,7 @@
           <Property Name="Shipping_Address" Type="nvarchar" MaxLength="255" />
           <Property Name="Payment_Method" Type="nvarchar" MaxLength="50" />
           <Property Name="User_ID" Type="int" />
+          <Property Name="ThoiGianNhanHang" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Order_Details">
           <Key>
@@ -132,12 +133,6 @@
           <Property Name="Product_ID" Type="int" Nullable="false" />
           <Property Name="Color_ID" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'QL_BanHoa.dbo.Product_FlowerType' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="Product_FlowerType">
-          <Property Name="Product_ID" Type="int" />
-          <Property Name="Flower_Type_ID" Type="int" />
-        </EntityType>-->
         <EntityType Name="Product_Object">
           <Key>
             <PropertyRef Name="Product_ID" />
@@ -182,6 +177,8 @@ warning 6013: The table/view 'QL_BanHoa.dbo.Product_FlowerType' does not have a 
           <Property Name="Shipping_Cost" Type="float" />
           <Property Name="Order_ID" Type="int" />
           <Property Name="Shipping_Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="SDTNguoiNhan" Type="nvarchar" MaxLength="50" />
+          <Property Name="TenNguoiNhan" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="User_Role">
           <Key>
@@ -347,12 +344,6 @@ warning 6013: The table/view 'QL_BanHoa.dbo.Product_FlowerType' does not have a 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-error 6004: The table 'QL_BanHoa.dbo.Product_FlowerType' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__Product_F__Flowe__2CF2ADDF" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'QL_BanHoa.dbo.Product_FlowerType' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__Product_F__Produ__2BFE89A6" />-->
         <Association Name="FK__Product_O__Objec__1EA48E88">
           <End Role="Object" Type="Self.Object" Multiplicity="1" />
           <End Role="Product_Object" Type="Self.Product_Object" Multiplicity="*" />
@@ -584,8 +575,7 @@ error 6004: The table 'QL_BanHoa.dbo.Product_FlowerType' is referenced by a rela
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QL_BanHoaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -676,6 +666,7 @@ error 6004: The table 'QL_BanHoa.dbo.Product_FlowerType' is referenced by a rela
           <NavigationProperty Name="Order_Discount" Relationship="Self.FK__Order_Dis__Order__02084FDA" FromRole="Order" ToRole="Order_Discount" />
           <NavigationProperty Name="Payment" Relationship="Self.FK__Payment__Order_I__73BA3083" FromRole="Order" ToRole="Payment" />
           <NavigationProperty Name="Shipping" Relationship="Self.FK__Shipping__Order___76969D2E" FromRole="Order" ToRole="Shipping" />
+          <Property Name="ThoiGianNhanHang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Order_Details">
           <Key>
@@ -759,6 +750,8 @@ error 6004: The table 'QL_BanHoa.dbo.Product_FlowerType' is referenced by a rela
           <Property Name="Order_ID" Type="Int32" />
           <Property Name="Shipping_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Order" Relationship="Self.FK__Shipping__Order___76969D2E" FromRole="Shipping" ToRole="Order" />
+          <Property Name="SDTNguoiNhan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TenNguoiNhan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="User_Role">
           <Key>
@@ -1136,6 +1129,7 @@ error 6004: The table 'QL_BanHoa.dbo.Product_FlowerType' is referenced by a rela
           <EntitySetMapping Name="Order">
             <EntityTypeMapping TypeName="QL_BanHoaModel.Order">
               <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="ThoiGianNhanHang" ColumnName="ThoiGianNhanHang" />
                 <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
                 <ScalarProperty Name="Order_Date" ColumnName="Order_Date" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
@@ -1213,6 +1207,8 @@ error 6004: The table 'QL_BanHoa.dbo.Product_FlowerType' is referenced by a rela
           <EntitySetMapping Name="Shipping">
             <EntityTypeMapping TypeName="QL_BanHoaModel.Shipping">
               <MappingFragment StoreEntitySet="Shipping">
+                <ScalarProperty Name="TenNguoiNhan" ColumnName="TenNguoiNhan" />
+                <ScalarProperty Name="SDTNguoiNhan" ColumnName="SDTNguoiNhan" />
                 <ScalarProperty Name="Shipping_ID" ColumnName="Shipping_ID" />
                 <ScalarProperty Name="Shipping_Method" ColumnName="Shipping_Method" />
                 <ScalarProperty Name="Shipping_Cost" ColumnName="Shipping_Cost" />

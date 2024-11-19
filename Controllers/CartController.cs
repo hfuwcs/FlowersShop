@@ -30,7 +30,7 @@ namespace FlowersShop.Controllers
 
                     carts = readTask.Result;
                 }
-                else//Web api send error (Không đúng thì sẽ trả lỗi)
+                else//Web api send error
                 {
                     ModelState.AddModelError(string.Empty, "Sevver lỗi, hãy liên hệ quản trị viên");
                 }
@@ -63,9 +63,10 @@ namespace FlowersShop.Controllers
 
             if (user != null)
             {
-                carts = db.Cart.Where(c => c.User_ID == 9).ToList();
+                carts = db.Cart.Where(c => c.User_ID == user.User_ID).ToList();
             }
             ViewBag.ItemCount = carts.Count;
+            ViewBag.TotalPrice = carts.Sum(c => c.Quantity * c.Product.Price);
 
 
             return View(carts);
@@ -87,8 +88,16 @@ namespace FlowersShop.Controllers
                     Quantity = quantity,
                     Created_Date = Now
                 };
-                carts.Add(cart);
-                Session["Cart"] = carts;
+                if (carts.Where(c => c.Product_ID == id).SingleOrDefault() != null)
+                {
+                    cart = carts.FirstOrDefault(c => c.Product_ID == id);
+                    cart.Quantity += quantity;
+                }
+                else
+                {
+                    carts.Add(cart);
+                    Session["Cart"] = carts;
+                }
                 db.Cart.AddOrUpdate(cart);
                 int rowAffected = db.SaveChanges();
                 if (rowAffected > 0)
@@ -106,7 +115,15 @@ namespace FlowersShop.Controllers
                     Quantity = quantity,
                     Created_Date = Now
                 };
-                carts.Add(cart);
+                if (carts.Where(c=>c.Product_ID==id).SingleOrDefault()!=null)
+                {
+                    cart = carts.FirstOrDefault(c => c.Product_ID == id);
+                    cart.Quantity += quantity;
+                }
+                else 
+                { 
+                    carts.Add(cart);
+                }
                 Session["Cart"] = carts;
                 return Json(true);
             }
@@ -127,7 +144,15 @@ namespace FlowersShop.Controllers
                 int rowAffected = db.SaveChanges();
                 if (rowAffected > 0)
                 {
-                    return Json(true);
+                    return Json(new
+                    {
+                        success = true,
+                        data = new
+                        {
+                            totalPrice = carts.Sum(c => c.Quantity * c.Product.Price), // Tổng tiền của toàn giỏ hàng
+                            itemPrice = quantity * carts.FirstOrDefault(c => c.Product_ID == id).Product.Price // Tổng thành tiền của 1 sản phẩm
+                        }
+                    });
                 }
                 return Json(false);
             }
@@ -135,24 +160,37 @@ namespace FlowersShop.Controllers
             {
                 carts.FirstOrDefault(c => c.Product_ID == id).Quantity=quantity;
                 Session["Cart"] = carts;
-                return Json(true);
+                return Json(new
+                {
+                    success = true,
+                    data = new
+                    {
+                        totalPrice = carts.Sum(c => c.Quantity * c.Product.Price), // Tổng tiền của toàn giỏ hàng
+                        itemPrice = quantity * carts.FirstOrDefault(c => c.Product_ID == id).Product.Price // Tổng thành tiền của 1 sản phẩm
+                    }
+                });
             }
-
-            //Cart cart = db.Cart.FirstOrDefault(c=>c.Product_ID==id);
-            //cart.Quantity = quantity;
-            //db.Cart.AddOrUpdate(cart);
-            //int rowAffected = db.SaveChanges();
-            //if (rowAffected > 0)
-            //    { return Json(true); }
-            //return Json(false);
         }
 
         public ActionResult RemoveFromCart(int id)
         {
-            Cart cart = db.Cart.Find(id);
-            db.Cart.Remove(cart);
-            db.SaveChanges();
-            return Json(true);
+            IList<Cart> carts = GetCart();
+            Users user = Session["Signed"] as Users;
+            Cart cart = new Cart();
+
+            if (user != null)
+            {
+                cart = db.Cart.FirstOrDefault(c => c.Product_ID == id);
+                db.Cart.Remove(cart);
+                db.SaveChanges();
+                return Json(true);
+            }
+            else
+            {
+                carts.Remove(carts.FirstOrDefault(c => c.Product_ID == id));
+                Session["Cart"] = carts;
+                return Json(true);
+            }
         }
     }
 }

@@ -1,21 +1,21 @@
 ﻿<div class="hide">
     <div>
-        <label for="customerName">Họ và tên</label>
-        <input id="customerName" name="customerName" class="" />
+        <label for="customerNameConsume">Họ và tên</label>
+        <input type="text" id="customerNameConsume" name="customerNameConsume" class="" />
         <span id="customerNameError" class="error-message" style="display:none; color:red;">Họ và tên là bắt buộc.</span>
     </div>
     <div>
-        <label for="customerPhone">Số điện thoại</label>
-        <input id="customerPhone" name="customerPhone" />
+        <label for="customerPhoneConsume">Số điện thoại</label>
+        <input type="text" id="customerPhoneConsume" name="customerPhoneConsume" />
         <span id="customerPhoneError" class="error-message" style="display:none; color:red;">Số điện thoại là bắt buộc.</span>
     </div>
     <div>
         <label for="customerEmail">Email</label>
-        <input id="customerEmail" name="customerEmail" />
+        <input id="customerEmailConsume" name="customerEmailConsume" />
     </div>
     <div>
-        <label for="customerAddress">Địa chỉ chi tiết</label>
-        <input id="customerAddress" name="customerAddress" />
+        <label for="customerAddressConsume">Địa chỉ chi tiết</label>
+        <input id="customerAddressConsume" name="customerAddressConsume" />
         <span id="customerAddressError" class="error-message" style="display:none; color:red;">Địa chỉ chi tiết là bắt buộc.</span>
     </div>
     <div>
@@ -25,10 +25,22 @@
         </select>
         <span id="customerProvinceError" class="error-message" style="display:none; color:red;">Tỉnh/Thành phố là bắt buộc.</span>
     </div>
+    <div>
+        <label for="customerDistrict">Quận/Huyện:</label>
+        <select id="customerDistrict" name="customerDistrict" disabled>
+            <option value="">Chọn Quận/Huyện</option>
+        </select>
+    </div>
+    <div>
+        <label for="customerWard">Phường/Xã:</label>
+        <select id="customerWard" name="customerWard" disabled>
+            <option value="">Chọn Phường/Xã</option>
+        </select>
+    </div>
 
     <div>
         <label for="createTime">Thời gian</label>
-        <input type="datetime-local" id="createTime" />
+        <input type="datetime-local" id="RecceiveTime" />
     </div>
     <div>
         Gửi tặng cho ai?
@@ -50,20 +62,25 @@
             }
         </select>
     </div>
+    <div>
+        <label for="couponID">Mã giảm giá:</label>
+        <input type="text" name="couponCode" id="couponID" />
+    </div>
+    <div>
+        <input type="radio" value="Giao hàng nhanh" name="ShippingMethod" id="Bussines" />
+        <label for="Bussines">Giao hàng nhanh</label>
+    </div>
+    <div>
+        <input type="radio" value="Giao hàng tiết kiệm" name="ShippingMethod" id="Economic" />
+        <label for="Economic">Giao hàng tiết kiệm</label>
+    </div>
+    <div>
+        <input type="radio" value="Tiền mặt/COD" name="paymentMethod" id="TienMat/COD" />
+        <label for="TienMat/COD">Thanh toán khi nhận hàng (COD)</label>
+    </div>
+    <div>
+        <input type="radio" value="Chuyển khoản" name="paymentMethod" id="transfer" />
+        <label for="TienMat/COD">Chuyển khoản</label>
+    </div>
 </div>
-
-<script>
-    $(document).ready(function () {
-        const pcVN = require('/pc-vn');
-        const provinces = pcVN.getProvinces();
-
-        // Duyệt qua danh sách các tỉnh và thêm vào <select>
-        const provinceSelect = document.getElementById('customerProvince');
-        provinces.forEach(province => {
-            const option = document.createElement('option');
-            option.value = province.name;
-            option.textContent = province.name;
-            provinceSelect.appendChild(option);
-        });
-    });
-</script>
+<script src="~/Assets/Client/customjs/address.js"></script>

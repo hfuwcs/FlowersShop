@@ -26,7 +26,7 @@ namespace FlowersShop.Areas.Admin.Controllers
             ViewBag.Object = new SelectList(db.Object, "Object_ID", "Object_Name");
             ViewBag.Occasion = new SelectList(db.Occasion, "Occasion_ID", "Occasion_Name");
             ViewBag.Presentation = new SelectList(db.Presentation, "Presentation_ID", "Presentation_Name");
-            IList<Product> products = bn.GetData();
+            IList<Product> products = db.Product.Where(p => p.Quantity > 0).ToList();
             return View(products);
         }
 

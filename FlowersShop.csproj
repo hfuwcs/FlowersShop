@@ -155,6 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiControllers\CartsController.cs" />
+    <Compile Include="ApiControllers\LocationController.cs" />
     <Compile Include="ApiControllers\ProductsController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -162,6 +163,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Controllers\CartController.cs" />
@@ -189,6 +191,7 @@
     <Compile Include="Repository\Discount.cs">
       <DependentUpon>QL_BanHoa.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repository\District.cs" />
     <Compile Include="Repository\Flower_Type.cs">
       <DependentUpon>QL_BanHoa.tt</DependentUpon>
     </Compile>
@@ -217,6 +220,7 @@
       <DependentUpon>QL_BanHoa.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\ProductDTO.cs" />
+    <Compile Include="Repository\Province.cs" />
     <Compile Include="Repository\QL_BanHoa.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -244,10 +248,13 @@
     <Compile Include="Repository\User_Role.cs">
       <DependentUpon>QL_BanHoa.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repository\Ward.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Admin\assets\css\demo.css" />
     <Content Include="Assets\Admin\assets\customjs\modify-product.js" />
+    <Content Include="Assets\Admin\assets\customjs\order.js" />
+    <Content Include="Assets\Client\customjs\address.js" />
     <Content Include="Assets\Client\customjs\modify_cart.js" />
     <Content Include="Assets\Client\customjs\order.js" />
     <Content Include="Assets\Client\customjs\sorting-product-client.js" />
@@ -394,6 +401,10 @@
     <Content Include="Areas\Admin\Views\Product\CreateProduct.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\SuccessAlert.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\FailAlert.cshtml" />
+    <Content Include="App_Data\districts.json" />
+    <Content Include="App_Data\provinces.json" />
+    <Content Include="App_Data\wards.json" />
+    <Content Include="Areas\Admin\Views\Order\ShowOrder.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -437,10 +448,11 @@
     <Content Include="Views\Order\ShowOrder.cshtml" />
     <Content Include="Views\Order\_Buy_CustomerInfo.cshtml" />
     <Content Include="Views\Order\_consumeProdcut_CustomerInfo.cshtml" />
+    <Content Include="Views\Order\OrderSuccessful.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Views\Location\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

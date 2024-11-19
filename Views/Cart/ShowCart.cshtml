@@ -39,17 +39,23 @@
                                 data-product_id="@item.Product_ID">
                             -
                         </button>
-                        <input class="txtQty" type="number" value="@item.Quantity" id="quantity-@item.Product_ID" />
+                        <input class="txtQty" type="number" value="@item.Quantity" id="quantity-@item.Product_ID" data-product_id="@item.Product_ID" />
                         <button onclick="incrementQuantity(@item.Product_ID)"
                                 data-product_id="@item.Product_ID">
                             +
                         </button>
                     </td>
                     <td>@String.Format("{0:C0}", item.Product.Price)</td>
-                    <td>@String.Format("{0:C0}", item.Product.Price * item.Quantity)</td>
+                    <td id="item-totalPrice-@item.Product_ID">
+                        @String.Format("{0:C0}", item.Product.Price * item.Quantity)
+                    </td>
                     <td>
-                        <a href="@Url.Action("RemoveFromCart", new { id = item.Cart_ID })" class="btn btn-danger btn-sm">Xoá</a>
-
+                        @*<a href="@Url.Action("RemoveFromCart", new { id = item.Cart_ID })" class="btn btn-danger btn-sm remove-from-cart">Xoá</a>*@
+                        <button type="button"
+                                class="btn btn-danger btn-sm remove-from-cart"
+                                data-product_id="@item.Product_ID"> 
+                            Xóa 
+                        </button>
                     </td>
                 </tr>
             }
@@ -57,7 +63,9 @@
         <tfoot>
             <tr>
                 <td colspan="3"><b>Tổng tiền:</b></td>
-                @*<td>@String.Format("{0:C0}", )</td>*@
+                <td id="cart-price">
+                    @String.Format("{0:C0}", ViewBag.TotalPrice)
+                </td>
                 <td></td>
             </tr>
         </tfoot>

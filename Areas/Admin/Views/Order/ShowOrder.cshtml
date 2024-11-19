@@ -1,0 +1,112 @@
+﻿@model IEnumerable<FlowersShop.Repository.Order>
+
+@{
+    ViewBag.Title = "ShowOrder";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin-LayoutPage.cshtml";
+}
+<!-- Hoverable Table rows -->
+<div class="card">
+    <h5 class="card-header">Đơn hàng</h5>
+    <div class="table-responsive text-nowrap">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên người mua</th>
+                    <th>SĐT Người mua</th>
+                    <th>Tên Người nhận</th>
+                    <th>SĐT Người nhận</th>
+                    <th>Ngày tạo đơn</th>
+                    <th>Địa chỉ giao hàng</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <i class="fab fa-angular fa-lg text-danger me-3"></i>
+                            <strong>@item.Order_ID</strong>
+                        </td>
+                        <!--Người mua-->
+                        @if (item.Customer != null)
+                        {
+                            <td>@item.Customer.Name</td>
+                        }
+                        else
+                        {
+                            <td>Chưa có</td>
+                        }
+                        @if (item.Customer != null)
+                        {
+                            <td>@item.Customer.Phone</td>
+                        }
+                        else
+                        {
+                            <td>Chưa có</td>
+                        }
+
+                        <!--Người nhận-->
+                        @if (item.Shipping.FirstOrDefault() != null)
+                        {
+                            <td>@item.Shipping.FirstOrDefault().TenNguoiNhan</td>
+                        }
+                        else
+                        {
+                            <td>Chưa có</td>
+                        }
+                        @if (item.Shipping.FirstOrDefault() != null)
+                        {
+                            <td>@item.Shipping.FirstOrDefault().SDTNguoiNhan</td>
+                        }
+                        else
+                        {
+                            <td>Chưa có</td>
+                        }
+                        <td>@item.Order_Date</td>
+                        <td>@item.Shipping_Address</td>
+                        @if (item.Status.Equals("Chờ xác nhận"))
+                        {
+                            <td><span class="badge bg-label-warning me-1">Chờ xác nhận</span></td>
+                        }
+                        else if(item.Status.Equals("Đã hủy"))
+                        {
+                            <td><span class="badge bg-label-danger me-1">Đã hủy</span></td>
+                        }
+                        else if (item.Status.Equals("Đang giao hàng"))
+                        {
+                            <td><span class="badge bg-label-primary me-1">Đang giao hàng</span></td>
+                        }
+                        else 
+                        {
+                            <td><span class="badge bg-label-success me-1">Thành công</span></td>
+                        }
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item btn-confirmOrder" 
+                                       href="javascript:void(0);"
+                                       data-order_id="@item.Order_ID"
+                                       >
+                                        <i class="bx bx-edit-alt me-1"></i> Xác nhận đơn
+                                    </a>
+                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Hủy đơn</a>
+                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Chi tiết/Chỉnh sửa đơn</a>
+                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Xóa đơn</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+                </tbody> 
+        </table>
+    </div>
+</div>
+                
+
+<!--/ Hoverable Table rows -->

@@ -5,31 +5,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using FlowersShop.Models;
+using FlowersShop.ApiControllers;
+using Newtonsoft.Json;
+
 namespace FlowersShop.Controllers
 {
     public class OrderController : Controller
     {
         QL_BanHoaEntities db = new QL_BanHoaEntities();
-        /*
-           SELECT TOP (1000) [Order_ID]
-                          ,[Order_Date]
-                          ,[Status]
-                          ,[Total_Amount]
-                          ,[Customer_ID]
-                          ,[Shipping_Address]
-                          ,[Payment_Method]
-                          ,[User_ID]
-          FROM [QL_BanHoa].[dbo].[Order]
-
-        SELECT TOP (1000) [Order_Detail_ID]
-                      ,[Order_ID]
-                      ,[Product_ID]
-                      ,[Quantity]
-                      ,[Price]
-        FROM [QL_BanHoa].[dbo].[Order_Details]
-
-
-         */
 
         public IList<Cart> GetCart()
         {
@@ -49,33 +32,115 @@ namespace FlowersShop.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult ConfirmOrder()
+        public ActionResult ConfirmOrder(
+            //Người đặt
+            string customerName,
+            string customerPhone,
+            string customerEmail,
+            string customerAddress,
+            string paymentMethod,
+            //Người nhận
+            string customerNameConsume,
+            string customerPhoneConsume,
+            string customerAddressConsume,
+            string customerProvince,
+            string customerDistrict,
+            string customerWard,
+            string RecceiveTime,
+
+            //Mã giảm giá
+            string couponCode,
+            //Phương thức giao hàng
+            string ShippingMethod
+            )
         {
+
+            Users user = Session["Signed"] as Users;
+
+            LocationController lc = new LocationController();
+            customerProvince = lc.GetProvinceName(customerProvince);
+            customerDistrict = lc.GetDistrictName(customerDistrict);
+            customerWard = lc.GetWardName(customerWard);
+
+            //Xác thực thông tin người mua
+            int customerID = db.Customer.Where(c => c.Phone == customerPhone && !String.IsNullOrEmpty(customerPhone)).Select(c => c.Customer_ID).FirstOrDefault();
+
+            string shipping_address = customerAddressConsume + ", " + customerWard + ", " + customerDistrict + ", " + customerProvince;
+
             Order order = new Order();
             order.Order_Date = DateTime.Now;
             order.Status = "Chờ xác nhận";
             order.Total_Amount = 0;
-            order.Customer_ID = 1;
-            order.Shipping_Address = "Hà Nội";
-            order.Payment_Method = "Thanh toán khi nhận hàng";
-            order.User_ID = 1;
+            if (customerID == 0)
+            {
+                Customer customer = new Customer();
+                customer.Name = customerName;
+                customer.Phone = customerPhone;
+                customer.Email = customerEmail;
+                customer.Address = customerAddress;
+                db.Customer.Add(customer);
+                db.SaveChanges();
+                customerID = customer.Customer_ID;
+            }
+            order.Shipping_Address = shipping_address;
+            order.Payment_Method = paymentMethod;
+            order.ThoiGianNhanHang = RecceiveTime;
             db.Order.Add(order);
             db.SaveChanges();
+
+
+            //Thêm vào bảng Order_Details
             int orderID = order.Order_ID;
-            List<Cart> cart = db.Cart.Where(c => c.User_ID == 1).ToList();
-            foreach (var item in cart)
+            Discount discount = db.Discount.Where(d => d.Discount_Code == couponCode).FirstOrDefault();
+            IList<Cart> cart = new List<Cart>();
+            if (user != null)
             {
-                Order_Details orderDetails = new Order_Details();
-                orderDetails.Order_ID = orderID;
-                orderDetails.Product_ID = item.Product_ID;
-                orderDetails.Quantity = item.Quantity;
-                orderDetails.Price = item.Product.Price*item.Quantity;
-                db.Order_Details.Add(orderDetails);
-                db.SaveChanges();
-                db.Cart.Remove(item);
-                db.SaveChanges();
+                cart = db.Cart.Where(c => c.User_ID == user.User_ID).ToList();
+                foreach (var item in cart)
+                {
+                    Order_Details orderDetails = new Order_Details();
+                    orderDetails.Order_ID = orderID;
+                    orderDetails.Product_ID = item.Product_ID;
+                    orderDetails.Quantity = item.Quantity;
+                    orderDetails.Price = (item.Product.Price * item.Quantity) * discount.Discount_Percentage;
+                    db.Order_Details.Add(orderDetails);
+                    db.SaveChanges();
+                    db.Cart.Remove(item);
+                    db.SaveChanges();
+                }
             }
-            return RedirectToAction("ShowOrder");
+            else
+            {
+                cart = GetCart();
+                foreach (var item in cart)
+                {
+                    Order_Details orderDetails = new Order_Details();
+                    orderDetails.Order_ID = orderID;
+                    orderDetails.Product_ID = item.Product_ID;
+                    orderDetails.Quantity = item.Quantity;
+                    orderDetails.Price = (item.Product.Price * item.Quantity) * discount.Discount_Percentage;
+                    db.Order_Details.Add(orderDetails);
+                    db.SaveChanges();
+                }
+            }
+
+            //Thêm vào bảng Shipping
+            Shipping shipping = new Shipping()
+            {
+                Shipping_Method = ShippingMethod,
+                Order_ID = orderID,
+                Shipping_Status = "Đang giao hàng",
+                SDTNguoiNhan = customerPhoneConsume,
+                TenNguoiNhan = customerNameConsume
+            };
+            db.Shipping.Add(shipping);
+            db.SaveChanges();
+
+            return RedirectToAction("ShowProduct","Product");
+        }
+        public ActionResult OrderSuccessful()
+        {
+            return View();
         }
     }
 }

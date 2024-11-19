@@ -29,17 +29,15 @@
 
     // Remove from cart
     $('.remove-from-cart').on('click', function () {
-        var id = $(this).data('id');
+        var id = $(this).data('product_id');
         $.ajax({
-            url: '/cart/remove',
+            url: '/Cart/RemoveFromCart',
             type: 'POST',
             data: {
                 id: id
             },
             success: function (res) {
-                $('#cart-count').html(res.totalQuantity);
-                $('#cart-price').html(res.totalPrice);
-                $('#cart-item-' + id).remove();
+                $('#product-' + id).remove();
             }
         });
     });
@@ -66,6 +64,18 @@
                 console.log(err);
             }
         });
+    });
+
+    $('.txtQty').on('change', function () {
+        var productId = $(this).data('product_id');
+        var quantity = parseInt($(this).val());
+        if (quantity > 0) {
+            updateProduct(productId, quantity);
+        } else {
+            alert("Số lượng phải lớn hơn 0");
+            $(this).val(1); // Reset to 1 if invalid quantity
+            updateProduct(productId, 1);
+        }
     });
 
     function decrementQuantity(productId) {
@@ -95,9 +105,9 @@
                 quantity: quantity
             },
             success: function (res) {
-                $('#cart-count').html(res.totalQuantity);
-                $('#cart-price').html(res.totalPrice);
-                $('#cart-item-price-' + id).html(res.itemPrice);
+                // Cập nhật thành tiền của sản phẩm tương ứng
+                $('#item-totalPrice-' + id).html(res.data.itemPrice.toLocaleString("vi-VN", { style: "currency", currency: "VND" }));
+                $('#cart-price').html(res.data.totalPrice.toLocaleString("vi-VN", { style: "currency", currency: "VND" }));
             },
             error: function (err) {
                 alert("Lỗi không thể cập nhật sản phẩm");
