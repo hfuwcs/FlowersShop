@@ -38,16 +38,11 @@
             },
             success: function (res) {
                 $('#product-' + id).remove();
+                $('#cart-price').html(res.data.totalPrice.toLocaleString("vi-VN", { style: "currency", currency: "VND" }));
             }
         });
     });
 
-    // Update cart
-    //$('.update-cart').on('click', function () {
-    //    var id = $(this).data('product_id');
-    //    var quantity = $('#quantity').val();
-    //    updateProduct(id, quantity);
-    //})
 
     // Clear cart
     $('.clear-cart').on('click', function () {

@@ -132,6 +132,8 @@ namespace FlowersShop.Controllers
         [HttpPost]
         public ActionResult UpdateCart(int id, int quantity)
         {
+            
+
             IList<Cart> carts = GetCart();
             Users user = Session["Signed"] as Users;
             Cart cart = new Cart();
@@ -183,13 +185,27 @@ namespace FlowersShop.Controllers
                 cart = db.Cart.FirstOrDefault(c => c.Product_ID == id);
                 db.Cart.Remove(cart);
                 db.SaveChanges();
-                return Json(true);
+                return Json(new
+                {
+                    success = true,
+                    data = new
+                    {
+                        totalPrice = carts.Sum(c => c.Quantity * c.Product.Price), // Tổng tiền của toàn giỏ hàng 
+                    }
+                });
             }
             else
             {
                 carts.Remove(carts.FirstOrDefault(c => c.Product_ID == id));
                 Session["Cart"] = carts;
-                return Json(true);
+                return Json(new
+                {
+                    success = true,
+                    data = new
+                    {
+                        totalPrice = carts.Sum(c => c.Quantity * c.Product.Price), // Tổng tiền của toàn giỏ hàng
+                    }
+                });
             }
         }
     }

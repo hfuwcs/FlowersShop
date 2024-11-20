@@ -34,22 +34,22 @@
 <div id="productResults">
     <!-- Results will be injected here by AJAX -->
 </div>
-
+<!--Custom JS-->
 <script src="~/Assets/Client/customjs/sorting-product-client.js"></script>
 @*<script>
-    // Attach event listener to form's checkboxes
-    $('#filterForm input[type="checkbox"]').change(function() {
-        var selectedCategories = $('#filterForm').serialize(); // Get all selected checkbox values
-        $.ajax({
-            url: '@Url.Action("SearchProductByCategory", "Product")',
-            type: 'GET',
-            data: selectedCategories,
-            success: function (result) {
-                $('#productResults').html(result); // Inject filtered products into the results div
-            },
-            error: function () {
-                alert("An error occurred while fetching products.");
-            }
+        // Attach event listener to form's checkboxes
+        $('#filterForm input[type="checkbox"]').change(function() {
+            var selectedCategories = $('#filterForm').serialize(); // Get all selected checkbox values
+            $.ajax({
+                url: '@Url.Action("SearchProductByCategory", "Product")',
+                type: 'GET',
+                data: selectedCategories,
+                success: function (result) {
+                    $('#productResults').html(result); // Inject filtered products into the results div
+                },
+                error: function () {
+                    alert("An error occurred while fetching products.");
+                }
+            });
         });
-    });
-</script>*@
+    </script>*@

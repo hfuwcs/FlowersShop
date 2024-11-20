@@ -28,7 +28,14 @@
                             }
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Quantity)
+                            <button class="add-to-cart"
+                                    type="button"
+                                    data-product_id="@item.Product_ID">
+                                Thêm
+                            </button>
+                        </td>
+                        <td>
+                            <input type="number" id="quantity" value="1" />
                         </td>
                     </tr>
                 }
@@ -36,3 +43,4 @@
         </tbody>
     </table>
 </div>
+<script src="~/Assets/Client/customjs/modify_cart.js"></script>

@@ -24,7 +24,9 @@ namespace FlowersShop.ApiControllers
         [HttpGet]
         public ActionResult GetProvinces()
         {
-            var provinces = ReadJsonData<Province>("provinces.json");
+            var provinces = ReadJsonData<Province>("provinces.json")
+                .OrderBy(p => p.name)
+                .ToList();
             return Json(provinces, JsonRequestBehavior.AllowGet);
         }
 
@@ -34,6 +36,7 @@ namespace FlowersShop.ApiControllers
         {
             var districts = ReadJsonData<District>("districts.json")
                 .Where(d => d.province_code == provinceCode)
+                .OrderBy(d => d.name)
                 .ToList();
             return Json(districts, JsonRequestBehavior.AllowGet);
         }
@@ -44,6 +47,7 @@ namespace FlowersShop.ApiControllers
         {
             var wards = ReadJsonData<Ward>("wards.json")
                 .Where(w => w.district_code == districtCode)
+                .OrderBy(w => w.name)
                 .ToList();
             return Json(wards, JsonRequestBehavior.AllowGet);
         }
