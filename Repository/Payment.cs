@@ -18,7 +18,7 @@ namespace FlowersShop.Repository
         public Nullable<System.DateTime> Payment_Date { get; set; }
         public Nullable<double> Amount { get; set; }
         public string Payment_Method { get; set; }
-        public Nullable<int> Order_ID { get; set; }
+        public string Order_ID { get; set; }
     
         public virtual Order Order { get; set; }
     }

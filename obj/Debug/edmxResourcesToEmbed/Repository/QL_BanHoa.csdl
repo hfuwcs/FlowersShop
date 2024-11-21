@@ -73,7 +73,7 @@
     <Key>
       <PropertyRef Name="Order_ID" />
     </Key>
-    <Property Name="Order_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Order_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Order_Date" Type="DateTime" Precision="3" />
     <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Total_Amount" Type="Double" />
@@ -81,20 +81,20 @@
     <Property Name="Shipping_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="Payment_Method" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="User_ID" Type="Int32" />
+    <Property Name="ThoiGianNhanHang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Customer" Relationship="Self.FK__Order__Customer___6B24EA82" FromRole="Order" ToRole="Customer" />
     <NavigationProperty Name="Users" Relationship="Self.FK__Order__User_ID__6C190EBB" FromRole="Order" ToRole="Users" />
     <NavigationProperty Name="Order_Details" Relationship="Self.FK__Order_Det__Order__6EF57B66" FromRole="Order" ToRole="Order_Details" />
     <NavigationProperty Name="Order_Discount" Relationship="Self.FK__Order_Dis__Order__02084FDA" FromRole="Order" ToRole="Order_Discount" />
     <NavigationProperty Name="Payment" Relationship="Self.FK__Payment__Order_I__73BA3083" FromRole="Order" ToRole="Payment" />
     <NavigationProperty Name="Shipping" Relationship="Self.FK__Shipping__Order___76969D2E" FromRole="Order" ToRole="Shipping" />
-    <Property Name="ThoiGianNhanHang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Order_Details">
     <Key>
       <PropertyRef Name="Order_Detail_ID" />
     </Key>
     <Property Name="Order_Detail_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Order_ID" Type="Int32" />
+    <Property Name="Order_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Product_ID" Type="Int32" />
     <Property Name="Quantity" Type="Int32" />
     <Property Name="Price" Type="Double" />
@@ -106,7 +106,7 @@
       <PropertyRef Name="Order_Discount_ID" />
     </Key>
     <Property Name="Order_Discount_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Order_ID" Type="Int32" />
+    <Property Name="Order_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Discount_ID" Type="Int32" />
     <NavigationProperty Name="Discount" Relationship="Self.FK__Order_Dis__Disco__02FC7413" FromRole="Order_Discount" ToRole="Discount" />
     <NavigationProperty Name="Order" Relationship="Self.FK__Order_Dis__Order__02084FDA" FromRole="Order_Discount" ToRole="Order" />
@@ -119,7 +119,7 @@
     <Property Name="Payment_Date" Type="DateTime" Precision="3" />
     <Property Name="Amount" Type="Double" />
     <Property Name="Payment_Method" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Order_ID" Type="Int32" />
+    <Property Name="Order_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Order" Relationship="Self.FK__Payment__Order_I__73BA3083" FromRole="Payment" ToRole="Order" />
   </EntityType>
   <EntityType Name="Presentation">
@@ -168,11 +168,11 @@
     <Property Name="Shipping_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Shipping_Method" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Shipping_Cost" Type="Double" />
-    <Property Name="Order_ID" Type="Int32" />
+    <Property Name="Order_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Shipping_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Order" Relationship="Self.FK__Shipping__Order___76969D2E" FromRole="Shipping" ToRole="Order" />
     <Property Name="SDTNguoiNhan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="TenNguoiNhan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Order" Relationship="Self.FK__Shipping__Order___76969D2E" FromRole="Shipping" ToRole="Order" />
   </EntityType>
   <EntityType Name="User_Role">
     <Key>

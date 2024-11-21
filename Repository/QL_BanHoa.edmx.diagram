@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="45cff0aa59c1479fabf929a5cc38199b" Name="Diagram1" ZoomLevel="111">
+      <Diagram DiagramId="0d10b665589e4a47bd10fe222bfa1c86" Name="Diagram1" ZoomLevel="71">
         <EntityTypeShape EntityType="QL_BanHoaModel.Cart" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_BanHoaModel.Color" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_BanHoaModel.Customer" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
@@ -15,11 +15,11 @@
         <EntityTypeShape EntityType="QL_BanHoaModel.Order" Width="1.5" PointX="6" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_BanHoaModel.Order_Details" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_BanHoaModel.Order_Discount" Width="1.5" PointX="11.25" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_BanHoaModel.Payment" Width="1.5" PointX="8.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_BanHoaModel.Payment" Width="1.5" PointX="8.25" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_BanHoaModel.Presentation" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_BanHoaModel.Product" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_BanHoaModel.Review" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_BanHoaModel.Shipping" Width="1.5" PointX="8.25" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_BanHoaModel.Shipping" Width="1.5" PointX="8.25" PointY="13" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_BanHoaModel.User_Role" Width="1.5" PointX="1.5" PointY="18.375" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_BanHoaModel.Users" Width="1.5" PointX="0.75" PointY="13.5" IsExpanded="true" />
         <AssociationConnector Association="QL_BanHoaModel.FK__Cart__Product_ID__66603565" ManuallyRouted="false" />

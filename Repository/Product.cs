@@ -36,7 +36,7 @@ namespace FlowersShop.Repository
         public List<int> SelectedObjectIds;
         public List<int> SelectedOccasionIds;
         public List<int> SelectedPresentationIds;
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cart> Cart { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

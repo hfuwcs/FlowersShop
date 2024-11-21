@@ -202,3 +202,15 @@ D:\HK5\FlowersShop\bin\Newtonsoft.Json.xml
 D:\HK5\FlowersShop\bin\Antlr3.Runtime.pdb
 D:\HK5\FlowersShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\HK5\FlowersShop\obj\Debug\FlowersS.BB19F16C.Up2Date
+D:\HK5\FlowersShop\bin\Microsoft.Bcl.AsyncInterfaces.dll
+D:\HK5\FlowersShop\bin\Option.dll
+D:\HK5\FlowersShop\bin\RestSharp.dll
+D:\HK5\FlowersShop\bin\System.Text.Encodings.Web.dll
+D:\HK5\FlowersShop\bin\System.Text.Json.dll
+D:\HK5\FlowersShop\bin\System.ValueTuple.dll
+D:\HK5\FlowersShop\bin\Microsoft.Bcl.AsyncInterfaces.xml
+D:\HK5\FlowersShop\bin\Option.xml
+D:\HK5\FlowersShop\bin\RestSharp.xml
+D:\HK5\FlowersShop\bin\System.Text.Encodings.Web.xml
+D:\HK5\FlowersShop\bin\System.Text.Json.xml
+D:\HK5\FlowersShop\bin\System.ValueTuple.xml

@@ -15,7 +15,7 @@ namespace FlowersShop.Repository
     public partial class Order_Details
     {
         public int Order_Detail_ID { get; set; }
-        public Nullable<int> Order_ID { get; set; }
+        public string Order_ID { get; set; }
         public Nullable<int> Product_ID { get; set; }
         public Nullable<int> Quantity { get; set; }
         public Nullable<double> Price { get; set; }

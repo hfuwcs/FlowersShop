@@ -15,7 +15,7 @@ namespace FlowersShop.Repository
     public partial class Order_Discount
     {
         public int Order_Discount_ID { get; set; }
-        public Nullable<int> Order_ID { get; set; }
+        public string Order_ID { get; set; }
         public Nullable<int> Discount_ID { get; set; }
     
         public virtual Discount Discount { get; set; }

@@ -20,6 +20,12 @@ namespace FlowersShop
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] {"FlowersShop.Controllers"}
             );
+            routes.MapRoute(
+                name: "vnpay_return",
+                url: "vnpay_return",
+                defaults: new { controller = "Order", action = "VNPayReturn", alias = UrlParameter.Optional },
+                namespaces: new[] { "FlowersShop.Controllers" }
+            );
         }
     }
 }

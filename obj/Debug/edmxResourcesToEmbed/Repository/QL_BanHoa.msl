@@ -71,7 +71,6 @@
     <EntitySetMapping Name="Order">
       <EntityTypeMapping TypeName="QL_BanHoaModel.Order">
         <MappingFragment StoreEntitySet="Order">
-          <ScalarProperty Name="ThoiGianNhanHang" ColumnName="ThoiGianNhanHang" />
           <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
           <ScalarProperty Name="Order_Date" ColumnName="Order_Date" />
           <ScalarProperty Name="Status" ColumnName="Status" />
@@ -80,6 +79,7 @@
           <ScalarProperty Name="Shipping_Address" ColumnName="Shipping_Address" />
           <ScalarProperty Name="Payment_Method" ColumnName="Payment_Method" />
           <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="ThoiGianNhanHang" ColumnName="ThoiGianNhanHang" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -149,13 +149,13 @@
     <EntitySetMapping Name="Shipping">
       <EntityTypeMapping TypeName="QL_BanHoaModel.Shipping">
         <MappingFragment StoreEntitySet="Shipping">
-          <ScalarProperty Name="TenNguoiNhan" ColumnName="TenNguoiNhan" />
-          <ScalarProperty Name="SDTNguoiNhan" ColumnName="SDTNguoiNhan" />
           <ScalarProperty Name="Shipping_ID" ColumnName="Shipping_ID" />
           <ScalarProperty Name="Shipping_Method" ColumnName="Shipping_Method" />
           <ScalarProperty Name="Shipping_Cost" ColumnName="Shipping_Cost" />
           <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
           <ScalarProperty Name="Shipping_Status" ColumnName="Shipping_Status" />
+          <ScalarProperty Name="SDTNguoiNhan" ColumnName="SDTNguoiNhan" />
+          <ScalarProperty Name="TenNguoiNhan" ColumnName="TenNguoiNhan" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

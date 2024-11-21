@@ -23,7 +23,7 @@ namespace FlowersShop.Repository
             this.Shipping = new HashSet<Shipping>();
         }
     
-        public int Order_ID { get; set; }
+        public string Order_ID { get; set; }
         public Nullable<System.DateTime> Order_Date { get; set; }
         public string Status { get; set; }
         public Nullable<double> Total_Amount { get; set; }

@@ -16,14 +16,10 @@ namespace FlowersShop.Models
             using (SHA256 sha256 = SHA256.Create()) {
                 //Chuyển plaintText thành mảng Byte
                 //Convert plaint text to a bytes array
-                byte[] sourceData=Encoding.UTF8.GetBytes(plainText);
 
-                //Thực hiện băm trên mảng sourceData 
-                //Caculate hash value the sourceData
+                byte[] sourceData=Encoding.UTF8.GetBytes(plainText);
                 byte[] hashRes = sha256.ComputeHash(sourceData);
 
-                //Chuyển lại thành chuỗi con người đọc được =))
-                //Thay mấy dấu "-" thành "" (empty - không gì cả)
                 res = BitConverter.ToString(hashRes, 0, hashRes.Length).Replace("-",string.Empty);
 
                 return res;

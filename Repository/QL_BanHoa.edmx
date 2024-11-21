@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="QL_BanHoaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="QL_BanHoaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cart">
           <Key>
             <PropertyRef Name="Cart_ID" />
@@ -69,7 +69,7 @@
           <Key>
             <PropertyRef Name="Order_ID" />
           </Key>
-          <Property Name="Order_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Order_ID" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Order_Date" Type="datetime" />
           <Property Name="Status" Type="nvarchar" MaxLength="50" />
           <Property Name="Total_Amount" Type="float" />
@@ -84,7 +84,7 @@
             <PropertyRef Name="Order_Detail_ID" />
           </Key>
           <Property Name="Order_Detail_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Order_ID" Type="int" />
+          <Property Name="Order_ID" Type="nvarchar" MaxLength="100" />
           <Property Name="Product_ID" Type="int" />
           <Property Name="Quantity" Type="int" />
           <Property Name="Price" Type="float" />
@@ -94,7 +94,7 @@
             <PropertyRef Name="Order_Discount_ID" />
           </Key>
           <Property Name="Order_Discount_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Order_ID" Type="int" />
+          <Property Name="Order_ID" Type="nvarchar" MaxLength="100" />
           <Property Name="Discount_ID" Type="int" />
         </EntityType>
         <EntityType Name="Payment">
@@ -105,7 +105,7 @@
           <Property Name="Payment_Date" Type="datetime" />
           <Property Name="Amount" Type="float" />
           <Property Name="Payment_Method" Type="nvarchar" MaxLength="50" />
-          <Property Name="Order_ID" Type="int" />
+          <Property Name="Order_ID" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Presentation">
           <Key>
@@ -133,6 +133,12 @@
           <Property Name="Product_ID" Type="int" Nullable="false" />
           <Property Name="Color_ID" Type="int" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'QL_BanHoa.dbo.Product_FlowerType' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Product_FlowerType">
+          <Property Name="Product_ID" Type="int" />
+          <Property Name="Flower_Type_ID" Type="int" />
+        </EntityType>-->
         <EntityType Name="Product_Object">
           <Key>
             <PropertyRef Name="Product_ID" />
@@ -175,7 +181,7 @@
           <Property Name="Shipping_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Shipping_Method" Type="nvarchar" MaxLength="100" />
           <Property Name="Shipping_Cost" Type="float" />
-          <Property Name="Order_ID" Type="int" />
+          <Property Name="Order_ID" Type="nvarchar" MaxLength="100" />
           <Property Name="Shipping_Status" Type="nvarchar" MaxLength="50" />
           <Property Name="SDTNguoiNhan" Type="nvarchar" MaxLength="50" />
           <Property Name="TenNguoiNhan" Type="nvarchar" MaxLength="50" />
@@ -344,6 +350,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <!--Errors Found During Generation:
+error 6004: The table 'QL_BanHoa.dbo.Product_FlowerType' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Product_F__Flowe__2CF2ADDF" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'QL_BanHoa.dbo.Product_FlowerType' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Product_F__Produ__2BFE89A6" />-->
         <Association Name="FK__Product_O__Objec__1EA48E88">
           <End Role="Object" Type="Self.Object" Multiplicity="1" />
           <End Role="Product_Object" Type="Self.Product_Object" Multiplicity="*" />
@@ -575,7 +587,8 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QL_BanHoaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -652,7 +665,7 @@
           <Key>
             <PropertyRef Name="Order_ID" />
           </Key>
-          <Property Name="Order_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Order_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Order_Date" Type="DateTime" Precision="3" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Total_Amount" Type="Double" />
@@ -660,20 +673,20 @@
           <Property Name="Shipping_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Payment_Method" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="User_ID" Type="Int32" />
+          <Property Name="ThoiGianNhanHang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__Order__Customer___6B24EA82" FromRole="Order" ToRole="Customer" />
           <NavigationProperty Name="Users" Relationship="Self.FK__Order__User_ID__6C190EBB" FromRole="Order" ToRole="Users" />
           <NavigationProperty Name="Order_Details" Relationship="Self.FK__Order_Det__Order__6EF57B66" FromRole="Order" ToRole="Order_Details" />
           <NavigationProperty Name="Order_Discount" Relationship="Self.FK__Order_Dis__Order__02084FDA" FromRole="Order" ToRole="Order_Discount" />
           <NavigationProperty Name="Payment" Relationship="Self.FK__Payment__Order_I__73BA3083" FromRole="Order" ToRole="Payment" />
           <NavigationProperty Name="Shipping" Relationship="Self.FK__Shipping__Order___76969D2E" FromRole="Order" ToRole="Shipping" />
-          <Property Name="ThoiGianNhanHang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Order_Details">
           <Key>
             <PropertyRef Name="Order_Detail_ID" />
           </Key>
           <Property Name="Order_Detail_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Order_ID" Type="Int32" />
+          <Property Name="Order_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Product_ID" Type="Int32" />
           <Property Name="Quantity" Type="Int32" />
           <Property Name="Price" Type="Double" />
@@ -685,7 +698,7 @@
             <PropertyRef Name="Order_Discount_ID" />
           </Key>
           <Property Name="Order_Discount_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Order_ID" Type="Int32" />
+          <Property Name="Order_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Discount_ID" Type="Int32" />
           <NavigationProperty Name="Discount" Relationship="Self.FK__Order_Dis__Disco__02FC7413" FromRole="Order_Discount" ToRole="Discount" />
           <NavigationProperty Name="Order" Relationship="Self.FK__Order_Dis__Order__02084FDA" FromRole="Order_Discount" ToRole="Order" />
@@ -698,7 +711,7 @@
           <Property Name="Payment_Date" Type="DateTime" Precision="3" />
           <Property Name="Amount" Type="Double" />
           <Property Name="Payment_Method" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Order_ID" Type="Int32" />
+          <Property Name="Order_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Order" Relationship="Self.FK__Payment__Order_I__73BA3083" FromRole="Payment" ToRole="Order" />
         </EntityType>
         <EntityType Name="Presentation">
@@ -747,11 +760,11 @@
           <Property Name="Shipping_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Shipping_Method" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Shipping_Cost" Type="Double" />
-          <Property Name="Order_ID" Type="Int32" />
+          <Property Name="Order_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Shipping_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Order" Relationship="Self.FK__Shipping__Order___76969D2E" FromRole="Shipping" ToRole="Order" />
           <Property Name="SDTNguoiNhan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TenNguoiNhan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Order" Relationship="Self.FK__Shipping__Order___76969D2E" FromRole="Shipping" ToRole="Order" />
         </EntityType>
         <EntityType Name="User_Role">
           <Key>
@@ -1129,7 +1142,6 @@
           <EntitySetMapping Name="Order">
             <EntityTypeMapping TypeName="QL_BanHoaModel.Order">
               <MappingFragment StoreEntitySet="Order">
-                <ScalarProperty Name="ThoiGianNhanHang" ColumnName="ThoiGianNhanHang" />
                 <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
                 <ScalarProperty Name="Order_Date" ColumnName="Order_Date" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
@@ -1138,6 +1150,7 @@
                 <ScalarProperty Name="Shipping_Address" ColumnName="Shipping_Address" />
                 <ScalarProperty Name="Payment_Method" ColumnName="Payment_Method" />
                 <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="ThoiGianNhanHang" ColumnName="ThoiGianNhanHang" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1207,13 +1220,13 @@
           <EntitySetMapping Name="Shipping">
             <EntityTypeMapping TypeName="QL_BanHoaModel.Shipping">
               <MappingFragment StoreEntitySet="Shipping">
-                <ScalarProperty Name="TenNguoiNhan" ColumnName="TenNguoiNhan" />
-                <ScalarProperty Name="SDTNguoiNhan" ColumnName="SDTNguoiNhan" />
                 <ScalarProperty Name="Shipping_ID" ColumnName="Shipping_ID" />
                 <ScalarProperty Name="Shipping_Method" ColumnName="Shipping_Method" />
                 <ScalarProperty Name="Shipping_Cost" ColumnName="Shipping_Cost" />
                 <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
                 <ScalarProperty Name="Shipping_Status" ColumnName="Shipping_Status" />
+                <ScalarProperty Name="SDTNguoiNhan" ColumnName="SDTNguoiNhan" />
+                <ScalarProperty Name="TenNguoiNhan" ColumnName="TenNguoiNhan" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
