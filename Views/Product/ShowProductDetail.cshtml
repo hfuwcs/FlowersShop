@@ -1,0 +1,74 @@
+﻿@model FlowersShop.Repository.Product
+
+@{
+    ViewBag.Title = "ShowProductDetail";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<h2>ShowProductDetail</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @if (Model.Image != null)
+            {
+                <img class="image" src="@Url.Content(Model.Image)" width="200" />
+            }
+            else
+            {
+                <span>No image available</span>
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+        <dd>
+            <input hidden type="number" id="quantity" value="1" />
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Mua ngay", "BuyNow", "Cart", new { product_ID = Model.Product_ID }, new { @class = "btn btn-success" })
+    <button class="add-to-cart-Detail"
+            type="button"
+            data-product_id="@Model.Product_ID">
+        Thêm
+    </button>
+</p>
+
+<script src="~/Assets/Client/customjs/modify_cart.js"></script>

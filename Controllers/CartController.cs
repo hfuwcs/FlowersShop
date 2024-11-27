@@ -49,7 +49,7 @@ namespace FlowersShop.Controllers
             }
 
             IList<Cart> carts = Session["Cart"] as IList<Cart>;
-            foreach(var item in carts)
+            foreach (var item in carts)
             {
                 item.Product = db.Product.Find(item.Product_ID);
             }
@@ -208,6 +208,12 @@ namespace FlowersShop.Controllers
                     }
                 });
             }
+        }
+
+        public ActionResult BuyNow(int product_ID)
+        {
+            AddToCart(product_ID, 1);
+            return RedirectToAction("ShowOrder", "Order");
         }
     }
 }

@@ -19,7 +19,14 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Image)
+            @if (Model.Image != null)
+            {
+                <img class="image" src="@Url.Content(Model.Image)" width="200" />
+            }
+            else
+            {
+                <span>No image available</span>
+            }
         </dt>
 
         <dd>

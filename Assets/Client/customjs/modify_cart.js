@@ -25,7 +25,31 @@
             });
         });
     });
+    //Add to cart in product detail
+    $(document).ready(function () {
+        $('.add-to-cart-Detail').on('click', function () {
+            var id = $(this).data('product_id');
+            var quantity = 1;
 
+            $.ajax({
+                url: '/Cart/AddToCart',
+                type: 'POST',
+                data: {
+                    id: id,
+                    quantity: quantity
+                },
+                success: function (res) {
+                    $('#cart-count').html(res.totalQuantity);
+                    $('#cart-price').html(res.totalPrice);
+                    alert("Thêm vào giỏ hàng thành công");
+                },
+                error: function (err) {
+                    alert("Lỗi không thể thêm");
+                    console.log(err);
+                }
+            });
+        });
+    });
 
     // Remove from cart
     $('.remove-from-cart').on('click', function () {

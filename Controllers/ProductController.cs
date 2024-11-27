@@ -25,6 +25,13 @@ namespace FlowersShop.Controllers
             return View(products);
         }
         [HttpGet]
+        public ActionResult ShowProductDetail(int Product_ID)
+        {
+            Product product = db.Product.FirstOrDefault(p=>p.Product_ID== Product_ID);
+            return View(product);
+        }
+
+        [HttpGet]
         public ActionResult SearchProduct()
         {
             ViewBag.Colors = db.Color.ToList();

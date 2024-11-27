@@ -28,7 +28,8 @@ namespace FlowersShop.Controllers
 
         public ActionResult ShowOrder()
         {
-            ViewBag.Product = db.Cart.Where(c => c.User_ID == 1).ToList();
+            IList<Cart> carts = GetCart();
+            ViewBag.Product = carts;
             ViewBag.Object = new SelectList(db.Object, "Object_ID", "Object_Name");
             ViewBag.Occasion = new SelectList(db.Occasion, "Occasion_ID", "Occasion_Name");
             return View();

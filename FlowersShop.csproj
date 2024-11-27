@@ -471,6 +471,7 @@
     <Content Include="Views\Order\_Buy_CustomerInfo.cshtml" />
     <Content Include="Views\Order\_consumeProduct_CustomerInfo.cshtml" />
     <Content Include="Views\Order\OrderSuccess.cshtml" />
+    <Content Include="Views\Product\ShowProductDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />

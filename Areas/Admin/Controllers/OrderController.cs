@@ -17,7 +17,7 @@ namespace FlowersShop.Areas.Admin.Controllers
             return View(orders);
         }
         [HttpPost]
-        public ActionResult ConfirmOrder(int id)
+        public ActionResult ConfirmOrder(string id)
         {
             Order order = db.Order.Find(id);
             order.Status = "Đã xác nhận";
