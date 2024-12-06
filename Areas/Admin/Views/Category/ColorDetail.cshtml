@@ -1,0 +1,26 @@
+﻿@model FlowersShop.Repository.Color
+
+@{
+    ViewBag.Title = "Chi tiết";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin-LayoutPage.cshtml";
+}
+
+<h2>Chi tiết thể loại</h2>
+@using (Html.BeginForm("EditCategory", "Category", FormMethod.Post, new {id = "colorEditForm"}))
+{ 
+<div>
+    <div class="mb-3">
+        <label for="colorInput" class="form-label">Tên màu</label>
+        <input value="1" id="categoryType" name="categoryType" hidden/>
+        <input value="@Model.Color_ID" name="category_id" hidden/>
+        <input id="colorInput" name="categoryNameInput" class="form-control" type="text" placeholder="Tên màu sắc" value="@Model.Color_Name" />
+        <div>
+            <h4>@ViewBag.Message</h4>
+            <button type="submit" class="btn btn-primary">Chỉnh sửa</button>
+        </div>
+    </div>
+</div>
+}
+<p>
+    @Html.ActionLink("Back to List", "ShowAllCategory")
+</p>

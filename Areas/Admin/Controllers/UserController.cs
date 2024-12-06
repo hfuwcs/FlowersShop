@@ -16,7 +16,7 @@ namespace FlowersShop.Areas.Admin.Controllers
         QL_BanHoaEntities db = new QL_BanHoaEntities();
         public ActionResult DangNhap()
         {
-            if (Session["isLogin"] != null)
+            if (Session["Admin"] != null)
             {
                 return RedirectToAction("Index", "Dashboard");
             }

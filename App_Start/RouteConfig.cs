@@ -15,16 +15,17 @@ namespace FlowersShop
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                namespaces: new[] {"FlowersShop.Controllers"}
-            );
-            routes.MapRoute(
                 name: "vnpay_return",
                 url: "vnpay_return",
                 defaults: new { controller = "Order", action = "VNPayReturn", alias = UrlParameter.Optional },
                 namespaces: new[] { "FlowersShop.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] {"FlowersShop.Controllers"}
             );
         }
     }

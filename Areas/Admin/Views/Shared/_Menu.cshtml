@@ -68,18 +68,18 @@
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
-                <div data-i18n="Layouts">Layouts</div>
+                <div data-i18n="Layouts">Quản lý sản phẩm</div>
             </a>
 
             <ul class="menu-sub">
                 <li class="menu-item">
                     <a href="@Url.Action("ShowProduct","Product")" class="menu-link">
-                        <div data-i18n="Without menu">Without menu</div>
+                        <div data-i18n="Without menu">Tất cả sản phẩm</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="layouts-without-navbar.html" class="menu-link">
-                        <div data-i18n="Without navbar">Without navbar</div>
+                    <a href="@Url.Action("CreateProduct","Product")" class="menu-link">
+                        <div data-i18n="Without navbar">Thêm sản phẩm</div>
                     </a>
                 </li>
                 <li class="menu-item">
@@ -99,7 +99,57 @@
                 </li>
             </ul>
         </li>
-
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                <div data-i18n="Account Settings">Quản lý Thể loại</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="@Url.Action("ShowAllCategory","Category")" class="menu-link">
+                        <div data-i18n="Account">Tất cả thể loại sản phẩm</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="@Url.Action("AddCategory","Category")" class="menu-link">
+                        <div data-i18n="Notifications">Thêm thể loại sản phẩm</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" class="menu-link">
+                        <div data-i18n="Notifications">Màu sắc</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" class="menu-link">
+                        <div data-i18n="Connections">Đối tượng</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" class="menu-link">
+                        <div data-i18n="Connections">Cách trình bày</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" class="menu-link">
+                        <div data-i18n="Connections">Dịp</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                <div data-i18n="Account Settings">Quản lý buôn bán/doanh thu</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="@Url.Action("ShowAllDiscountCode","Discount")" class="menu-link">
+                        <div data-i18n="Notifications">Mã giảm giá</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Pages</span>
         </li>

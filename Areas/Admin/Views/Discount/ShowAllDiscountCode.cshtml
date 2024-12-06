@@ -1,0 +1,73 @@
+﻿@model IEnumerable<FlowersShop.Repository.Discount>
+
+@{
+    ViewBag.Title = "ShowAllDiscountCode";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin-LayoutPage.cshtml";
+}
+
+<h2>ShowAllDiscountCode</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "AddDiscountCode")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Mã giảm giá
+        </th>
+        <th>
+            Mô tả
+        </th>
+        <th>
+            Phần trăm giảm giá
+        </th>
+        <th>
+            Ngày bắt đầu
+        </th>
+        <th>
+            Ngày hết hạn
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr id="discount-@item.Discount_ID">
+        <td>
+            @Html.DisplayFor(modelItem => item.Discount_Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Discount_Percentage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Start_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.End_Date)
+        </td>
+        <td>
+            <button type="button"
+                    class="btn btn-primary delete-btn-discountCode"
+                    data-discount_id="@item.Discount_ID">
+                Xóa
+            </button>
+        </td>
+        <td>
+            <button type="button"
+                    class="btn btn-primary edit-btn-discountCode"
+                    data-discount_id="@item.Discount_ID">
+                Chỉnh sửa
+            </button>
+        </td>
+    </tr>
+}
+
+</table>
+<div id="EditDiscountCodeContainer">
+    @Html.Partial("_EditDiscountCode", Model.FirstOrDefault())
+</div>
+<div id="DeleteDiscountCodeContainer">
+    @Html.Partial("_DeleteDiscountCode")
+</div>

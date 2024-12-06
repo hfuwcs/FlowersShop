@@ -1,13 +1,15 @@
 ﻿$(document).ready(function () {
     var productId;
 
+    //test show toast
+    //không quan trọng
     $("#btn-show").on("click", function () {
         //var toast = new bootstrap.Toast($("#successAleart")[0]);
         //toast.show(); Cách 1
         $("#failAleart").toast("show"); // Cách 2
     });
 
-    $(".edit-btn").on("click", function () {
+    $(".edit-btn-product").on("click", function () {
         var url = "/Admin/Product/EditProduct";
         productId = $(this).data("product_id");
         // Gửi yêu cầu GET để lấy dữ liệu sản phẩm

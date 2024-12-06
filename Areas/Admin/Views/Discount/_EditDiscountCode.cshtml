@@ -1,0 +1,68 @@
+﻿@model FlowersShop.Repository.Discount
+
+@*@using (Ajax.BeginForm("EditDiscountCode", "Discount", FormMethod.Post,
+                    new AjaxOptions()
+                    {
+                        InsertionMode = InsertionMode.Replace,
+                        HttpMethod = "POST",
+                        UpdateTargetId = "EditDiscountCodeContainer"
+                    }
+                    ))
+{*@
+@using (Html.BeginForm("EditDiscountCode", "Discount", FormMethod.Post)) 
+{ 
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="modal fade" id="EditDiscountCode" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="EditModalLabel">Chỉnh sửa mã giảm giá</h5>
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @Html.HiddenFor(model => model.Discount_ID)
+                <div class="row">
+                    <div class="col mb-3">
+                        @Html.LabelFor(model => model.Discount_Code, "Mã giảm giá", new { @class = "form-label" })
+                        @Html.EditorFor(model => model.Discount_Code, new { htmlAttributes = new { @class = "form-control", placeholder = "MGG213" } })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-0">
+                        @Html.LabelFor(model => model.Discount_Percentage, "Phần trăm giảm", htmlAttributes: new { @class = "form-label" })
+                        @Html.EditorFor(model => model.Discount_Percentage, new { htmlAttributes = new { @class = "form-control", placeholder = "0.1" } })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-0">
+                        @Html.LabelFor(model => model.Description, "Mô tả", htmlAttributes: new { @class = "form-label" })
+                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="row">
+                    @Html.LabelFor(model => model.Start_Date, "Ngày bắt đầu", htmlAttributes: new { @class = "form-label" })
+                    <div class="col mb-0">
+                        @Html.TextBoxFor(model => model.Start_Date, new { @class = "form control", type = "date",value = Model.Start_Date })
+                    </div>
+                </div>
+                <div class="row">
+                    @Html.LabelFor(model => model.End_Date, "Ngày hết hạn", htmlAttributes: new { @class = "form-label" })
+                    <div class="col mb-0">
+                        @Html.TextBoxFor(model => model.End_Date, new { @class = "form control", type = "date", value = Model.End_Date })
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                    Close
+                </button>
+                <button type="submit" class="btn btn-primary" id="edit-confirm">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+}

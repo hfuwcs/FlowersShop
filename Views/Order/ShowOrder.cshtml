@@ -1,4 +1,5 @@
-﻿@{
+﻿@model  FlowersShop.Models.ConfirmOrderModel
+@{
     ViewBag.Title = "Order Flower";
 }
 
@@ -13,6 +14,8 @@
 
 }, new { @Id = "CheckOutOrderForm" }))
 {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div>
         <div>
             <table>
@@ -20,29 +23,32 @@
                 {
                     <tr>
                         <td>
-                            Tên
-                            @item.Product.Name
-                        </td>"
-                        <td> <img src="@Url.Content(item.Product.Image)" style="width: 50px; height: 50px; object-fit: contain;" /></td>
+                            Tên: @item.Product.Name
+                        </td>
+                        <td> <img src="@Url.Content(item.Product.Image)" style="width: 100px; height: 100px; object-fit: contain;" /></td>
                         <td>
-                            Giá:
-                            @item.Product.Price
+                            Giá: @item.Product.Price
                         </td>
                         <td> Số lượng: <input class="txtQty" type="number" value="@item.Quantity" id="#quanity" /></td>
                     </tr>
                 }
+                <tr>
+                    <td>
+                       Tổng tiền: <input type="number" value="@ViewBag.totalMoney" id="totalMoney" name="totalMoney" readonly class="form-control" />
+                    </td>
+                </tr>
             </table>
         </div>
         <div id="Buy-CustomerInfo">
             <h3>Thông tin người mua</h3>
-            @Html.Partial("_Buy_CustomerInfo")
+            @Html.Partial("_Buy_CustomerInfo", Model)
             <!--Tìm xem sự kiện fadeOut và fadeIn trong file order.js ở mục Assets/Client/customjs/order.js-->
             <button id="btn-continueToOrder" type="button" style="display: block">Tiếp tục</button>
         </div>
         <div id="consumeProdcut_CustomerInfo" style="display: none">
             <h3>Thông tin người nhận</h3>
             <input type="checkbox" id="samePerson" />
-            <label for="samePerson">Thông tin người nhận giống người mua</label>
+            <label for="samePerson">Thông tin người nhận giống người mua?</label>
             @Html.Partial("_consumeProduct_CustomerInfo")
             <button id="btn-confirmOrder" type="submit" style="display: block">Đặt hàng</button>
         </div>

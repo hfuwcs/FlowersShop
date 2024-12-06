@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "ShowAllCategory";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin-LayoutPage.cshtml";
+}
+<table>
+    <tr>
+        <th>Mã Loại</th>
+        <th>Tên Loại</th>
+    </tr>
+    @{ foreach (var item in ViewBag.Color)
+        {
+        <tr>
+            <th>@item.Color_ID</th>
+            <th>@item.Color_Name</th>
+            <th>@Html.ActionLink("Xem chi tiết", "ColorDetail", "Category", new { id = item.Color_ID }, new { @class = "btn btn-primary" })</th>
+        </tr>
+        }
+    }
+    
+    @{ foreach (var item in ViewBag.Object)
+        {
+        <tr>
+            <th>@item.Object_ID</th>
+            <th>@item.Object_Name</th>
+            <th>@Html.ActionLink("Xem chi tiết", "ObjectDetail", "Category", new { id = item.Object_ID }, new { @class = "btn btn-primary" })</th>
+        </tr>
+        }
+    }
+    @{ foreach (var item in ViewBag.Presentation)
+        {
+        <tr>
+            <th>@item.Presentation_ID</th>
+            <th>@item.Presentation_Name</th>
+            <th>@Html.ActionLink("Xem chi tiết", "PresentationDetail", "Category", new { id = item.Presentation_ID }, new { @class = "btn btn-primary" })</th>
+        </tr>
+        }
+    }
+    @{ foreach (var item in ViewBag.Occasion)
+        {
+        <tr>
+            <th>@item.Occasion_ID</th>
+            <th>@item.Occasion_Name</th>
+            <th>@Html.ActionLink("Xem chi tiết", "OccasionDetail", "Category", new { id = item.Occasion_ID }, new { @class = "btn btn-primary" })</th>
+        </tr>
+        }
+    }
+</table>

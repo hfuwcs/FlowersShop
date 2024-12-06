@@ -1,50 +1,52 @@
 ﻿<div class="hide">
     <div>
         <label for="customerNameConsume">Họ và tên</label>
-        <input type="text" id="customerNameConsume" name="customerNameConsume" class="" />
-        <span id="customerNameError" class="error-message" style="display:none; color:red;">Họ và tên là bắt buộc.</span>
+        <input type="text" id="customerNameConsume" name="customerNameConsume" class="form-control" />
+        <span id="customerNameConsumeError" class="error-message" style="display:none; color:red;">Họ và tên là bắt buộc.</span>
     </div>
     <div>
         <label for="customerPhoneConsume">Số điện thoại</label>
-        <input type="text" id="customerPhoneConsume" name="customerPhoneConsume" />
-        <span id="customerPhoneError" class="error-message" style="display:none; color:red;">Số điện thoại là bắt buộc.</span>
+        <input type="text" id="customerPhoneConsume" name="customerPhoneConsume" class="form-control"/>
+        <span id="customerPhoneConsumeError" class="error-message" style="display:none; color:red;">Số điện thoại là bắt buộc.</span>
     </div>
     <div>
         <label for="customerEmail">Email</label>
-        <input id="customerEmailConsume" name="customerEmailConsume" />
-    </div>
-    <div>
-        <label for="customerAddressConsume">Địa chỉ chi tiết</label>
-        <input id="customerAddressConsume" name="customerAddressConsume" />
-        <span id="customerAddressError" class="error-message" style="display:none; color:red;">Địa chỉ chi tiết là bắt buộc.</span>
+        <input id="customerEmailConsume" name="customerEmailConsume" class="form-control"/>
     </div>
     <div>
         <label for="customerProvince">Tỉnh/Thành phố</label>
-        <select id="customerProvince" name="customerProvince">
+        <select id="customerProvince" name="customerProvince" class="form-control">
             <option value="">Chọn tỉnh/thành phố</option>
         </select>
         <span id="customerProvinceError" class="error-message" style="display:none; color:red;">Tỉnh/Thành phố là bắt buộc.</span>
     </div>
     <div>
         <label for="customerDistrict">Quận/Huyện:</label>
-        <select id="customerDistrict" name="customerDistrict" disabled>
+        <select id="customerDistrict" name="customerDistrict" class="form-control" disabled>
             <option value="">Chọn Quận/Huyện</option>
         </select>
+        <span id="customerDistrictError" class="error-message" style="display:none; color:red;">Quận/Huyện phố là bắt buộc.</span>
     </div>
     <div>
         <label for="customerWard">Phường/Xã:</label>
-        <select id="customerWard" name="customerWard" disabled>
+        <select id="customerWard" name="customerWard" class="form-control" disabled>
             <option value="">Chọn Phường/Xã</option>
         </select>
+        <span id="customerWardError" class="error-message" style="display:none; color:red;">Phường/Xã phố là bắt buộc.</span>
     </div>
-
+    <div>
+        <label for="customerAddressConsume">Địa chỉ chi tiết</label>
+        <input id="customerAddressConsume" name="customerAddressConsume" class="form-control" />
+        <span id="customerAddressError" class="error-message" style="display:none; color:red;">Địa chỉ chi tiết là bắt buộc.</span>
+    </div>
     <div>
         <label for="createTime">Thời gian</label>
-        <input type="datetime-local" id="RecceiveTime" />
+        <input type="datetime-local" id="RecceiveTime" class="form-control" />
+        <span id="RecceiveTimeError" class="error-message" style="display:none; color:red;">Thời gian nhận là bắt buộc</span>
     </div>
     <div>
         Gửi tặng cho ai?
-        <select id="customerProvince" name="customerProvince">
+        <select id="customerProvince" name="customerProvince" class="form-control">
             <option value="">Chọn người nhận</option>
             @foreach (var item in ViewBag.Object)
             {
@@ -54,7 +56,7 @@
     </div>
     <div>
         Nhân dịp gì?
-        <select id="customerProvince" name="customerProvince">
+        <select id="customerProvince" name="customerProvince" class="form-control">
             <option value="">Chọn dịp</option>
             @foreach (var item in ViewBag.Occasion)
             {
@@ -64,10 +66,10 @@
     </div>
     <div>
         <label for="couponID">Mã giảm giá:</label>
-        <input type="text" name="couponCode" id="couponID" />
+        <input type="text" name="couponCode" id="couponID" class="form-control" />
     </div>
     <div>
-        <input type="radio" value="Giao hàng nhanh" name="ShippingMethod" id="Bussines" />
+        <input type="radio" value="Giao hàng nhanh" name="ShippingMethod" id="Bussines" checked />
         <label for="Bussines">Giao hàng nhanh</label>
     </div>
     <div>

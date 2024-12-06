@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using FlowersShop.Filters;
+using System.Web.Mvc;
 
 namespace FlowersShop.Areas.Admin
 {
@@ -17,9 +18,12 @@ namespace FlowersShop.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { action = "DangNhap", id = UrlParameter.Optional },
+                new { action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "FlowersShop.Areas.Admin.Controllers" }
             );
+
+            var filters = GlobalFilters.Filters;
+            filters.Add(new SessionAuthorizeAttribute());
         }
     }
 }

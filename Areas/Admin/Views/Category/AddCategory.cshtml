@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "AddCategory";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin-LayoutPage.cshtml";
+}
+@using (Ajax.BeginForm("AddCategory", "Category", FormMethod.Post, new AjaxOptions() { },
+    new {id = "addCategoryForm"}))
+{
+<div class="col-xl-8">
+    <div class="card mb-4">
+        <h5 class="card-header">Thêm thể loại sản phẩm</h5>
+        <!-- Checkboxes and Radios -->
+        <div class="card-body">
+            <div class="form-floating">
+                <input type="text"
+                       class="form-control"
+                       id="categoryNameInput"
+                       placeholder="Đỏ/Tặng bạn gái"
+                       aria-describedby="floatingInputHelp" />
+                <label for="floatingInput">Tên</label>
+                <div id="floatingInputHelp" class="form-text">
+                    Nhập tên thể loại sản vào ô này.
+                </div>
+            </div>
+            <div class="row gy-3">
+                <div class="col-md">
+                    <small class="text-light fw-semibold">Tên các thể loại sản phẩm</small>
+                    <!--Màu sắc-->
+                    <div class="form-check mt-3">
+                        <input name="category_id"
+                               class="form-check-input"
+                               type="radio"
+                               value="1"
+                               id="colorRadio"
+                               checked />
+                        <label class="form-check-label" for="colorRadio"> Màu sắc </label>
+                    </div>
+
+                    <!--Đối tượng-->
+                    <div class="form-check">
+                        <input name="category_id"
+                               class="form-check-input"
+                               type="radio"
+                               value="2"
+                               id="objectRadio" />
+                        <label class="form-check-label" for="objectRadio"> Đối tượng </label>
+                    </div>
+
+                    <!--Các trình bày-->
+                    <div class="form-check">
+                        <input name="category_id"
+                               class="form-check-input"
+                               type="radio"
+                               value="3"
+                               id="presentationRadio" />
+                        <label class="form-check-label" for="presentationRadio"> Các trình bày </label>
+                    </div>
+
+                    <!--Dịp-->
+                    <div class="form-check">
+                        <input name="category_id"
+                               class="form-check-input"
+                               type="radio"
+                               value="4"
+                               id="occasionRadio" />
+                        <label class="form-check-label" for="occasionRadio"> Dịp </label>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Thêm loại</button>
+            </div>
+        </div>
+    </div>
+</div>
+}

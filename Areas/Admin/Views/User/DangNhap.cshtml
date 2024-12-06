@@ -30,7 +30,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Login Basic - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>Admin Dashboard - Login</title>
 
     <meta name="description" content="" />
 
@@ -124,7 +124,7 @@
                             </a>
                         </div>
                         <!-- /Logo -->
-                        <h4 class="mb-2">Welcome to Sneat! 👋</h4>
+                        <h4 class="mb-2">Welcome 👋</h4>
                         <p class="mb-4">Please sign-in to your account and start the adventure</p>
 
                         @using (Html.BeginForm("DangNhap","User",FormMethod.Post, new {@class="mb-3"}))
@@ -171,15 +171,8 @@
                                 </div>
                         }
                             <h2>@ViewBag.error</h2>
-                            <p class="text-center">
-                                <span>New on our platform?</span>
-                                <a href="auth-register-basic.html">
-                                    <span>Create an account</span>
-                                </a>
-                            </p>
                         </div>
                 </div>
-                <!-- /Register -->
             </div>
         </div>
     </div>

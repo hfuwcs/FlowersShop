@@ -21,7 +21,7 @@ namespace FlowersShop.Controllers
         [HttpGet]
         public ActionResult ShowProduct()
         {
-            IList<Product> products = bn.GetData();
+            IList<Product> products = db.Product.Where(p=>p.Quantity>0).ToList();
             return View(products);
         }
         [HttpGet]
