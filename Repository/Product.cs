@@ -32,10 +32,6 @@ namespace FlowersShop.Repository
         public string Name { get; set; }
         public Nullable<double> Price { get; set; }
         public Nullable<int> Quantity { get; set; }
-        public List<int> SelectedColorIds;
-        public List<int> SelectedObjectIds;
-        public List<int> SelectedOccasionIds;
-        public List<int> SelectedPresentationIds;
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cart> Cart { get; set; }
