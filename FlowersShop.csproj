@@ -173,8 +173,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiControllers\CartsController.cs" />
-    <Compile Include="ApiControllers\LocationController.cs" />
     <Compile Include="ApiControllers\ProductsController.cs" />
+    <Compile Include="ApiControllers\LocationController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -196,8 +196,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Location\District.cs" />
+    <Compile Include="Models\Location\Province.cs" />
+    <Compile Include="Models\Location\Ward.cs" />
     <Compile Include="Models\Cipher.cs" />
     <Compile Include="Models\ConfirmOrderModel.cs" />
+    <Compile Include="Models\Helpers.cs" />
+    <Compile Include="Models\LineChartVM.cs" />
     <Compile Include="Models\Payments\VNPay\OrderInfo.cs" />
     <Compile Include="Models\Payments\VNPay\VnPayLibarry.cs" />
     <Compile Include="Models\ProductBusiness.cs" />
@@ -215,7 +220,6 @@
     <Compile Include="Repository\Discount.cs">
       <DependentUpon>Ql_BanHoa.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repository\District.cs" />
     <Compile Include="Repository\Flower_Type.cs">
       <DependentUpon>Ql_BanHoa.tt</DependentUpon>
     </Compile>
@@ -243,8 +247,7 @@
     <Compile Include="Repository\Product.cs">
       <DependentUpon>Ql_BanHoa.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repository\ProductDTO.cs" />
-    <Compile Include="Repository\Province.cs" />
+    <Compile Include="Models\Location\ProductDTO.cs" />
     <Compile Include="Repository\Ql_BanHoa.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -272,7 +275,6 @@
     <Compile Include="Repository\User_Role.cs">
       <DependentUpon>Ql_BanHoa.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repository\Ward.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Admin\assets\css\demo.css" />
@@ -281,6 +283,7 @@
     <Content Include="Assets\Admin\assets\customjs\modify-product.js" />
     <Content Include="Assets\Admin\assets\customjs\order.js" />
     <Content Include="Assets\Client\customjs\address.js" />
+    <Content Include="Assets\Client\customjs\category.js" />
     <Content Include="Assets\Client\customjs\modify_cart.js" />
     <Content Include="Assets\Client\customjs\order.js" />
     <Content Include="Assets\Client\customjs\sorting-product-client.js" />
@@ -441,6 +444,8 @@
     <Content Include="Areas\Admin\Views\Discount\_EditDiscountCode.cshtml" />
     <Content Include="Areas\Admin\Views\Discount\AddDiscountCode.cshtml" />
     <Content Include="Areas\Admin\Views\Discount\_DeleteDiscountCode.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\_DeleteModal.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\DrawLineChart.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />

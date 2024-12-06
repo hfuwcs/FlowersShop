@@ -29,7 +29,6 @@ namespace FlowersShop.Repository
         public virtual DbSet<Color> Color { get; set; }
         public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<Discount> Discount { get; set; }
-        public virtual DbSet<Flower_Type> Flower_Type { get; set; }
         public virtual DbSet<Object> Object { get; set; }
         public virtual DbSet<Occasion> Occasion { get; set; }
         public virtual DbSet<Order> Order { get; set; }
@@ -42,5 +41,6 @@ namespace FlowersShop.Repository
         public virtual DbSet<Shipping> Shipping { get; set; }
         public virtual DbSet<User_Role> User_Role { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<Flower_Type> Flower_Type { get; set; }
     }
 }

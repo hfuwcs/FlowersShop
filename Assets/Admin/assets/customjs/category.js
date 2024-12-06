@@ -1,4 +1,6 @@
 ﻿$(document).ready(function () {
+    var categoryId;
+    var categoryType;
     $("#addCategoryForm").on("submit", function (e) {
         e.preventDefault();
         const name = $("#categoryNameInput").val();
@@ -28,6 +30,43 @@
             }
         });
     }
+    $('.btn-delete-category').on("click", function () {
+        categoryId = $(this).data("category_id");
+        categoryType = $(this).data("category_type");
+        $("#DeleteModal").modal("show");
+        console.log(categoryType)
+        console.log(categoryId)
+    });
+    $("#delete-category-confirm").on("click", function () {
+        if(categoryType && categoryId) {
+            deleteCategory(categoryType, categoryId);
+        }
+    });
+
+    function deleteCategory(categoryType, categoryId) {
+        $.ajax({
+            url: "/Admin/Category/DeleteCategory",
+            type: "POST",
+            data: { categoryType: categoryType, category_id: categoryId },
+            success: function (response) {
+                if (response.success) {
+                    $("#successAleart").toast("show");
+                    $("#DeleteModal").modal("hide");
+                }
+                else {
+                    alert(response.message);
+                    $("#failAleart").toast("show");
+                    $("#DeleteModal").modal("hide");
+                }
+            },
+            error: function (xhr, status, error) {
+                console.log(error);
+                $("#failAleart").toast("show");
+                alert(message);
+            }
+        });
+    }
+
     //$("#colorEditForm").on("submit", function (e) {
     //    e.preventDefault();
     //    const name = $("#categoryNameInput").val();

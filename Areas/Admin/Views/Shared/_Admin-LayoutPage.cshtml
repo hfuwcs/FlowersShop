@@ -119,6 +119,17 @@
     <script src="~/Assets/Admin/assets/customjs/order.js"></script>
     <script src="~/Assets/Admin/assets/customjs/category.js"></script>
     <script src="~/Assets/Admin/assets/customjs/discount.js"></script>
+    @*<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script type="text/javascript">
+        $(function () {
+            var ctx = document.getElementById('myPieChart').getContext('2d');
+            var pieChart = new Chart(ctx, {
+                type: 'pie',
+                data: @Html.Raw(Json.Encode(Model))
+            });
+        });
+        </script>*@
+    @RenderSection("Script", required: false)
 
 </body>
 </html >

@@ -9,16 +9,15 @@
         <EntityTypeShape EntityType="QL_BanHoaModel.Color" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_BanHoaModel.Customer" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_BanHoaModel.Discount" Width="1.5" PointX="9" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_BanHoaModel.Flower_Type" Width="1.5" PointX="2.75" PointY="9.125" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_BanHoaModel.Object" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_BanHoaModel.Occasion" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_BanHoaModel.Occasion" Width="1.5" PointX="0.5" PointY="7.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_BanHoaModel.Order" Width="1.5" PointX="6" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_BanHoaModel.Order_Details" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_BanHoaModel.Order_Discount" Width="1.5" PointX="11.25" PointY="9" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_BanHoaModel.Payment" Width="1.5" PointX="8.25" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_BanHoaModel.Presentation" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_BanHoaModel.Product" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_BanHoaModel.Review" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_BanHoaModel.Review" Width="1.5" PointX="6.625" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_BanHoaModel.Shipping" Width="1.5" PointX="8.25" PointY="13" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_BanHoaModel.User_Role" Width="1.5" PointX="1.5" PointY="18.375" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_BanHoaModel.Users" Width="1.5" PointX="0.75" PointY="13.5" IsExpanded="true" />
@@ -34,12 +33,22 @@
         <AssociationConnector Association="QL_BanHoaModel.FK__Payment__Order_I__73BA3083" ManuallyRouted="false" />
         <AssociationConnector Association="QL_BanHoaModel.FK__Shipping__Order___76969D2E" ManuallyRouted="false" />
         <AssociationConnector Association="QL_BanHoaModel.FK__Order_Det__Produ__6FE99F9F" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_BanHoaModel.FK__Review__Product___797309D9" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_BanHoaModel.FK__Review__Product___797309D9" ManuallyRouted="true" >
+          <ConnectorPoint PointX="3.8515631250000011" PointY="4.25" />
+          <ConnectorPoint PointX="3.8515631250000011" PointY="3.60733037109375" />
+          <ConnectorPoint PointX="4.174482291666668" PointY="3.6073303710937497" />
+          <ConnectorPoint PointX="4.341148958333334" PointY="3.60733037109375" />
+          <ConnectorPoint PointX="4.8650606452381622" PointY="3.60733037109375" />
+          <ConnectorPoint PointX="4.8650606452381622" PointY="2.3025162760416666" />
+          <ConnectorPoint PointX="6.625" PointY="2.3025162760416666" />
+        </AssociationConnector>
         <AssociationConnector Association="QL_BanHoaModel.FK__Users__Role_ID__4222D4EF" ManuallyRouted="false" />
         <AssociationConnector Association="QL_BanHoaModel.Product_Color" ManuallyRouted="false" />
         <AssociationConnector Association="QL_BanHoaModel.Product_Object" ManuallyRouted="false" />
         <AssociationConnector Association="QL_BanHoaModel.Product_Occasion" ManuallyRouted="false" />
         <AssociationConnector Association="QL_BanHoaModel.Product_Presentation" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QL_BanHoaModel.Flower_Type" Width="1.5" PointX="0.5" PointY="0.5" />
+        <AssociationConnector Association="QL_BanHoaModel.Product_FlowerType" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

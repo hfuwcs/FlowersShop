@@ -44,14 +44,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Flower_Type">
-      <EntityTypeMapping TypeName="QL_BanHoaModel.Flower_Type">
-        <MappingFragment StoreEntitySet="Flower_Type">
-          <ScalarProperty Name="Flower_Type_ID" ColumnName="Flower_Type_ID" />
-          <ScalarProperty Name="Flower_Type_Name" ColumnName="Flower_Type_Name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Object">
       <EntityTypeMapping TypeName="QL_BanHoaModel.Object">
         <MappingFragment StoreEntitySet="Object">
@@ -211,6 +203,22 @@
       </EndProperty>
       <EndProperty Name="Product">
         <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="Flower_Type">
+      <EntityTypeMapping TypeName="QL_BanHoaModel.Flower_Type">
+        <MappingFragment StoreEntitySet="Flower_Type">
+          <ScalarProperty Name="Flower_Type_Name" ColumnName="Flower_Type_Name" />
+          <ScalarProperty Name="Flower_Type_ID" ColumnName="Flower_Type_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Product_FlowerType" TypeName="QL_BanHoaModel.Product_FlowerType" StoreEntitySet="Product_FlowerType">
+      <EndProperty Name="Product">
+        <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+      </EndProperty>
+      <EndProperty Name="Flower_Type">
+        <ScalarProperty Name="Flower_Type_ID" ColumnName="Flower_Type_ID" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

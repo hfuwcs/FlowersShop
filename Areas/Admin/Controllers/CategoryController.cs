@@ -132,5 +132,58 @@ namespace FlowersShop.Areas.Admin.Controllers
                 });
             }
         }
+        [HttpPost]
+        public ActionResult DeleteCategory(int categoryType, int category_id)
+        {
+            try
+            {
+                if (categoryType == 1)
+                {
+                    Color color = db.Color.Find(category_id);
+                    if(db.Product.FirstOrDefault(x => x.Color.FirstOrDefault().Color_ID == category_id) == null)
+                        db.Color.Remove(color);
+                }
+                else if (categoryType == 2)
+                {
+                    Repository.Object objectt = db.Object.Find(category_id);
+                    if (db.Product.FirstOrDefault(x => x.Object.FirstOrDefault().Object_ID == category_id) == null)
+                        db.Object.Remove(objectt);
+                }
+                else if (categoryType == 3)
+                {
+                    Presentation presentation = db.Presentation.Find(category_id);
+                    if (db.Product.FirstOrDefault(x => x.Presentation.FirstOrDefault().Presentation_ID == category_id) == null)
+                        db.Presentation.Remove(presentation);
+                }
+                else if (categoryType == 4)
+                {
+                    Occasion occasion = db.Occasion.Find(category_id);
+                    if (db.Product.FirstOrDefault(x => x.Occasion.FirstOrDefault().Occasion_ID == category_id) == null)
+                        db.Occasion.Remove(occasion);
+                }
+                int rowAffected = db.SaveChanges();
+                if (rowAffected <= 0)
+                {
+                    return Json(new
+                    {
+                        success = false,
+                        message = "Xóa thất bại, có bảng dữ liệu liên quan"
+                    });
+                }
+                return Json(new
+                {
+                    success = true,
+                    message = "Xóa thành công"
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    success = false,
+                    message = ex.Message
+                });
+            }
+        }
     }
 }

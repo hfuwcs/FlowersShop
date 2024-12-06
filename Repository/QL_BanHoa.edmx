@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QL_BanHoaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QL_BanHoaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cart">
           <Key>
             <PropertyRef Name="Cart_ID" />
@@ -133,12 +133,14 @@
           <Property Name="Product_ID" Type="int" Nullable="false" />
           <Property Name="Color_ID" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'QL_BanHoa.dbo.Product_FlowerType' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="Product_FlowerType">
-          <Property Name="Product_ID" Type="int" />
-          <Property Name="Flower_Type_ID" Type="int" />
-        </EntityType>-->
+          <Key>
+            <PropertyRef Name="Product_ID" />
+            <PropertyRef Name="Flower_Type_ID" />
+          </Key>
+          <Property Name="Product_ID" Type="int" Nullable="false" />
+          <Property Name="Flower_Type_ID" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Product_Object">
           <Key>
             <PropertyRef Name="Product_ID" />
@@ -350,12 +352,30 @@ warning 6013: The table/view 'QL_BanHoa.dbo.Product_FlowerType' does not have a 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-error 6004: The table 'QL_BanHoa.dbo.Product_FlowerType' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__Product_F__Flowe__2CF2ADDF" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'QL_BanHoa.dbo.Product_FlowerType' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__Product_F__Produ__2BFE89A6" />-->
+        <Association Name="FK__Product_F__Flowe__76619304">
+          <End Role="Flower_Type" Type="Self.Flower_Type" Multiplicity="1" />
+          <End Role="Product_FlowerType" Type="Self.Product_FlowerType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flower_Type">
+              <PropertyRef Name="Flower_Type_ID" />
+            </Principal>
+            <Dependent Role="Product_FlowerType">
+              <PropertyRef Name="Flower_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product_F__Produ__756D6ECB">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Product_FlowerType" Type="Self.Product_FlowerType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Product_ID" />
+            </Principal>
+            <Dependent Role="Product_FlowerType">
+              <PropertyRef Name="Product_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Product_O__Objec__1EA48E88">
           <End Role="Object" Type="Self.Object" Multiplicity="1" />
           <End Role="Product_Object" Type="Self.Product_Object" Multiplicity="*" />
@@ -491,6 +511,7 @@ error 6004: The table 'QL_BanHoa.dbo.Product_FlowerType' is referenced by a rela
           <EntitySet Name="Presentation" EntityType="Self.Presentation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product_Color" EntityType="Self.Product_Color" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_FlowerType" EntityType="Self.Product_FlowerType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product_Object" EntityType="Self.Product_Object" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product_Occasion" EntityType="Self.Product_Occasion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product_Presentation" EntityType="Self.Product_Presentation" Schema="dbo" store:Type="Tables" />
@@ -546,6 +567,14 @@ error 6004: The table 'QL_BanHoa.dbo.Product_FlowerType' is referenced by a rela
             <End Role="Product" EntitySet="Product" />
             <End Role="Product_Color" EntitySet="Product_Color" />
           </AssociationSet>
+          <AssociationSet Name="FK__Product_F__Flowe__76619304" Association="Self.FK__Product_F__Flowe__76619304">
+            <End Role="Flower_Type" EntitySet="Flower_Type" />
+            <End Role="Product_FlowerType" EntitySet="Product_FlowerType" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product_F__Produ__756D6ECB" Association="Self.FK__Product_F__Produ__756D6ECB">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Product_FlowerType" EntitySet="Product_FlowerType" />
+          </AssociationSet>
           <AssociationSet Name="FK__Product_O__Objec__1EA48E88" Association="Self.FK__Product_O__Objec__1EA48E88">
             <End Role="Object" EntitySet="Object" />
             <End Role="Product_Object" EntitySet="Product_Object" />
@@ -587,8 +616,7 @@ error 6004: The table 'QL_BanHoa.dbo.Product_FlowerType' is referenced by a rela
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QL_BanHoaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -637,13 +665,6 @@ error 6004: The table 'QL_BanHoa.dbo.Product_FlowerType' is referenced by a rela
           <Property Name="Start_Date" Type="DateTime" Precision="3" />
           <Property Name="End_Date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Order_Discount" Relationship="Self.FK__Order_Dis__Disco__02FC7413" FromRole="Discount" ToRole="Order_Discount" />
-        </EntityType>
-        <EntityType Name="Flower_Type">
-          <Key>
-            <PropertyRef Name="Flower_Type_ID" />
-          </Key>
-          <Property Name="Flower_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Flower_Type_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Object">
           <Key>
@@ -739,6 +760,7 @@ error 6004: The table 'QL_BanHoa.dbo.Product_FlowerType' is referenced by a rela
           <NavigationProperty Name="Object" Relationship="Self.Product_Object" FromRole="Product" ToRole="Object" />
           <NavigationProperty Name="Occasion" Relationship="Self.Product_Occasion" FromRole="Product" ToRole="Occasion" />
           <NavigationProperty Name="Presentation" Relationship="Self.Product_Presentation" FromRole="Product" ToRole="Presentation" />
+          <NavigationProperty Name="Flower_Type" Relationship="QL_BanHoaModel.Product_FlowerType" FromRole="Product" ToRole="Flower_Type" />
         </EntityType>
         <EntityType Name="Review">
           <Key>
@@ -980,7 +1002,6 @@ error 6004: The table 'QL_BanHoa.dbo.Product_FlowerType' is referenced by a rela
           <EntitySet Name="Color" EntityType="Self.Color" />
           <EntitySet Name="Customer" EntityType="Self.Customer" />
           <EntitySet Name="Discount" EntityType="Self.Discount" />
-          <EntitySet Name="Flower_Type" EntityType="Self.Flower_Type" />
           <EntitySet Name="Object" EntityType="Self.Object" />
           <EntitySet Name="Occasion" EntityType="Self.Occasion" />
           <EntitySet Name="Order" EntityType="Self.Order" />
@@ -1065,7 +1086,24 @@ error 6004: The table 'QL_BanHoa.dbo.Product_FlowerType' is referenced by a rela
             <End Role="Presentation" EntitySet="Presentation" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
+          <EntitySet Name="Flower_Type" EntityType="QL_BanHoaModel.Flower_Type" />
+          <AssociationSet Name="Product_FlowerType" Association="QL_BanHoaModel.Product_FlowerType">
+            <End Role="Flower_Type" EntitySet="Flower_Type" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Flower_Type">
+          <Key>
+            <PropertyRef Name="Flower_Type_ID" />
+          </Key>
+          <Property Name="Flower_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Flower_Type_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="QL_BanHoaModel.Product_FlowerType" FromRole="Flower_Type" ToRole="Product" />
+        </EntityType>
+        <Association Name="Product_FlowerType">
+          <End Type="QL_BanHoaModel.Flower_Type" Role="Flower_Type" Multiplicity="*" />
+          <End Type="QL_BanHoaModel.Product" Role="Product" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1112,14 +1150,6 @@ error 6004: The table 'QL_BanHoa.dbo.Product_FlowerType' is referenced by a rela
                 <ScalarProperty Name="Discount_Percentage" ColumnName="Discount_Percentage" />
                 <ScalarProperty Name="Start_Date" ColumnName="Start_Date" />
                 <ScalarProperty Name="End_Date" ColumnName="End_Date" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Flower_Type">
-            <EntityTypeMapping TypeName="QL_BanHoaModel.Flower_Type">
-              <MappingFragment StoreEntitySet="Flower_Type">
-                <ScalarProperty Name="Flower_Type_ID" ColumnName="Flower_Type_ID" />
-                <ScalarProperty Name="Flower_Type_Name" ColumnName="Flower_Type_Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1282,6 +1312,22 @@ error 6004: The table 'QL_BanHoa.dbo.Product_FlowerType' is referenced by a rela
             </EndProperty>
             <EndProperty Name="Product">
               <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Flower_Type">
+            <EntityTypeMapping TypeName="QL_BanHoaModel.Flower_Type">
+              <MappingFragment StoreEntitySet="Flower_Type">
+                <ScalarProperty Name="Flower_Type_Name" ColumnName="Flower_Type_Name" />
+                <ScalarProperty Name="Flower_Type_ID" ColumnName="Flower_Type_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Product_FlowerType" TypeName="QL_BanHoaModel.Product_FlowerType" StoreEntitySet="Product_FlowerType">
+            <EndProperty Name="Product">
+              <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+            </EndProperty>
+            <EndProperty Name="Flower_Type">
+              <ScalarProperty Name="Flower_Type_ID" ColumnName="Flower_Type_ID" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

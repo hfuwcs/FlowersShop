@@ -24,6 +24,7 @@ namespace FlowersShop.Repository
             this.Object = new HashSet<Object>();
             this.Occasion = new HashSet<Occasion>();
             this.Presentation = new HashSet<Presentation>();
+            this.Flower_Type = new HashSet<Flower_Type>();
         }
     
         public int Product_ID { get; set; }
@@ -32,7 +33,11 @@ namespace FlowersShop.Repository
         public string Name { get; set; }
         public Nullable<double> Price { get; set; }
         public Nullable<int> Quantity { get; set; }
-    
+        public List<int> SelectedColorIds;
+        public List<int> SelectedObjectIds;
+        public List<int> SelectedOccasionIds;
+        public List<int> SelectedPresentationIds;
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cart> Cart { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -47,5 +52,7 @@ namespace FlowersShop.Repository
         public virtual ICollection<Occasion> Occasion { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Presentation> Presentation { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Flower_Type> Flower_Type { get; set; }
     }
 }

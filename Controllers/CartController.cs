@@ -111,6 +111,7 @@ namespace FlowersShop.Controllers
             {
                 Cart cart = new Cart()
                 {
+                    Product = db.Product.Find(id),
                     User_ID = -1,
                     Product_ID = id,
                     Quantity = quantity,

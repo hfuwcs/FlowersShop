@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "D:\\HK5\\FlowersShop\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|d:\\hk5\\flowersshop\\views\\order\\orderfail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:views\\order\\orderfail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|d:\\hk5\\flowersshop\\apicontrollers\\locationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:apicontrollers\\locationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|d:\\hk5\\flowersshop\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|d:\\hk5\\flowersshop\\assets\\client\\customjs\\order.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:assets\\client\\customjs\\order.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|d:\\hk5\\flowersshop\\views\\order\\_consumeproduct_customerinfo.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:views\\order\\_consumeproduct_customerinfo.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|D:\\HK5\\FlowersShop\\assets\\client\\customjs\\address.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:assets\\client\\customjs\\address.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     }
   ],
   "DocumentGroupContainers": [
@@ -39,53 +31,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "OrderFail.cshtml",
-              "DocumentMoniker": "D:\\HK5\\FlowersShop\\Views\\Order\\OrderFail.cshtml",
-              "RelativeDocumentMoniker": "Views\\Order\\OrderFail.cshtml",
-              "ToolTip": "D:\\HK5\\FlowersShop\\Views\\Order\\OrderFail.cshtml",
-              "RelativeToolTip": "Views\\Order\\OrderFail.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-06T03:13:34.882Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "order.js",
-              "DocumentMoniker": "D:\\HK5\\FlowersShop\\Assets\\Client\\customjs\\order.js",
-              "RelativeDocumentMoniker": "Assets\\Client\\customjs\\order.js",
-              "ToolTip": "D:\\HK5\\FlowersShop\\Assets\\Client\\customjs\\order.js",
-              "RelativeToolTip": "Assets\\Client\\customjs\\order.js",
-              "ViewState": "AQIAABcAAAAAAAAAAAAgwCMAAAAvAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-12-06T03:06:58.69Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "_consumeProduct_CustomerInfo.cshtml",
-              "DocumentMoniker": "D:\\HK5\\FlowersShop\\Views\\Order\\_consumeProduct_CustomerInfo.cshtml",
-              "RelativeDocumentMoniker": "Views\\Order\\_consumeProduct_CustomerInfo.cshtml",
-              "ToolTip": "D:\\HK5\\FlowersShop\\Views\\Order\\_consumeProduct_CustomerInfo.cshtml",
-              "RelativeToolTip": "Views\\Order\\_consumeProduct_CustomerInfo.cshtml",
-              "ViewState": "AQIAADYAAAAAAAAAAAAAAE8AAAAjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-06T03:04:54.43Z",
+              "Title": "LocationController.cs",
+              "DocumentMoniker": "D:\\HK5\\FlowersShop\\ApiControllers\\LocationController.cs",
+              "RelativeDocumentMoniker": "ApiControllers\\LocationController.cs",
+              "ToolTip": "D:\\HK5\\FlowersShop\\ApiControllers\\LocationController.cs",
+              "RelativeToolTip": "ApiControllers\\LocationController.cs",
+              "ViewState": "AQIAAKgAAAAAAAAAAADwv6IAAABOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T17:57:35.273Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "OrderController.cs",
-              "DocumentMoniker": "D:\\HK5\\FlowersShop\\Controllers\\OrderController.cs",
-              "RelativeDocumentMoniker": "Controllers\\OrderController.cs",
-              "ToolTip": "D:\\HK5\\FlowersShop\\Controllers\\OrderController.cs",
-              "RelativeToolTip": "Controllers\\OrderController.cs",
-              "ViewState": "AQIAABIAAAAAAAAAAAAQwN8AAAAgAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-05T15:45:34.277Z",
+              "Title": "address.js",
+              "DocumentMoniker": "D:\\HK5\\FlowersShop\\Assets\\Client\\customjs\\address.js",
+              "RelativeDocumentMoniker": "Assets\\Client\\customjs\\address.js",
+              "ToolTip": "D:\\HK5\\FlowersShop\\Assets\\Client\\customjs\\address.js",
+              "RelativeToolTip": "Assets\\Client\\customjs\\address.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-12-06T16:48:15.786Z",
               "EditorCaption": ""
             }
           ]

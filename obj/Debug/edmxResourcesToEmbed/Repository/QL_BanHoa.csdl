@@ -46,13 +46,6 @@
     <Property Name="End_Date" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Order_Discount" Relationship="Self.FK__Order_Dis__Disco__02FC7413" FromRole="Discount" ToRole="Order_Discount" />
   </EntityType>
-  <EntityType Name="Flower_Type">
-    <Key>
-      <PropertyRef Name="Flower_Type_ID" />
-    </Key>
-    <Property Name="Flower_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Flower_Type_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-  </EntityType>
   <EntityType Name="Object">
     <Key>
       <PropertyRef Name="Object_ID" />
@@ -147,6 +140,7 @@
     <NavigationProperty Name="Object" Relationship="Self.Product_Object" FromRole="Product" ToRole="Object" />
     <NavigationProperty Name="Occasion" Relationship="Self.Product_Occasion" FromRole="Product" ToRole="Occasion" />
     <NavigationProperty Name="Presentation" Relationship="Self.Product_Presentation" FromRole="Product" ToRole="Presentation" />
+    <NavigationProperty Name="Flower_Type" Relationship="QL_BanHoaModel.Product_FlowerType" FromRole="Product" ToRole="Flower_Type" />
   </EntityType>
   <EntityType Name="Review">
     <Key>
@@ -388,7 +382,6 @@
     <EntitySet Name="Color" EntityType="Self.Color" />
     <EntitySet Name="Customer" EntityType="Self.Customer" />
     <EntitySet Name="Discount" EntityType="Self.Discount" />
-    <EntitySet Name="Flower_Type" EntityType="Self.Flower_Type" />
     <EntitySet Name="Object" EntityType="Self.Object" />
     <EntitySet Name="Occasion" EntityType="Self.Occasion" />
     <EntitySet Name="Order" EntityType="Self.Order" />
@@ -473,5 +466,22 @@
       <End Role="Presentation" EntitySet="Presentation" />
       <End Role="Product" EntitySet="Product" />
     </AssociationSet>
+    <EntitySet Name="Flower_Type" EntityType="QL_BanHoaModel.Flower_Type" />
+    <AssociationSet Name="Product_FlowerType" Association="QL_BanHoaModel.Product_FlowerType">
+      <End Role="Flower_Type" EntitySet="Flower_Type" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Flower_Type">
+    <Key>
+      <PropertyRef Name="Flower_Type_ID" />
+    </Key>
+    <Property Name="Flower_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Flower_Type_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Product" Relationship="QL_BanHoaModel.Product_FlowerType" FromRole="Flower_Type" ToRole="Product" />
+  </EntityType>
+  <Association Name="Product_FlowerType">
+    <End Type="QL_BanHoaModel.Flower_Type" Role="Flower_Type" Multiplicity="*" />
+    <End Type="QL_BanHoaModel.Product" Role="Product" Multiplicity="*" />
+  </Association>
 </Schema>

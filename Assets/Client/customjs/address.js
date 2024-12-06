@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     // Load danh sách tỉnh/thành phố
-    $.getJSON('/Location/GetProvinces', function (provinces) {
+    $.getJSON('/api/Location/GetProvinces', function (provinces) {
         provinces.forEach(function (province) {
             $('#customerProvince').append(
                 $('<option>', { value: province.code, text: province.name })
@@ -17,7 +17,7 @@
         if (provinceCode) {
             $('#customerDistrict').prop('disabled', false);
 
-            $.getJSON('/Location/GetDistricts', { provinceCode: provinceCode }, function (districts) {
+            $.getJSON('/api/Location/GetDistricts', { province_code: provinceCode }, function (districts) {
                 districts.forEach(function (district) {
                     $('#customerDistrict').append(
                         $('<option>', { value: district.code, text: district.name })
@@ -37,7 +37,7 @@
         if (districtCode) {
             $('#customerWard').prop('disabled', false);
 
-            $.getJSON('/Location/GetWards', { districtCode: districtCode }, function (wards) {
+            $.getJSON('/api/Location/GetWards', { district_code: districtCode }, function (wards) {
                 wards.forEach(function (ward) {
                     $('#customerWard').append(
                         $('<option>', { value: ward.code, text: ward.name })

@@ -1,73 +1,186 @@
-﻿using Newtonsoft.Json;
+﻿using FlowersShop.Models.Adress;
+using FlowersShop.Repository;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using FlowersShop.Repository;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
 
 namespace FlowersShop.ApiControllers
 {
-    public class LocationController : Controller
+    public class LocationController : ApiController
     {
-        // Hàm để đọc file JSON từ App_Data
-        private List<T> ReadJsonData<T>(string fileName)
-        {
-            //Cách 1, linh hoạt
-            //var filePath = Server.MapPath($"~/App_Data/{fileName}");
-            var filePath = "D:\\HK5\\FlowersShop\\App_Data\\" + fileName;
-            var jsonData = System.IO.File.ReadAllText(filePath);
-            return JsonConvert.DeserializeObject<List<T>>(jsonData);
-        }
+        //LIST
+        string urlProvinces = "https://provinces.open-api.vn/api/p/"; //Lấy tỉnh
+        string urlDistrics = "https://provinces.open-api.vn/api/d/"; //Lấy quận
+        string urlWards = "https://provinces.open-api.vn/api/w/"; //Lấy phường
 
-        // API để lấy danh sách tỉnh/thành phố
         [HttpGet]
-        public ActionResult GetProvinces()
+        [Route("api/Location/GetProvinces")]
+        public IHttpActionResult GetProvinces()
         {
-            var provinces = ReadJsonData<Province>("provinces.json")
-                .OrderBy(p => p.name)
-                .ToList();
-            return Json(provinces, JsonRequestBehavior.AllowGet);
-        }
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlProvinces);
 
-        // API để lấy danh sách quận/huyện theo mã tỉnh
-        [HttpGet]
-        public ActionResult GetDistricts(string provinceCode)
-        {
-            var districts = ReadJsonData<District>("districts.json")
-                .Where(d => d.province_code == provinceCode)
-                .OrderBy(d => d.name)
-                .ToList();
-            return Json(districts, JsonRequestBehavior.AllowGet);
-        }
+                // Gửi request và nhận response
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream responseStream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(responseStream))
+                {
+                    string data = reader.ReadToEnd();
 
-        // API để lấy danh sách phường/xã theo mã quận/huyện
+                    List<Province> provinces = JsonConvert.DeserializeObject<List<Province>>(data);
+
+                    provinces = provinces.OrderBy(p => p.name).ToList();
+
+                    return Json(provinces);
+                }
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
         [HttpGet]
-        public ActionResult GetWards(string districtCode)
+        [Route("api/Location/GetDistricts")]
+        public IHttpActionResult GetDistricts(int province_code)
         {
-            var wards = ReadJsonData<Ward>("wards.json")
-                .Where(w => w.district_code == districtCode)
-                .OrderBy(w => w.name)
-                .ToList();
-            return Json(wards, JsonRequestBehavior.AllowGet);
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlDistrics);
+
+                // Gửi request và nhận response
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream responseStream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(responseStream))
+                {
+                    string data = reader.ReadToEnd();
+
+                    List<District> districts = JsonConvert.DeserializeObject<List<District>>(data);
+
+                    districts = districts.OrderBy(d => d.name).Where(d=>d.province_code == province_code).ToList();
+
+                    return Json(districts);
+                }
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
         }
-        public string GetProvinceName(string code)
+        [HttpGet]
+        [Route("api/Location/GetWards")]
+        public IHttpActionResult GetWards(int district_code)
         {
-            var provinces = ReadJsonData<Province>("provinces.json");
-            var province = provinces.FirstOrDefault(p => p.code == code);
-            return province.name;
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlWards);
+
+                // Gửi request và nhận response
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream responseStream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(responseStream))
+                {
+                    string data = reader.ReadToEnd();
+
+                    List<Ward> wards = JsonConvert.DeserializeObject<List<Ward>>(data);
+
+                    wards = wards.OrderBy(d => d.name).Where(d => d.district_code == district_code).ToList();
+
+                    return Json(wards);
+                }
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
         }
-        public string GetDistrictName(string code)
+        public string GetProvinceName(string province_code)
         {
-            var districts = ReadJsonData<District>("districts.json");
-            var district = districts.FirstOrDefault(d => d.code == code);
-            return district.name;
+            string ProvinceName = "";
+            string url = urlProvinces + province_code;
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+
+                // Gửi request và nhận response
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream responseStream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(responseStream))
+                {
+                    string data = reader.ReadToEnd();
+
+                    Province provinces = JsonConvert.DeserializeObject<Province>(data);
+
+                    ProvinceName = provinces.name;
+                    return ProvinceName;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return "";
+            }
         }
-        public string GetWardName(string code)
+        public string GetDistrictName(string district_code)
         {
-            var wards = ReadJsonData<Ward>("wards.json");
-            var ward = wards.FirstOrDefault(w => w.code == code);
-            return ward.name;
+            string DistrictName = "";
+            string url = urlDistrics + district_code;
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+
+                // Gửi request và nhận response
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream responseStream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(responseStream))
+                {
+                    string data = reader.ReadToEnd();
+
+                    District district = JsonConvert.DeserializeObject<District>(data);
+
+                    DistrictName = district.name;
+
+                    return DistrictName;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return "";
+            }
+        }
+        public string GetWardName(string ward_code)
+        {
+            string WardName = "";
+            string url = urlWards + ward_code;
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+
+                // Gửi request và nhận response
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream responseStream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(responseStream))
+                {
+                    string data = reader.ReadToEnd();
+
+                    Ward ward = JsonConvert.DeserializeObject<Ward>(data);
+
+                    WardName = ward.name;
+
+                    return WardName;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return "";
+            }
         }
     }
 }
