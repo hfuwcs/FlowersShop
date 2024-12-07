@@ -1,83 +1,82 @@
 ﻿@model IEnumerable<FlowersShop.Repository.Product>
-
+<link rel="stylesheet" href="~/CSS/ProductListStyle.css" />
 @{
     Layout = "~/Views/Shared/_LayoutMain.cshtml";
 }
 
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>ShowProduct</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIREFLY - Sản phẩm</title>
+    <!-- Thư viện CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400|Poppins:300,400,500|Source+Serif+Pro:400,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/CSS/Style.css" />
 </head>
 <body>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantity)
-            </th>
-            <th>
-                Thêm vào giỏ hàng
-            </th>
-            <th>
-                Xem chi tiết
-            </th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr id="product-@item.Product_ID">
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @if (item.Image != null)
+    <!-- Danh sách sản phẩm -->
+    <section id="product-list" class="py-5">
+        <!-- Danh sách sản phẩm dưới dạng thẻ -->
+        <div class="container py-5">
+            <h2 style="text-align: center; margin-bottom: 30px;">DANH SÁCH SẢN PHẨM</h2>
+            <div class="row">
+                <!-- Kiểm tra danh sách sản phẩm -->
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
                     {
-                        <img class="image" src="@Url.Content(item.Image)" width="200" />
-                    }
-                    else
-                    {
-                        <span>No image available</span>
-                    }
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Quantity)
-                </td>
-                <td>
-                    <button class="add-to-cart"
-                            type="button"
-                            data-product_id="@item.Product_ID">
-                        Thêm
-                    </button>
-                </td>
-                <td>@Html.ActionLink("Xem chi tiết", "ShowProductDetail", "Product", new { Product_ID = @item.Product_ID }, new { @class = "btn btn-primary" })</td>
-                <td>
-                    <input hidden type="number" id="quantity" value="1" />
-                </td>
-            </tr>
-        }
+                        <div class="col-md-3 mb-4">
+                            <div class="card shadow-sm border rounded-3 h-100">
+                                <div class="card-body text-center">
+                                    <!-- Hình ảnh sản phẩm -->
+                                    <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                                        @if (item.Image != null)
+                                        {
+                                            <img src="@Url.Content(item.Image)" class="w-100" style="height: 200px; object-fit: cover; border-radius: 15px;" alt="Hình ảnh sản phẩm" />
+                                        }
+                                        else
+                                        {
+                                            <span>No image available</span>
+                                        }
+                                    </div>
 
-    </table>
+                                    <!-- Thông tin sản phẩm -->
+                                    <h5 class="mt-3">@Html.DisplayFor(modelItem => item.Name)</h5>
+                                    <p class="text-truncate mb-2" style="max-width: 200px;">
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                    </p>
+                                    <div class="d-flex justify-content-center align-items-center mb-3">
+                                        <h6 class="mb-0">@Html.DisplayFor(modelItem => item.Price)</h6>
+                                    </div>
+
+                                    <!-- Nút hành động -->
+                                    <div class="d-flex justify-content-center">
+                                        <button class="btn btn-dark btn-sm me-2 add-to-cart" data-product_id="@item.Product_ID">Thêm vào giỏ</button>
+                                        <a href="@Url.Action("ShowProductDetail", "Product", new { Product_ID = item.Product_ID })" class="btn btn-dark btn-sm me-2">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- Thư viện JS -->
+    @*<script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>*@
+    <script src="~/JAVASCRIPT/Animation.js"></script>
+    <script src="~/JAVASCRIPT/NavScroll.js"></script>
+    <script src="~/Assets/Client/customjs/modify_cart.js"></script>
+
 </body>
 </html>
-<!--Custom JS-->
-<script src="~/Assets/Client/customjs/modify_cart.js"></script>

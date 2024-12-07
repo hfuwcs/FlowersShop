@@ -1,0 +1,40 @@
+﻿/* Card sản phẩm */
+.card {
+    border: none;
+    border-radius: 15px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .card img {
+        border-radius: 15px;
+        object-fit: cover;
+    }
+
+.card-body h5 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card-body p {
+    color: #666;
+    font-size: 14px;
+}
+
+/* Nút hành động */
+.btn-success {
+    background-color: #28a745;
+    border: none;
+}
+
+    .btn-success:hover {
+        background-color: #218838;
+    }
+
+input[type="number"] {
+    text-align: center;
+}

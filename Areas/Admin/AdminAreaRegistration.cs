@@ -18,12 +18,12 @@ namespace FlowersShop.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional },
+                new { controller ="Dashboard" ,  action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "FlowersShop.Areas.Admin.Controllers" }
             );
 
-            var filters = GlobalFilters.Filters;
-            filters.Add(new SessionAuthorizeAttribute());
+            //var filters = GlobalFilters.Filters;
+            //filters.Add(new SessionAuthorizeAttribute());
         }
     }
 }

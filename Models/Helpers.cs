@@ -7,7 +7,7 @@ namespace FlowersShop.Models
 {
     public static class Helpers
     {
-         public static List<string> Months()
+         public static List<string> MonthName()
         {
             return new List<string>
             {
@@ -23,6 +23,13 @@ namespace FlowersShop.Models
                 "October",
                 "November",
                 "December"
+            };
+        }
+        public static List<int> MonthNumber()
+        {
+            return new List<int>
+            {
+                1,2,3,4,5,6,7,8,9,10,11,12
             };
         }
     }

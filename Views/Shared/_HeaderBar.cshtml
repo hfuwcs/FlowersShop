@@ -1,32 +1,101 @@
-﻿@{ var user = Session["Signed"] as FlowersShop.Repository.Users;}
+﻿@{
+    var user = Session["Signed"] as FlowersShop.Repository.Users;
+}
 
-<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
-    <div class="container">
-        @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+<nav class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top" style="background-color: none;">
+    <div class="container-fluid">
+        <!-- FIREFLY Brand -->
+        <a class="navbar-brand" href="@Url.Action("Index", "Home")" style="font-family: '', cursive; font-size: 35px;">FIREFLY</a>
+
+        <!-- Navbar Toggler -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <span><i class="fa-solid fa-bars" style="color: rgb(132, 132, 132)"></i></span>
         </button>
-        <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-            <ul class="navbar-nav flex-grow-1">
-                <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                <li>@Html.ActionLink("Show Sản Phẩm", "ShowProduct", "Product", new { area = "" }, new { @class = "nav-link" })</li>
-                <li>@Html.ActionLink("Giỏ hàng", "ShowCart", "Cart", new { area = "" }, new { @class = "nav-link" })</li>
-                @{if (Session["Signed"] == null)
+
+        <!-- Offcanvas Menu -->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel" style="color: black; font-family:ti; font-size: 25px;">MENU TÙY CHỌN</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item" style="margin-top:-10px">@RenderPage("_SearchView.cshtml") </li>
+                    <!-- Trang chủ -->
+                    <li class="nav-item">
+                        @Html.ActionLink("Trang chủ", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                    <!-- Sản phẩm -->
+                    <li class="nav-item">
+                        @Html.ActionLink("Sản phẩm", "ShowProduct", "Product", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                    <!-- Giỏ hàng -->
+                    <li class="nav-item">
+                        @Html.ActionLink("Giỏ hàng", "ShowCart", "Cart", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                    <!-- Tài khoản -->
+                    @if (Session["Signed"] != null)
                     {
-                        <li>@Html.ActionLink("Đăng Nhập", "DangNhap", "User", new { area = "" }, new { @class = "nav-link" })</li>
-                        <li>@Html.ActionLink("Đăng Ký", "DangKy", "User", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Tài khoản", "AccountDetail", "User", new { User_ID = user.User_ID }, new { @class = "nav-link" })
+                        </li>
+                    }
+                    <!-- Đăng nhập/Đăng ký/Đăng xuất -->
+                    @if (Session["Signed"] == null)
+                    {
+                        <li class="nav-item">
+                            @Html.ActionLink("Đăng Nhập", "DangNhap", "User", new { area = "" }, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Đăng Ký", "DangKy", "User", new { area = "" }, new { @class = "nav-link" })
+                        </li>
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Đăng xuất", "DangXuat", "User", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Đăng xuất", "DangXuat", "User", new { area = "" }, new { @class = "nav-link" })
+                        </li>
                     }
-                }
-
-            </ul>
+                </ul>
+            </div>
         </div>
     </div>
 </nav>
-
+<section>
+    <div class="py-5 bg-light text-center">
+        <div class="container">
+            <img class="display-4" src="/IMAGE/Asset 7.png" alt="Flower Store Logo" style="max-width: 300px; height: auto; padding-top: 50px;">
+            <h1 class="display-4">FRIREFLY - FLOWER'S STORE</h1>
+            <p class="lead">Nơi bạn tìm thấy những bó hoa đẹp nhất, dành cho những người thân yêu nhất.</p>
+        </div>
+    </div>
+</section>
+<section style="padding: 20px; margin: 0;">
+    <div class="container d-flex justify-content-center flex-wrap">
+        <!-- Button 1 -->
+        <a href="#spnoibat" class="nav-btn" style="text-decoration: none;">
+            <i class="fas fa-star"></i>
+            <span>Nổi bật</span>
+        </a>
+        <!-- Button 3 -->
+        <a href="#dichvu" class="nav-btn" style="text-decoration: none;">
+            <i class="fas fa-cogs"></i>
+            <span>Dịch vụ</span>
+        </a>
+        <!-- Button 4 -->
+        <a href="#aboutus" class="nav-btn" style="text-decoration: none;">
+            <i class="fas fa-info-circle"></i>
+            <span>Giới thiệu</span>
+        </a>
+        <!-- Button 5 -->
+        <a href="#danhgia" class="nav-btn" style="text-decoration: none;">
+            <i class="fas fa-comment-alt"></i>
+            <span>Đánh giá</span>
+        </a>
+        <!-- Button 6 -->
+        <a href="#footer" class="nav-btn" style="text-decoration: none;">
+            <i class="fas fa-phone"></i>
+            <span>Liên hệ</span>
+        </a>
+    </div>
+</section>

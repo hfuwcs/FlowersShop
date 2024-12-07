@@ -60,7 +60,6 @@ namespace FlowersShop.Areas.Admin.Controllers
                 user.Password = Cipher.EncryptSHA256(user.Password);
                 db.Users.Add(user);
                 db.SaveChanges();
-                TempData["user"] = user;
                 return RedirectToAction("ThanhCong", "User");
             }
             else
@@ -71,8 +70,8 @@ namespace FlowersShop.Areas.Admin.Controllers
 
         public ActionResult DangXuat()
         {
-            Session["isLogin"] = null;
-            return RedirectToAction("Index", "Home");
+            Session["Admin"] = null;
+            return RedirectToAction("Index", "Dashboard");
         }
     }
 }

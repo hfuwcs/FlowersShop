@@ -30,6 +30,11 @@ namespace FlowersShop.Controllers
             Product product = db.Product.FirstOrDefault(p=>p.Product_ID== Product_ID);
             return View(product);
         }
+        public ActionResult FeartureProduct()
+        {
+            IList<Product> products = db.Product.Where(p => p.Quantity > 0).OrderByDescending(p => p.Product_ID).Take(8).ToList();
+            return PartialView(products);
+        }
 
         [HttpGet]
         public ActionResult SearchProduct()

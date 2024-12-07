@@ -1,0 +1,159 @@
+﻿
+
+.nav-btn {
+    background-color: #ffffff;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    margin: 5px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    width: 160px; /* Responsive width */
+    height: 80px;
+    margin: 10px;
+}
+
+    .nav-btn i {
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
+
+    .nav-btn:hover {
+        background-color: #006160;
+        color: white;
+        border-color: #006160;
+        transform: scale(1.1);
+    }
+
+@media (max-width: 768px) {
+    .nav-btn {
+        width: 80px; /* Adjust size for smaller screens */
+        font-size: 14px;
+    }
+
+        .nav-btn i {
+            font-size: 18px;
+        }
+}
+
+.btn-outline-dark {
+    width: 100%;
+    height: auto;
+}
+
+.btn-dark:hover {
+    background-color: #006160; /* Màu xanh nhạt khi hover */
+    border-color: #006160;
+}
+
+.btn-outline-dark:hover {
+    background-color: #006160; /* Màu xanh nhạt khi hover */
+    border-color: #006160;
+}
+
+
+/* Thiết kế menu điều hướng (Navbar) */
+#offcanvasNavbar {
+    background-color: #335b92;
+}
+
+.nav-item {
+    font-size: 40px; /* Kích thước font lớn cho các mục */
+}
+
+.nav-link {
+    font-size: 18px; /* Kích thước font cho liên kết */
+    color: #000000; /* Màu chữ đen */
+}
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0); /* Nền màu đen mờ */
+    transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu mượt mà */
+}
+    /* Khi cuộn xuống, đổi màu nền và màu chữ */
+    .navbar.scrolled {
+        background-color: #141d2a !important;
+    }
+
+        .navbar.scrolled .nav-link,
+        .navbar.scrolled .navbar-brand,
+        .navbar.scrolled .fa-cart-shopping,
+        .navbar.scrolled .fa-user .navbar.scrolled {
+            color: white !important;
+            opacity: 0.9;
+        }
+
+.nav-item .nav-link {
+    font-size: 20px; /* Kích thước chữ */
+    color: black !important; /* Màu chữ mặc định */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển đổi mượt mà */
+    text-decoration: none; /* Xóa gạch chân */
+    padding: 10px 15px; /* Khoảng cách bên trong */
+    border-radius: 10px; /* Bo góc cho mục */
+}
+
+    .nav-item .nav-link:hover {
+        color: white !important; /* Màu chữ khi hover */
+        background-color: #006160; /* Màu nền khi hover */
+        font-size: 22px; /* Tăng kích thước chữ khi hover */
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* Đổ bóng khi hover */
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
+        transition: all 0.3s ease; /* Hiệu ứng mượt mà */
+    }
+
+.fixed-top {
+    top: 0;
+    width: 100%;
+    z-index: 1030;
+}
+
+.fixed-logo {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    z-index: 10;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+.iframe-container {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* Tỷ lệ khung hình 16:9 */
+}
+
+.responsive-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+/* Responsive (Tương thích các kích thước màn hình) */
+@media (max-width: 768px) {
+    footer .row > div {
+        margin-bottom: 1.5rem; /* Khoảng cách giữa các mục */
+    }
+
+    img {
+        width: 100%; /* Ảnh chiếm toàn chiều rộng */
+        height: auto; /* Tự điều chỉnh chiều cao */
+    }
+
+    iframe-container {
+        padding-top: 75%; /* Tỷ lệ khung hình 4:3 cho màn hình nhỏ */
+    }
+}
+
+@media (min-width: 500px) {
+    img {
+        width: 50%; /* Ảnh chiếm 50% màn hình */
+        height: auto;
+    }
+}

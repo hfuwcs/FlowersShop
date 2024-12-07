@@ -1,87 +1,94 @@
 ﻿@model FlowersShop.Repository.Users
 
 @{
-    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+//Layout = "~/Views/Shared/_LayoutMain.cshtml";
 }
 
 <!DOCTYPE html>
-
-<html>
+<html lang="vi">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>DangKy</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FIREFLY STORE - ĐĂNG KÝ</title>
+
+    <!-- MATERIAL DESIGN ICONIC FONT -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="~/CSS/login.css">
+    <link rel="stylesheet" href="~/CSS/Footerbar.css">
+    <link rel="stylesheet" href="~/CSS/HeaderBar.css" />
+    <link rel="stylesheet" href="~/CSS/Style.css" />
 </head>
+
 <body>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
-    
-    
-    @using (Html.BeginForm()) 
-    {
-        @Html.AntiForgeryToken()
-        
-        <div class="form-horizontal">
-            <h4>Users</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+    <section>
+        <div class="wrapper" style="background-image: url('/IMAGE/Banner4.jpg');">
+            <div class="inner">
+                <div class="image-holder">
+                    <img src="/IMAGE/HoaLe.jpg" alt="Background Image">
                 </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
+
+                <!-- Form bắt đầu -->
+                @using (Html.BeginForm("DangKy", "User", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <h3>Đăng ký tài khoản</h3>
+
+                    <!-- Họ và tên -->
+                    <div class="form-wrapper">
+                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "Họ và tên" })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-wrapper">
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Email Address" })
+                        <i class="zmdi zmdi-email"></i>
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+
+                    <!-- Địa chỉ -->
+                    <div class="form-wrapper">
+                        @Html.TextBoxFor(model => model.Address, new { @class = "form-control", placeholder = "Địa chỉ" })
+                        <i class="zmdi zmdi-pin"></i>
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                    </div>
+
+                    <!-- Tên đăng nhập -->
+                    <div class="form-wrapper">
+                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", placeholder = "Tên đăng nhập" })
+                        <i class="zmdi zmdi-account"></i>
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                    </div>
+
+                    <!-- Mật khẩu -->
+                    <div class="form-wrapper">
+                        @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Mật khẩu" })
+                        <i class="zmdi zmdi-lock"></i>
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+
+                    <!-- Nút đăng ký -->
+                    <button type="submit">
+                        Đăng ký
+                        <i class="zmdi zmdi-arrow-right"></i>
+                    </button>
+                }
             </div>
         </div>
-    }
-    
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
+    </section>
+    <!-- Scripts -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/JAVASCRIPT/Animation.js"></script>
+    <script src="~/JAVASCRIPT/NavScroll.js"></script>
 </body>
 </html>

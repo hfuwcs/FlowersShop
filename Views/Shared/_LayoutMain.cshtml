@@ -1,31 +1,28 @@
 ﻿<!DOCTYPE html>
 
-<style>
-    .image {
-        border: 4px solid #1b6b6f;
-        padding: 15px;
-    }
-</style>
 
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Shop hoa tươi</title>
     @Scripts.Render("~/bundles/jquery")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+    <!--Header-->
     @RenderPage("_HeaderBar.cshtml")
-    @RenderPage("_SearchView.cshtml")
-    <div class="container body-content">
+    <!--Header-->
+    <div class="container-fluid">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Firefly Flower Shop</p>
         </footer>
     </div>
+    @RenderPage("_FooterBar.cshtml")
+    @*@RenderPage("_FooterBar.cshtml")*@
 
     @*@Scripts.Render("~/bundles/jquery")*@
     @Scripts.Render("~/bundles/bootstrap")

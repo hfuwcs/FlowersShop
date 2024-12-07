@@ -1,0 +1,22 @@
+﻿@model FlowersShop.Models.LineChartVM
+
+@*<div class="row">
+    <div class="col-md-12">*@
+        <div id="totalRevenueChart" class="px-2">
+            <canvas id="myLineChart" width="400" height="200"></canvas>
+        </div>
+    @*</div>
+</div>*@
+
+@*@section Script{
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var ctx = document.getElementById('myLineChart').getContext('2d');
+            var pieChart = new Chart(ctx, {
+                type: 'line',
+                data: @Html.Raw(Json.Encode(Model))
+            });
+        });
+    </script>
+}*@

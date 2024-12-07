@@ -16,6 +16,11 @@ namespace FlowersShop.Controllers
         // GET: User
         UserBusiness obj = new UserBusiness();
         QL_BanHoaEntities db = new QL_BanHoaEntities();
+        public ActionResult AccountDetail(int User_ID)
+        {
+            Users user = db.Users.Find(User_ID);
+            return View(user);
+        }
         public ActionResult DangNhap()
         {
             if (Session["Signed"] != null)//Signed = Đã đăng nhập

@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "D:\\HK5\\FlowersShop\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|d:\\hk5\\flowersshop\\apicontrollers\\locationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:apicontrollers\\locationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|d:\\hk5\\flowersshop\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|D:\\HK5\\FlowersShop\\assets\\client\\customjs\\address.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:assets\\client\\customjs\\address.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|d:\\hk5\\flowersshop\\views\\product\\showproductdetail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:views\\product\\showproductdetail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|d:\\hk5\\flowersshop\\assets\\client\\customjs\\rating.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{B37C6E44-6104-43F7-A102-21F9D85044CE}|FlowersShop.csproj|solutionrelative:assets\\client\\customjs\\rating.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,28 +34,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "LocationController.cs",
-              "DocumentMoniker": "D:\\HK5\\FlowersShop\\ApiControllers\\LocationController.cs",
-              "RelativeDocumentMoniker": "ApiControllers\\LocationController.cs",
-              "ToolTip": "D:\\HK5\\FlowersShop\\ApiControllers\\LocationController.cs",
-              "RelativeToolTip": "ApiControllers\\LocationController.cs",
-              "ViewState": "AQIAAKgAAAAAAAAAAADwv6IAAABOAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T17:57:35.273Z",
+              "DocumentIndex": 2,
+              "Title": "rating.js",
+              "DocumentMoniker": "D:\\HK5\\FlowersShop\\Assets\\Client\\customjs\\rating.js",
+              "RelativeDocumentMoniker": "Assets\\Client\\customjs\\rating.js",
+              "ToolTip": "D:\\HK5\\FlowersShop\\Assets\\Client\\customjs\\rating.js",
+              "RelativeToolTip": "Assets\\Client\\customjs\\rating.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-12-07T12:57:19.61Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "address.js",
-              "DocumentMoniker": "D:\\HK5\\FlowersShop\\Assets\\Client\\customjs\\address.js",
-              "RelativeDocumentMoniker": "Assets\\Client\\customjs\\address.js",
-              "ToolTip": "D:\\HK5\\FlowersShop\\Assets\\Client\\customjs\\address.js",
-              "RelativeToolTip": "Assets\\Client\\customjs\\address.js",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-12-06T16:48:15.786Z",
+              "Title": "ShowProductDetail.cshtml",
+              "DocumentMoniker": "D:\\HK5\\FlowersShop\\Views\\Product\\ShowProductDetail.cshtml",
+              "RelativeDocumentMoniker": "Views\\Product\\ShowProductDetail.cshtml",
+              "ToolTip": "D:\\HK5\\FlowersShop\\Views\\Product\\ShowProductDetail.cshtml",
+              "RelativeToolTip": "Views\\Product\\ShowProductDetail.cshtml",
+              "ViewState": "AQIAADwAAAAAAAAAAADwv2YAAAA/AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-07T12:48:00.463Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\HK5\\FlowersShop\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\HK5\\FlowersShop\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAABgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-07T12:15:42.091Z",
               "EditorCaption": ""
             }
           ]
