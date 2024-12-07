@@ -1,22 +1,9 @@
 ﻿@model IEnumerable<FlowersShop.Repository.Product>
 <link rel="stylesheet" href="~/CSS/ProductListStyle.css" />
 @{
+    ViewBag.Title = "Danh sách sản phẩm";
     Layout = "~/Views/Shared/_LayoutMain.cshtml";
 }
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FIREFLY - Sản phẩm</title>
-    <!-- Thư viện CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400|Poppins:300,400,500|Source+Serif+Pro:400,600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="~/CSS/Style.css" />
-</head>
 <body>
     <!-- Danh sách sản phẩm -->
     <section id="product-list" class="py-5">
@@ -70,13 +57,12 @@
 
 
     <!-- Thư viện JS -->
-    @*<script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
         <script src="js/popper.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>*@
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/JAVASCRIPT/Animation.js"></script>
     <script src="~/JAVASCRIPT/NavScroll.js"></script>
     <script src="~/Assets/Client/customjs/modify_cart.js"></script>
 
 </body>
-</html>

@@ -1,0 +1,71 @@
+﻿@model FlowersShop.Repository.Users
+
+@{
+    ViewBag.Title = "AccountDetail";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin-LayoutPage.cshtml";
+}
+
+<h2>AccountDetail</h2>
+
+<div>
+    <h4>Users</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User_Role.ROLE_LEVEL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User_Role.ROLE_LEVEL)
+        </dd>
+    </dl>
+</div>
+<a href="@Url.Action("DoiMatKhau","User", new { Area = "Admin", User_ID = Model.User_ID })" class="btn btn-primary">Đổi mật khẩu</a>

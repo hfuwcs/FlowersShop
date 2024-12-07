@@ -16,6 +16,30 @@ namespace FlowersShop.Controllers
         // GET: User
         UserBusiness obj = new UserBusiness();
         QL_BanHoaEntities db = new QL_BanHoaEntities();
+        public ActionResult DoiMatKhau()
+        {
+            Users user = (Users)Session["Admin"];
+            ViewBag.User_ID = user.User_ID;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult DoiMatKhau(int User_ID, string oldPassword, string newPassword, string confirmPassword)
+        {
+            Users user = db.Users.Find(User_ID);
+            if (Cipher.EncryptSHA256(oldPassword) != user.Password)
+            {
+                ViewBag.error = "Mật khẩu cũ không đúng";
+                return View();
+            }
+            if (newPassword != confirmPassword)
+            {
+                ViewBag.error = "Mật khẩu mới không khớp";
+                return View();
+            }
+            user.Password = Cipher.EncryptSHA256(newPassword);
+            db.SaveChanges();
+            return RedirectToAction("AccountDetail", new { User_ID = User_ID });
+        }
         public ActionResult AccountDetail(int User_ID)
         {
             Users user = db.Users.Find(User_ID);
@@ -35,7 +59,7 @@ namespace FlowersShop.Controllers
         {
                 if (obj.IsUser(user))
                 {
-                    user = db.Users.FirstOrDefault(u => u.UserName.Equals(user.UserName));
+                    user = db.Users.FirstOrDefault(u => u.UserName.Equals(user.UserName, StringComparison.OrdinalIgnoreCase));
                     Session["Signed"] = user;
                     if (Session["Cart"] != null)
                     {

@@ -12,8 +12,6 @@
     <title>SearchProduct</title>
 </head>
 <body>
-    <input type="text" id="search-input" placeholder="Enter product name" />
-    <button id="btn-search">Search</button>
     <form id="filterForm">
         <div>
             <h3>Select Colors</h3>
@@ -81,61 +79,62 @@
             </label>
         </div>
     </form>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Price)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Image)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Quantity)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody id="product-table-body">
-            @if (Model != null)
-            {
-                foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Price)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Description)
-                        </td>
-                        <td>
-                            @if (item.Image != null)
-                            {
-                                <img class="image" src="@Url.Content(item.Image)" width="200" />
-                            }
-                            else
-                            {
-                                <span>No image available</span>
-                            }
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Quantity)
-                        </td>
-                    </tr>
-                }
-            }
-        </tbody>
-    </table>
     <div id="productResults">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Image)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Quantity)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="product-table-body">
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                @if (item.Image != null)
+                                {
+                                    <img class="image" src="@Url.Content(item.Image)" width="200" />
+                                }
+                                else
+                                {
+                                    <span>No image available</span>
+                                }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Quantity)
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
         <!-- Thẻ div này chứa các giá trị được chọn từ checkbox -->
     </div>
 </body>

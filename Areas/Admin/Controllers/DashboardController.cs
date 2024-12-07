@@ -23,6 +23,22 @@ namespace FlowersShop.Areas.Admin.Controllers
 
             return View();
         }
+
+        public JsonResult JsonIncomeDataSet()
+        {
+            List<IncomeModel> incomeByMonth = GetIncomeByMonth(DateTime.Now.Year);
+
+            int currentMonth = DateTime.Now.Month;
+
+            List<int> lastSixMonths = Enumerable.Range(0, 6)
+                                        .Select(i => (currentMonth - i - 1 + 12) % 12 + 1)
+                                        .ToList();
+
+            var filteredIncome = incomeByMonth.Where(income => lastSixMonths.Contains(income.month));
+
+            return Json(filteredIncome, JsonRequestBehavior.AllowGet);
+        }
+
         public double? GetIncomeByYear(int year)
         {
             List<Order> orders = db.Order.ToList();
@@ -42,48 +58,31 @@ namespace FlowersShop.Areas.Admin.Controllers
                 .Sum(order => order.Total_Amount);
             return incomeByYear;
         }
-        public List<IncomeModel> GetIncomeByMonth(int year)
-        {
-            List<Order> orders = db.Order.ToList();
-            int currentYear = year;
-            var ordersInCurrentYear = orders.Where(order =>
+            public List<IncomeModel> GetIncomeByMonth(int year)
             {
-                if (order.Order_Date != null)
+                List<Order> orders = db.Order.ToList();
+                int currentYear = year;
+                var ordersInCurrentYear = orders.Where(order =>
                 {
-                    DateTime orderDate = order.Order_Date.Value;
-                    return orderDate.Year == currentYear;
-                }
-                return false;
-            }).ToList();
+                    if (order.Order_Date != null)
+                    {
+                        DateTime orderDate = order.Order_Date.Value;
+                        return orderDate.Year == currentYear;
+                    }
+                    return false;
+                }).ToList();
 
-            var incomeByMonth = new List<IncomeModel>();
-            var MonthIncome = new List<double?>();
-            for (int i = 1; i <= 12; i++)
-            {
-                double? income = ordersInCurrentYear
-                    .Where(order => order.Order_Date != null && order.Order_Date.Value.Month == i && order.Status == "Thành công")
-                    .Sum(order => order.Total_Amount);
-                MonthIncome.Add(income);
+                var incomeByMonth = new List<IncomeModel>();
+                for (int i = 1; i <= 12; i++)
+                {
+                    double? income = ordersInCurrentYear
+                        .Where(order => order.Order_Date != null && order.Order_Date.Value.Month == i && order.Status == "Thành công")
+                        .Sum(order => order.Total_Amount);
+                    incomeByMonth.Add(new IncomeModel { month = i, income = income });
+                }
+
+                return incomeByMonth;
             }
-            incomeByMonth = new List<IncomeModel>
-            {
-                new IncomeModel { name = "Tháng 1", data = new List<double?> { MonthIncome[0] } },
-                new IncomeModel { name = "Tháng 2", data = new List<double?> { MonthIncome[1] } },
-                new IncomeModel { name = "Tháng 3", data = new List<double?> { MonthIncome[2] } },
-                new IncomeModel { name = "Tháng 4", data = new List<double?> { MonthIncome[3] } },
-                new IncomeModel { name = "Tháng 5", data = new List<double?> { MonthIncome[4] } },
-                new IncomeModel { name = "Tháng 6", data = new List<double?> { MonthIncome[5] } },
-                new IncomeModel { name = "Tháng 7", data = new List<double?> { MonthIncome[6] } },
-                new IncomeModel { name = "Tháng 8", data = new List<double?> { MonthIncome[7] } },
-                new IncomeModel { name = "Tháng 9", data = new List<double?> { MonthIncome[8] } },
-                new IncomeModel { name = "Tháng 10", data = new List<double?> { MonthIncome[9] } },
-                new IncomeModel { name = "Tháng 11", data = new List<double?> { MonthIncome[10] } },
-                new IncomeModel { name = "Tháng 12", data = new List<double?> { MonthIncome[11] }
-                }
-            };
-
-            return incomeByMonth;
-        }
         public int ordersInCurrentWeek()
         {
             List<Order> orders = db.Order.ToList();

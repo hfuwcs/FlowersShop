@@ -1,0 +1,56 @@
+﻿@{
+    var user = Session["Singed"] as FlowersShop.Repository.Users;
+    ViewBag.Title = "Đổi mật khẩu";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin-LayoutPage.cshtml";
+}
+@using (Html.BeginForm("DoiMatKhau", "User", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="col-xl-8">
+        <div class="card mb-4">
+            <h5 class="card-header">Đổi mật khẩu</h5>
+            <input hidden name="User_ID" value="@user.User_ID" />
+            <div class="card-body">
+                <div class="form-floating">
+                    <input type="password"
+                           class="form-control"
+                           id="oldPassword"
+                           name="oldPassword"
+                           placeholder="********"
+                           aria-describedby="floatingInputHelp" />
+                    <div id="oldPasswordHelp" class="form-text">
+                        Nhập mật khẩu cũ vào ô này.
+                    </div>
+                </div>
+                <div class="form-floating">
+                    <input type="password"
+                           class="form-control"
+                           id="newPassword"
+                           name="newPassword"
+                           placeholder="********"
+                           aria-describedby="floatingInputHelp" />
+                    <div id="newPasswordHelp" class="form-text">
+                        Nhập mật khẩu cũ vào ô này.
+                    </div>
+                </div>
+                <div class="form-floating">
+                    <input type="password"
+                           class="form-control"
+                           id="confirmPassword"
+                           name="confirmPassword"
+                           placeholder="********"
+                           aria-describedby="floatingInputHelp" />
+                    <div id="confirmPasswordHelp" class="form-text">
+                        Nhập mật khẩu cũ vào ô này.
+                    </div>
+                </div>
+                <div>
+                    @ViewBag.error
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">Đổi mật khẩu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

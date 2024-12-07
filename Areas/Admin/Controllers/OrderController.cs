@@ -29,7 +29,7 @@ namespace FlowersShop.Areas.Admin.Controllers
             return Json(false);
         }
         [HttpPost]
-        public ActionResult DeleteOrder(int id)
+        public ActionResult CancelOrder(string id)
         {
             Order order = db.Order.Find(id);
             order.Status = "Đã hủy";
@@ -39,6 +39,17 @@ namespace FlowersShop.Areas.Admin.Controllers
                 return Json(true);
             }
             return Json(false);
+        }
+        public ActionResult DeleteOrder(string id)
+        {
+            Order order = db.Order.Find(id);
+            db.Order.Remove(order);
+            int rowAffected = db.SaveChanges();
+            if (rowAffected > 0)
+            {
+                return RedirectToAction("ShowOrder");
+            }
+            return RedirectToAction("ShowOrder");
         }
     }
 }

@@ -7,7 +7,7 @@ namespace FlowersShop.Models
 {
     public class IncomeModel
     {
-        public string name { get; set; }
-        public List<double?> data { get; set; }
+        public int month { get; set; }
+        public double? income { get; set; }
     }
 }

@@ -49,19 +49,23 @@ namespace FlowersShop.Controllers
         [HttpPost]
         public ActionResult SearchProduct(string ProductName)
         {
+            ViewBag.Colors = db.Color.ToList();
+            ViewBag.Occasions = db.Occasion.ToList();
+            ViewBag.Objects = db.Object.ToList();
+            ViewBag.Presentations = db.Presentation.ToList();
             IList<Product> products = bn.SearchProduct(ProductName);
-            IList<ProductDTO> productDTOList = new List<ProductDTO>();
-            foreach (Product product in products) {
-                ProductDTO productDTO = new ProductDTO();
-                productDTO.Product_ID = product.Product_ID;
-                productDTO.Name = product.Name;
-                productDTO.Price = product.Price;
-                productDTO.Image = product.Image;
-                productDTO.Description = product.Description;
-                productDTO.Quantity = product.Quantity;
-                productDTOList.Add(productDTO);
-            }
-            return Json(productDTOList, JsonRequestBehavior.AllowGet);
+            //IList<ProductDTO> productDTOList = new List<ProductDTO>();
+            //foreach (Product product in products) {
+            //    ProductDTO productDTO = new ProductDTO();
+            //    productDTO.Product_ID = product.Product_ID;
+            //    productDTO.Name = product.Name;
+            //    productDTO.Price = product.Price;
+            //    productDTO.Image = product.Image;
+            //    productDTO.Description = product.Description;
+            //    productDTO.Quantity = product.Quantity;
+            //    productDTOList.Add(productDTO);
+            //}
+            return View(products);
         }
         public ActionResult SearchProductByCategory(int[] SelectedColorIds = null, 
             int[] SelectedOccasionIds = null, 
@@ -130,7 +134,7 @@ namespace FlowersShop.Controllers
                 return PartialView("_ProductListPartial", products.ToList());
             }
 
-            return View(products.ToList());
+            return RedirectToAction("ShowProduct");
         }
         
     }

@@ -1,7 +1,7 @@
 ﻿<section class="py-3">
     <div class="container">
-        <form class="d-flex justify-content-center" action="@Url.Action("SearchProduct", "Product")">
-            <input type="text" class="form-control me-2 search-input" placeholder="Tìm kiếm sản phẩm..." aria-label="Tìm kiếm" style="border-radius: 20px; width: 800px; height: 40px;">
+        <form method="post" class="d-flex justify-content-center" action="@Url.Action("SearchProduct", "Product")">
+            <input type="text" class="form-control me-2 search-input" name="ProductName" placeholder="Tìm kiếm sản phẩm..." aria-label="Tìm kiếm" style="border-radius: 20px; width: 800px; height: 40px;">
             <button class="btn btn-outline-dark" type="submit" style="border-radius: 20px; width: 80px;"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
     </div>

@@ -22,8 +22,8 @@ namespace FlowersShop.Areas.Admin
                 namespaces: new[] { "FlowersShop.Areas.Admin.Controllers" }
             );
 
-            //var filters = GlobalFilters.Filters;
-            //filters.Add(new SessionAuthorizeAttribute());
+            var filters = GlobalFilters.Filters;
+            filters.Add(new SessionAuthorizeAttribute());
         }
     }
 }

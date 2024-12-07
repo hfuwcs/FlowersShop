@@ -1,10 +1,29 @@
-/**
+﻿/**
  * Dashboard Analytics
  */
+const apiUrl = '/Admin/Dashboard/JsonIncomeDataSet';
+var transformedData;
+
+const d = new Date();
+let currentYear = d.getFullYear();
+
+// Hàm lấy dữ liệu từ API
+async function fetchIncomeData(apiUrl) {
+    try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) throw new Error('Failed to fetch data');
+        const incomeData = await response.json();
+        console.log(incomeData.map(x => x.income));
+        return incomeData//.map(item => item.data); // Sửa `item.amount` thành trường dữ liệu phù hợp
+    } catch (error) {
+        console.error('Error fetching income data:', error);
+        return []; // Trả về mảng rỗng nếu có lỗi
+    }
+}
 
 'use strict';
 
-(function () {
+(async function () {
   let cardColor, headingColor, axisColor, shadeColor, borderColor;
 
   cardColor = config.colors.white;
@@ -12,19 +31,20 @@
   axisColor = config.colors.axisColor;
   borderColor = config.colors.borderColor;
 
+  transformedData = await fetchIncomeData(apiUrl);
+
+  income = transformedData.map(x => x.income);
+  month = transformedData.map(x => x.month);
   // Total Revenue Report Chart - Bar Chart
   // --------------------------------------------------------------------
   const totalRevenueChartEl = document.querySelector('#totalRevenueChart'),
     totalRevenueChartOptions = {
       series: [
         {
-          name: '2023',
-          data: [18, 7, 15, 29, 18, 12, 9]
-        },
-        {
-          name: '2024',
-          data: [-13, -18, -9, -14, -5, -17, -15]
+              name: currentYear,
+              data: income
         }
+
       ],
       chart: {
         height: 300,
@@ -78,7 +98,7 @@
         }
       },
       xaxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        categories: month,
         labels: {
           style: {
             fontSize: '13px',

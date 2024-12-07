@@ -1,4 +1,8 @@
-﻿<!-- Menu -->
+﻿@{
+    var user = Session["Admin"] as FlowersShop.Repository.Users;
+}
+
+<!-- Menu -->
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
         <a href="index.html" class="app-brand-link">
@@ -62,10 +66,6 @@
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
-            <a href="@Url.Action("DrawTotalRevenueLineChart","Dashboard")" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Biểu đồ doanh thu</div>
-            </a>
         </li>
 
         <!-- Layouts -->
@@ -86,21 +86,6 @@
                         <div data-i18n="Without navbar">Thêm sản phẩm</div>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a href="layouts-container.html" class="menu-link">
-                        <div data-i18n="Container">Container</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="layouts-fluid.html" class="menu-link">
-                        <div data-i18n="Fluid">Fluid</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="layouts-blank.html" class="menu-link">
-                        <div data-i18n="Blank">Blank</div>
-                    </a>
-                </li>
             </ul>
         </li>
         <li class="menu-item">
@@ -119,32 +104,12 @@
                         <div data-i18n="Notifications">Thêm thể loại sản phẩm</div>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a href="#" class="menu-link">
-                        <div data-i18n="Notifications">Màu sắc</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="#" class="menu-link">
-                        <div data-i18n="Connections">Đối tượng</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="#" class="menu-link">
-                        <div data-i18n="Connections">Cách trình bày</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="#" class="menu-link">
-                        <div data-i18n="Connections">Dịp</div>
-                    </a>
-                </li>
             </ul>
         </li>
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Account Settings">Quản lý buôn bán/doanh thu</div>
+                <div data-i18n="Account Settings">Quản lý đơn hàng/doanh thu</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
@@ -153,32 +118,22 @@
                     </a>
                 </li>
             </ul>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="@Url.Action("ShowOrder","Order")" class="menu-link">
+                        <div data-i18n="Notifications">Đơn hàng</div>
+                    </a>
+                </li>
+            </ul>
         </li>
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Pages</span>
         </li>
         <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <a href="@Url.Action("AccountDetail","User", new { Area = "Admin", User_ID = user.User_ID })" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Account Settings">Account Settings</div>
+                <div data-i18n="Account Settings">Cài đặt tài khoản</div>
             </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="pages-account-settings-account.html" class="menu-link">
-                        <div data-i18n="Account">Account</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="pages-account-settings-notifications.html" class="menu-link">
-                        <div data-i18n="Notifications">Notifications</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="pages-account-settings-connections.html" class="menu-link">
-                        <div data-i18n="Connections">Connections</div>
-                    </a>
-                </li>
-            </ul>
         </li>
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
