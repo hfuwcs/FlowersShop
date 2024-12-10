@@ -1,0 +1,161 @@
+﻿/* Tổng quan */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
+}
+
+/* Section chính */
+section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+/* Tiêu đề */
+h3.display-5 {
+    font-weight: bold;
+    color: #343a40;
+    margin-bottom: 1rem;
+}
+
+p.text-center {
+    font-size: 1.2rem;
+    color: #6c757d;
+}
+
+/* Bảng sản phẩm */
+.table {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    border-collapse: collapse;
+}
+
+    .table th, .table td {
+        text-align: center;
+        vertical-align: middle;
+        padding: 10px;
+    }
+
+    .table thead th {
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+        border: none;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f1f3f5;
+    }
+
+    .table tbody td img {
+        max-width: 80px;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+/* Input số lượng */
+input[type="number"] {
+    width: 60px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+button {
+    outline: none;
+    border: none;
+}
+
+    button.btn-outline-primary {
+        color: #007bff;
+        border: 1px solid #007bff;
+        background-color: white;
+        border-radius: 4px;
+        padding: 0 8px;
+        cursor: pointer;
+        transition: 0.2s ease-in-out;
+    }
+
+        button.btn-outline-primary:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+    button.btn-danger {
+        background-color: #dc3545;
+        color: white;
+        border-radius: 4px;
+        padding: 4px 8px;
+        cursor: pointer;
+        transition: 0.2s ease-in-out;
+    }
+
+        button.btn-danger:hover {
+            background-color: #b52a3a;
+        }
+
+/* Phần tổng giá */
+tfoot td {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #343a40;
+}
+
+/* Nút hành động */
+a.btn {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+a.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+    a.btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+a.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+    a.btn-secondary:hover {
+        background-color: #5a6268;
+    }
+
+/* Thông báo giỏ hàng trống */
+.alert {
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    color: #ffffff;
+    background-color: #007bff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .table img {
+        max-width: 60px;
+    }
+
+    input[type="number"] {
+        width: 50px;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+    }
+}

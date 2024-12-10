@@ -14,7 +14,7 @@
     color: #333;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    width: 160px; /* Responsive width */
+    width: 160px; 
     height: 80px;
     margin: 10px;
 }
@@ -33,7 +33,7 @@
 
 @media (max-width: 768px) {
     .nav-btn {
-        width: 80px; /* Adjust size for smaller screens */
+        width: 80px; 
         font-size: 14px;
     }
 
@@ -141,19 +141,19 @@
         margin-bottom: 1.5rem; /* Khoảng cách giữa các mục */
     }
 
-    img {
-        width: 100%; /* Ảnh chiếm toàn chiều rộng */
-        height: auto; /* Tự điều chỉnh chiều cao */
-    }
+    /*img {
+        width: 100%;*/ /* Ảnh chiếm toàn chiều rộng */
+        /*height: auto;*/ /* Tự điều chỉnh chiều cao */
+    /*}*/
 
     iframe-container {
         padding-top: 75%; /* Tỷ lệ khung hình 4:3 cho màn hình nhỏ */
     }
 }
 
-@media (min-width: 500px) {
+/*@media (min-width: 500px) {
     img {
-        width: 50%; /* Ảnh chiếm 50% màn hình */
-        height: auto;
+        width: 50%;*/ /* Ảnh chiếm 50% màn hình */
+        /*height: auto;
     }
-}
+}*/

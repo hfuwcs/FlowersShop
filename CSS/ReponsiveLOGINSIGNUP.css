@@ -1,0 +1,100 @@
+﻿/* Định dạng mặc định */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Wrapper cho form */
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.inner {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 850px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.image-holder {
+    width: 50%;
+}
+
+    .image-holder img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+form {
+    width: 50%;
+    padding: 36px 45px;
+    box-sizing: border-box;
+}
+
+    form h3 {
+        font-size: 25px;
+        text-align: center;
+        margin-bottom: 28px;
+    }
+
+.form-wrapper {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Media queries để hỗ trợ màn hình nhỏ hơn */
+@media (max-width: 768px) {
+    .inner {
+        flex-direction: column;
+    }
+
+    .image-holder {
+        width: 100%;
+    }
+
+    form {
+        width: 100%;
+        padding: 20px;
+    }
+
+        form h3 {
+            font-size: 20px;
+        }
+
+    button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    form {
+        padding: 15px;
+    }
+
+        form h3 {
+            font-size: 18px;
+        }
+
+    .form-control {
+        font-size: 14px;
+        height: 35px;
+    }
+
+    button {
+        font-size: 13px;
+    }
+}
